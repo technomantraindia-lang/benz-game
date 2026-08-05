@@ -150,7 +150,7 @@
     '.btn-claim',
     '.game-card',
     '.game-play-btn',
-    '.seo-tag'
+    '.faq-answer strong'
   ];
   
   selectors.forEach(sel => {
@@ -160,6 +160,29 @@
         e.stopPropagation();
         window.open(targetUrl, '_blank');
       });
+    });
+  });
+})();
+
+/* ===== FAQ ACCORDION ===== */
+(function () {
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(q => {
+    q.addEventListener('click', function () {
+      const item = this.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isActive = item.classList.contains('active');
+      
+      // Close all other items first
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        el.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
     });
   });
 })();
