@@ -137,3 +137,28 @@
   }, { threshold: 0.05 }); // Lower threshold to trigger sooner and smoother on scroll
   items.forEach(el => obs.observe(el));
 })();
+
+/* ===== ACTION REDIRECTS ===== */
+(function () {
+  const targetUrl = 'https://share.ct4ze.com/web/share/index.html?ic=AA0G53Q1&ts=1785923340&m=2&lang=en&id=1';
+  const selectors = [
+    '.btn-login',
+    '.btn-register-nav',
+    '.btn-cta-primary',
+    '.btn-vip-join',
+    '.btn-download-app',
+    '.btn-claim',
+    '.game-card',
+    '.game-play-btn'
+  ];
+  
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(targetUrl, '_blank');
+      });
+    });
+  });
+})();
