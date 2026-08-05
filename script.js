@@ -149,7 +149,8 @@
     '.btn-download-app',
     '.btn-claim',
     '.game-card',
-    '.game-play-btn'
+    '.game-play-btn',
+    '.seo-tag'
   ];
   
   selectors.forEach(sel => {
