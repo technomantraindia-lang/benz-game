@@ -102,13 +102,14 @@
 /* ===== SCROLL REVEAL ===== */
 (function () {
   const items = document.querySelectorAll(
-    '.game-card,.promo-card,.step-card,.vip-perk,.stat-item,.hero-title,.hero-subtitle,.live-badge'
+    '.winner-card,.game-card,.promo-card,.step-card,.vip-perk,.stat-item,.hero-title,.hero-subtitle,.live-badge'
   );
   const cards = Array.from(document.querySelectorAll('.game-card'));
+  const isMobile = window.matchMedia('(max-width: 560px)').matches;
   
   items.forEach((el, i) => {
     el.style.opacity = '0';
-    if (el.classList.contains('game-card')) {
+    if (el.classList.contains('game-card') && !isMobile) {
       const cardIdx = cards.indexOf(el);
       // Alternate left/right slide-in for cards
       if (cardIdx % 2 === 0) {
@@ -117,7 +118,7 @@
         el.style.transform = 'translateX(80px)';
       }
     } else {
-      el.style.transform = 'translateY(22px)';
+      el.style.transform = isMobile ? 'translateY(14px)' : 'translateY(22px)';
     }
     el.style.transition = `opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.08}s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.08}s`;
   });
@@ -126,7 +127,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
-        if (e.target.classList.contains('game-card')) {
+        if (e.target.classList.contains('game-card') && !isMobile) {
           e.target.style.transform = 'translateX(0)';
         } else {
           e.target.style.transform = 'translateY(0)';
@@ -167,6 +168,15 @@
 /* ===== FAQ ACCORDION ===== */
 (function () {
   const questions = document.querySelectorAll('.faq-question');
+  const setAnswerHeight = answer => {
+    answer.style.maxHeight = (answer.scrollHeight + 24) + 'px';
+  };
+  const unlockAnswerHeight = answer => {
+    if (answer.closest('.faq-item')?.classList.contains('active')) {
+      answer.style.maxHeight = 'none';
+    }
+  };
+
   questions.forEach(q => {
     q.addEventListener('click', function () {
       const item = this.parentElement;
@@ -181,10 +191,19 @@
       
       if (!isActive) {
         item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          setAnswerHeight(answer);
+          setTimeout(() => unlockAnswerHeight(answer), 450);
+        });
       }
     });
   });
+
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
+      answer.style.maxHeight = 'none';
+    });
+  }, { passive: true });
 })();
 
 /* ===== COUNTDOWN TIMER — 1 min infinite loop ===== */
