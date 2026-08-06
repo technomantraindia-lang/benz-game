@@ -186,3 +186,23 @@
     });
   });
 })();
+
+/* ===== COUNTDOWN TIMER — 1 min infinite loop ===== */
+(function () {
+  const el = document.getElementById('heroTimer');
+  if (!el) return;
+
+  let totalSeconds = 60;
+
+  const format = s => `${String(Math.floor(s / 60)).padStart(2,'0')}:${String(s % 60).padStart(2,'0')}`;
+
+  function tick() {
+    el.textContent = format(totalSeconds);
+    // Flash red in last 10 seconds
+    el.classList.toggle('flash', totalSeconds <= 10);
+    totalSeconds = totalSeconds === 0 ? 60 : totalSeconds - 1;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();

@@ -139,6 +139,23 @@ img, video { display: block; max-width: 100%; }
   transform: translateY(-1px);
   box-shadow: 0 0 20px rgba(230,57,70,.8);
 }
+
+/* ===== DOWNLOAD NOW NAV BUTTON ===== */
+.btn-download-nav {
+  background: linear-gradient(135deg, #c87800 0%, #f0a500 50%, #c87800 100%);
+  border: none; color: #000; padding: 7px 18px; border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif; font-weight: 700;
+  font-size: .8rem; letter-spacing: 1px; cursor: pointer;
+  box-shadow: 0 0 18px rgba(240,165,0,.45);
+  transition: all .3s ease;
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+}
+.btn-download-nav:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(240,165,0,.75);
+}
 .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 2px; transition: .3s; }
 .mobile-menu {
@@ -208,6 +225,108 @@ img, video { display: block; max-width: 100%; }
   display: flex; flex-direction: column; justify-content: center; align-self: center;
 }
 
+/* ===== HERO TIMER — Bold sticker-style banner ===== */
+.hero-timer {
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.timer-inner {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: linear-gradient(135deg, rgba(20,10,0,.95), rgba(40,20,0,.95), rgba(20,10,0,.95));
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  padding: 14px 28px;
+  box-shadow: 
+    0 0 30px rgba(240,165,0,.4),
+    0 4px 16px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 0 24px rgba(240,165,0,.08);
+  position: relative; overflow: hidden;
+  animation: timerBounce 1.2s ease-in-out infinite;
+}
+/* Pulse animation — sticker "breathing" */
+@keyframes timerBounce {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(240,165,0,.4), 0 4px 16px rgba(0,0,0,.6); }
+  50%      { transform: scale(1.03); box-shadow: 0 0 50px rgba(240,165,0,.65), 0 6px 20px rgba(0,0,0,.7); }
+}
+
+/* Rotating glow ring */
+.timer-inner::before {
+  content: '';
+  position: absolute; inset: -3px; border-radius: 8px;
+  background: conic-gradient(
+    transparent 0deg,
+    rgba(240,165,0,.6) 90deg,
+    transparent 180deg,
+    rgba(240,165,0,.6) 270deg,
+    transparent 360deg
+  );
+  animation: timerRotate 3s linear infinite;
+  z-index: -1;
+}
+@keyframes timerRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Corner sparkles */
+.timer-inner::after {
+  content: '✨';
+  position: absolute; top: -8px; right: -8px;
+  font-size: 1.2rem; opacity: 0;
+  animation: sparkle 2s ease-in-out infinite;
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(.5) rotate(0deg); }
+  50%      { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+
+.timer-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(240,165,0,.7));
+  animation: timerBell 1s ease-in-out infinite;
+}
+@keyframes timerBell {
+  0%, 100% { transform: rotate(-15deg); }
+  50%      { transform: rotate(15deg); }
+}
+
+.timer-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: .8rem; font-weight: 700;
+  color: #ddb070; letter-spacing: 1.8px; text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+
+.timer-display {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem; font-weight: 900; color: #fff;
+  letter-spacing: 3px; min-width: 80px; text-align: center;
+  background: linear-gradient(180deg, #fff, #ffd166, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 18px rgba(240,165,0,.9)) drop-shadow(0 0 32px rgba(240,165,0,.4));
+  transition: filter .15s;
+}
+.timer-display.flash {
+  background: linear-gradient(180deg, #ff4444, #ff0000, #ff4444);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(230,57,70,1)) drop-shadow(0 0 40px rgba(230,57,70,.6));
+  animation: flashPulse .3s ease-in-out infinite;
+}
+@keyframes flashPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .7; }
+}
+
+.timer-tag {
+  font-family: 'Orbitron', sans-serif; font-size: .75rem; font-weight: 700;
+  color: #000; letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  padding: 5px 12px; border-radius: 5px;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 2px 10px rgba(240,165,0,.5), inset 0 1px 0 rgba(255,255,255,.4);
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+/* ===== LIVE BADGE ===== */
 .live-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(30,18,0,.9); border: 1px solid rgba(240,165,0,.42);
@@ -1144,19 +1263,39 @@ img, video { display: block; max-width: 100%; }
 
 /* ===== PROMO STRIP ===== */
 .promo-strip {
-  background: linear-gradient(90deg,#6b0015,#3a0010,#6b0015);
-  padding: 9px 0; overflow: hidden;
+  background: linear-gradient(90deg, #6b0015, #3a0010, #6b0015);
+  padding: 0;
+  overflow: hidden;
   border-top: 1px solid rgba(240,165,0,.15);
   border-bottom: 1px solid rgba(240,165,0,.15);
 }
-.promo-ticker { white-space: nowrap; overflow: hidden; }
-.ticker-content { display: inline-block; animation: ticker2 30s linear infinite; }
-.ticker-content span {
-  display: inline-block; margin: 0 36px;
-  font-family: 'Rajdhani',sans-serif; font-size: .8rem; font-weight: 700;
-  color: #fff; letter-spacing: 1px;
+.promo-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
 }
-@keyframes ticker2 { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  /* translateX(-50%) = scroll exactly one half (Set A), then loop resets */
+  animation: tickerScroll 35s linear infinite;
+  will-change: transform;
+}
+.ticker-track span {
+  display: inline-block;
+  padding: 0 40px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .82rem; font-weight: 700;
+  color: #fff; letter-spacing: .8px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.ticker-track span:last-child { border-right: none; }
+
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* ===== FOOTER ===== */
 .footer {
