@@ -2066,20 +2066,12 @@ img, video { display: block; max-width: 100%; }
   .promo-percent br {
     display: none;
   }
-  .promo-welcome .promo-percent {
-    display: block;
-    line-height: 1.06;
-  }
-  .promo-welcome .promo-percent br {
-    display: block;
-  }
-  .promo-welcome .promo-percent strong {
-    display: block;
-    margin-top: 3px;
-  }
   .promo-percent strong {
     font-size: 1.48rem;
     line-height: 1;
+  }
+  .promo-welcome .promo-percent strong {
+    order: -1;
   }
   .promo-sub {
     font-size: .7rem;
