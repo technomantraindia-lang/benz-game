@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RR9 Game - Benz.Game</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main > .hero {
+      order: 1;
+    }
+
+    main > .live-ticker-bar {
+      order: 2;
+    }
+
+    main > .stats-bar {
+      order: 3;
+    }
+
+    main > .section-winners {
+      order: 4;
+    }
+
+    main > .rr9-lobby {
+      order: 5;
+    }
+
+    main > .section-faq {
+      order: 6;
+    }
+
+    .game-page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 140px 0 70px;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255, 31, 31, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 28%, rgba(255, 207, 74, 0.16), transparent 30%),
+        linear-gradient(135deg, #090508 0%, #16080c 45%, #070406 100%);
+    }
+
+    .game-page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, #060408);
+      pointer-events: none;
+    }
+
+    .game-detail-wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .game-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 207, 74, 0.38);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(255, 207, 74, 0.08);
+      font-weight: 700;
+      letter-spacing: .7px;
+      margin-bottom: 18px;
+    }
+
+    .game-page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: .95;
+      color: #fff;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+    }
+
+    .game-page-title span {
+      display: block;
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255, 207, 74, .45);
+    }
+
+    .game-page-copy {
+      max-width: 600px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.12rem;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+
+    .game-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-game-primary,
+    .btn-game-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 8px;
+      border: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-game-primary {
+      color: #160805;
+      background: linear-gradient(135deg, var(--gold), #ff8d22);
+      box-shadow: 0 14px 28px rgba(255, 146, 31, .24);
+    }
+
+    .btn-game-secondary {
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .rr9-preview {
+      position: relative;
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255, 31, 31, .18), rgba(255, 207, 74, .08));
+      border: 1px solid rgba(255, 255, 255, .12);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+    }
+
+    .rr9-preview video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .72;
+    }
+
+    .rr9-preview-panel {
+      position: absolute;
+      inset: auto 24px 24px;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(7, 4, 6, .82);
+      border: 1px solid rgba(255, 207, 74, .26);
+      backdrop-filter: blur(10px);
+    }
+
+    .rr9-preview-panel h2 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .rr9-preview-panel p {
+      color: rgba(255, 255, 255, .78);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .rr9-features {
+      padding: 70px 0;
+      background: #060408;
+    }
+
+    .feature-grid {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-tile {
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .feature-tile i {
+      color: var(--gold);
+      font-size: 1.55rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-tile h3 {
+      color: #fff;
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .feature-tile p {
+      color: rgba(255, 255, 255, .72);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      .game-detail-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .rr9-preview {
+        min-height: 330px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .game-page-hero {
+        padding-top: 112px;
+      }
+
+      .game-detail-wrap,
+      .feature-grid {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .game-actions {
+        align-items: stretch;
+      }
+
+      .btn-game-primary,
+      .btn-game-secondary {
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rr9-lobby {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 54px;
+      min-height: 720px;
+      background: #050204 url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+    }
+
+    .rr9-lobby::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 2, 4, .2) 0%, rgba(5, 2, 4, .08) 34%, rgba(5, 2, 4, .9) 100%),
+        radial-gradient(circle at 50% 26%, rgba(255, 177, 43, .18), transparent 34%);
+      pointer-events: none;
+    }
+
+    .rr9-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* === REGISTER BOX === */
+    .rr9-register-box {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 28px;
+      padding: 24px 28px 20px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(20, 10, 5, 0.95) 0%, rgba(10, 5, 2, 0.98) 100%);
+      border: 1.5px solid rgba(255, 161, 0, 0.5);
+      box-shadow: 0 0 35px rgba(255, 120, 0, 0.25), inset 0 0 20px rgba(255, 60, 0, 0.15);
+    }
+
+    .rr9-register-title {
+      margin: 0 0 16px;
+      color: #ffd700;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-register-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr 180px;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .rr9-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 161, 0, 0.3);
+      border-radius: 8px;
+      height: 50px;
+      padding: 0 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-input-group:focus-within {
+      border-color: rgba(255, 161, 0, 0.8);
+      box-shadow: 0 0 8px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-country-group {
+      cursor: pointer;
+      gap: 8px;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .rr9-country-group i.fa-mobile-screen-button {
+      font-size: 1.15rem;
+    }
+
+    .rr9-country-group i.rr9-chevron {
+      font-size: 0.8rem;
+      color: rgba(255, 209, 90, 0.6);
+      margin-left: auto;
+    }
+
+    .rr9-phone-group input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .rr9-phone-group input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    .rr9-ref-group {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4px 34px 2px 14px;
+    }
+
+    .rr9-ref-label-container {
+      height: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-ref-label {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-ref-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .rr9-check-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00ff66;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-play-btn {
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #d31a1a 0%, #ff8c00 50%, #d31a1a 100%);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .rr9-play-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.6);
+      color: #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.3); }
+      100% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.6); }
+    }
+
+    .rr9-mini-steps {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: #ffd15a;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .rr9-mini-steps .sep {
+      color: rgba(255, 209, 90, 0.4);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* === HOT GAMES === */
+    .rr9-section-head {
+      margin-top: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .rr9-section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .rr9-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .rr9-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.88rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    .rr9-view-all {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #ffd15a;
+      border: 1px solid rgba(255, 209, 90, 0.4);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 7px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .rr9-view-all:hover {
+      background: rgba(255, 209, 90, 0.1);
+      border-color: rgba(255, 209, 90, 0.8);
+      color: #ffd15a;
+    }
+
+    .rr9-games {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .rr9-game-card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rr9-game-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 161, 0, 0.4);
+      background: #0f090b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: block;
+    }
+
+    .rr9-game-card:hover {
+      transform: translateY(-6px);
+      border-color: #ffa100;
+      box-shadow: 0 10px 25px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .rr9-hot {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 3;
+      background: #ff1a1a;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-game-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      transition: color 0.3s;
+    }
+
+    .rr9-game-card-wrapper:hover .rr9-game-label {
+      color: #ffd15a;
+    }
+
+    /* === TRUST ROW === */
+    .rr9-trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .rr9-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(20, 10, 5, 0.75);
+      border: 1px solid rgba(255, 161, 0, 0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .rr9-trust-icon-box {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 161, 0, 0.12);
+      border: 1px solid rgba(255, 161, 0, 0.35);
+      border-radius: 50%;
+      color: #ffd15a;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .rr9-trust-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rr9-trust-text h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-trust-text p {
+      margin: 2px 0 0 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    /* === PROMOTION ROW === */
+    .rr9-promo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .rr9-promo-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(35, 12, 8, 0.95) 0%, rgba(15, 6, 4, 0.98) 100%);
+      border: 1px solid rgba(255, 90, 0, 0.35);
+      border-radius: 14px;
+      padding: 22px 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 60, 0, 0.05);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-promo-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffa100;
+      box-shadow: 0 8px 25px rgba(255, 90, 0, 0.25);
+    }
+
+    .rr9-promo-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .rr9-promo-title {
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .rr9-promo-sub {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .rr9-promo-value {
+      color: #ffd15a;
+      font-size: 1.95rem;
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      line-height: 1.1;
+      margin: 4px 0;
+      text-shadow: 0 0 10px rgba(255, 209, 90, 0.25);
+    }
+
+    .rr9-promo-desc {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.25;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .rr9-promo-btn {
+      height: 36px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #ffd861 0%, #e19018 100%);
+      color: #170806;
+      font-weight: 800;
+      font-size: 0.85rem;
+      font-family: 'Rajdhani', sans-serif;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .rr9-promo-btn:hover {
+      transform: scale(1.03);
+      color: #170806;
+    }
+
+    .rr9-promo-image {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+      height: 110%;
+      width: auto;
+      object-fit: contain;
+      z-index: 1;
+      pointer-events: none;
+      filter: drop-shadow(0 5px 15px rgba(255, 90, 0, 0.3));
+      transition: transform 0.4s;
+    }
+
+    .rr9-promo-card:hover .rr9-promo-image {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    /* === RESPONSIVENESS === */
+    @media (max-width: 980px) {
+      .rr9-register-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .rr9-games {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .rr9-trust-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .rr9-promo-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-promo-image {
+        height: 100px;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .rr9-lobby {
+        padding-top: 86px;
+      }
+      .rr9-shell {
+        padding: 0 20px;
+      }
+      .rr9-register-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-games {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .rr9-trust-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-section-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .rr9-view-all {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* ===== RR9 PAGE THEME OVERRIDES ===== */
+    body {
+      background:
+        radial-gradient(circle at 10% 18%, rgba(164, 14, 8, .25), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(255, 183, 38, .16), transparent 28%),
+        linear-gradient(180deg, #050104 0%, #100303 42%, #050203 100%);
+      color: #f7e6c6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(5, 1, 4, .15), rgba(5, 1, 4, .9)),
+        url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      opacity: .28;
+      pointer-events: none;
+    }
+
+    .navbar {
+      background: rgba(5, 1, 3, .96);
+      border-bottom: 1px solid rgba(255, 184, 41, .28);
+      box-shadow: 0 8px 24px rgba(150, 9, 4, .2);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 74% 32%, rgba(255, 149, 25, .22), transparent 31%),
+        radial-gradient(circle at 18% 48%, rgba(186, 13, 9, .28), transparent 38%),
+        linear-gradient(155deg, #060103 0%, #180404 46%, #050102 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 560px;
+      padding-top: 28px;
+      padding-bottom: 34px;
+    }
+
+    .hero-timer {
+      width: min(500px, 100%);
+      margin-bottom: 18px;
+    }
+
+    .timer-inner {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 18px;
+    }
+
+    .timer-label {
+      line-height: 1.05;
+      max-width: 150px;
+    }
+
+    .timer-display {
+      white-space: nowrap;
+      font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+      letter-spacing: 2px;
+    }
+
+    .live-badge {
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 24px;
+      color: #fff2ce;
+      background: rgba(10, 3, 2, .78);
+      border: 1px solid rgba(255, 196, 54, .45);
+      box-shadow: 0 0 18px rgba(255, 102, 25, .14);
+    }
+
+    .hero-title {
+      max-width: 520px;
+      margin-bottom: 22px;
+      font-size: clamp(2.65rem, 4.9vw, 5rem);
+      line-height: .98;
+    }
+
+    .hero-title-line {
+      max-width: 520px;
+    }
+
+    .hero-highlight {
+      font-size: clamp(2.8rem, 5.2vw, 5.25rem);
+      line-height: .95;
+      max-width: 560px;
+    }
+
+    .hero-subtitle {
+      max-width: 470px;
+      margin-bottom: 26px;
+      color: rgba(255, 235, 202, .9);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .hero-subtitle strong {
+      color: #ffd46a;
+      font-style: normal;
+      text-shadow: 0 0 10px rgba(255, 196, 54, .35);
+    }
+
+    .trust-badges {
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .trust-item {
+      min-width: 102px;
+      min-height: 50px;
+      background: rgba(26, 7, 4, .72);
+      border-color: rgba(255, 183, 38, .32);
+    }
+
+    .hero-cta .btn-cta-primary {
+      min-width: 268px;
+      min-height: 48px;
+      justify-content: center;
+      font-size: 1rem;
+      letter-spacing: 1.2px;
+    }
+
+    .cta-sub {
+      max-width: 360px;
+      color: rgba(255, 224, 183, .58);
+      font-size: .84rem;
+      line-height: 1.4;
+    }
+
+    .hero-visual {
+      width: 58%;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .hero-timer,
+      .hero-title,
+      .hero-title-line,
+      .hero-highlight,
+      .hero-subtitle,
+      .cta-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .live-badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .timer-inner {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .timer-tag {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-highlight {
+        font-size: 2.55rem;
+      }
+
+      .hero-subtitle {
+        font-size: .98rem;
+      }
+
+      .trust-badges {
+        justify-content: center;
+      }
+    }
+
+    .logo-icon,
+    .logo-accent,
+    .accent {
+      color: #ffc342;
+      text-shadow: 0 0 16px rgba(255, 195, 66, .45);
+    }
+
+    .nav-link:hover,
+    .nav-link.active,
+    .mobile-menu a:hover {
+      color: #ffc342;
+    }
+
+    .btn-download-nav,
+    .btn-cta-primary,
+    .btn-vip-join,
+    .btn-claim,
+    .btn-download-app,
+    .rr9-play-btn,
+    .rr9-promo-btn {
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      border-color: rgba(255, 222, 115, .72);
+      box-shadow: 0 0 22px rgba(255, 76, 22, .38), inset 0 1px 0 rgba(255, 255, 255, .22);
+    }
+
+    .live-ticker-bar,
+    .promo-strip {
+      background: linear-gradient(90deg, rgba(7, 2, 2, .96), rgba(28, 5, 3, .96), rgba(7, 2, 2, .96));
+      border-top: 1px solid rgba(255, 183, 38, .34);
+      border-bottom: 1px solid rgba(255, 183, 38, .34);
+      box-shadow: inset 0 0 28px rgba(180, 22, 8, .16);
+    }
+
+    .stats-bar,
+    .section-winners,
+    .section-faq,
+    .footer,
+    .footer-top,
+    .footer-bottom {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(149, 18, 8, .18), transparent 36%),
+        linear-gradient(180deg, #090303 0%, #050202 100%);
+      border-color: rgba(255, 183, 38, .16);
+    }
+
+    .stat-item,
+    .winner-card,
+    .faq-item,
+    .footer-col,
+    .rr9-register-box,
+    .rr9-game-card,
+    .rr9-trust-item,
+    .rr9-promo-card {
+      background:
+        radial-gradient(circle at 82% 15%, rgba(188, 25, 9, .18), transparent 34%),
+        linear-gradient(180deg, rgba(18, 7, 5, .94), rgba(7, 3, 3, .94));
+      border-color: rgba(255, 174, 35, .32);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .38), inset 0 0 24px rgba(255, 56, 20, .06);
+    }
+
+    .stat-icon-wrap,
+    .rr9-trust-icon-box,
+    .faq-icon,
+    .social-btn {
+      background: rgba(255, 180, 32, .12);
+      border: 1px solid rgba(255, 180, 32, .32);
+      color: #ffc342;
+      box-shadow: 0 0 18px rgba(255, 181, 30, .18);
+    }
+
+    .stat-number,
+    .won-value,
+    .rr9-promo-value,
+    .rr9-game-label,
+    .faq-question,
+    .footer-col-title {
+      color: #ffc342;
+      text-shadow: 0 0 14px rgba(255, 195, 66, .28);
+    }
+
+    .winner-name,
+    .rr9-promo-title,
+    .rr9-trust-text h3,
+    .footer-links li,
+    .footer-links li a {
+      color: #fff2d2;
+    }
+
+    .winner-game,
+    .rr9-subheading,
+    .rr9-promo-desc,
+    .rr9-trust-text p,
+    .faq-answer,
+    .footer-brand-desc {
+      color: rgba(247, 230, 198, .72);
+    }
+
+    .section-title i,
+    .rr9-hot {
+      color: #ff4937;
+      text-shadow: 0 0 15px rgba(255, 73, 55, .45);
+    }
+
+    .rr9-lobby {
+      background:
+        linear-gradient(180deg, rgba(5, 1, 3, .28) 0%, rgba(5, 1, 3, .88) 100%),
+        url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      border-top: 1px solid rgba(255, 183, 38, .2);
+      border-bottom: 1px solid rgba(255, 183, 38, .18);
+    }
+
+    .rr9-lobby .rr9-section-head {
+      margin-top: 46px;
+      margin-bottom: 26px;
+    }
+
+    .rr9-lobby .rr9-games {
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .rr9-lobby .rr9-game-card-wrapper {
+      gap: 12px;
+    }
+
+    .rr9-lobby .rr9-trust-row {
+      margin-top: 18px;
+      margin-bottom: 46px;
+      gap: 16px;
+    }
+
+    .rr9-lobby .rr9-trust-item {
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .rr9-lobby .rr9-promo-row {
+      margin-top: 0;
+      gap: 18px;
+    }
+
+    .rr9-lobby .rr9-hot {
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #fff7d8;
+      background: linear-gradient(180deg, #ff4b35 0%, #d80f0a 100%);
+      border: 1px solid rgba(255, 218, 115, .5);
+      box-shadow: 0 0 16px rgba(255, 57, 28, .45), inset 0 1px 0 rgba(255, 255, 255, .24);
+      font-size: .64rem;
+      line-height: 1;
+      letter-spacing: .7px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .65);
+    }
+
+    .rr9-lobby .rr9-game-card {
+      border-color: rgba(255, 190, 42, .36);
+    }
+
+    .rr9-lobby .rr9-game-label {
+      color: #ffc342;
+      text-shadow: 0 0 10px rgba(255, 195, 66, .22);
+    }
+
+    /* ===== POLISHED RR9 FOOTER ===== */
+    .footer {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 56, 20, .2), transparent 34%),
+        radial-gradient(circle at 86% 12%, rgba(255, 190, 42, .12), transparent 30%),
+        linear-gradient(180deg, #080202 0%, #030101 100%);
+      border-top: 1px solid rgba(255, 190, 42, .28);
+      box-shadow: 0 -18px 60px rgba(0, 0, 0, .55);
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../assect/rr9-casino-banner-bg.png") center bottom / cover no-repeat;
+      opacity: .11;
+      pointer-events: none;
+    }
+
+    .footer-top {
+      position: relative;
+      padding: 56px 0 34px;
+    }
+
+    .footer-top .footer-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(160px, .85fr)) minmax(190px, 1fr);
+      gap: 0;
+      padding: 28px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(20, 6, 4, .9), rgba(6, 2, 2, .92));
+      border: 1px solid rgba(255, 186, 45, .22);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .42), inset 0 0 40px rgba(255, 60, 24, .06);
+    }
+
+    .footer-col {
+      min-width: 0;
+      padding: 8px 24px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      position: relative;
+    }
+
+    .footer-col + .footer-col {
+      border-left: 1px solid rgba(255, 190, 42, .12);
+    }
+
+    .footer-brand {
+      padding-left: 4px;
+      padding-right: 34px;
+    }
+
+    .footer-brand .footer-logo {
+      margin-bottom: 14px;
+    }
+
+    .footer-brand .logo-text {
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand-desc {
+      max-width: 310px;
+      margin-bottom: 22px;
+      color: rgba(255, 237, 204, .74);
+      font-size: .95rem;
+      line-height: 1.65;
+      font-style: normal;
+    }
+
+    .footer-col-title {
+      margin-bottom: 18px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(255, 190, 42, .18);
+      color: #ffd46a;
+      font-size: .78rem;
+      letter-spacing: 1.9px;
+    }
+
+    .footer-col-title::after {
+      width: 44px;
+      height: 1px;
+      bottom: -1px;
+      background: linear-gradient(90deg, #ffd46a, rgba(255, 70, 24, .3));
+      box-shadow: 0 0 12px rgba(255, 190, 42, .45);
+    }
+
+    .footer-links {
+      gap: 11px;
+    }
+
+    .footer-links li,
+    .footer-links li a {
+      color: rgba(255, 239, 211, .84);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .98rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .footer-links li a:hover {
+      color: #ffd46a;
+      left: 4px;
+      text-shadow: 0 0 10px rgba(255, 190, 42, .26);
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 239, 211, .88);
+    }
+
+    .footer-contact li i {
+      width: 18px;
+      color: #ffb22b;
+      text-align: center;
+    }
+
+    .footer-socials {
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 178, 43, .09);
+      border-color: rgba(255, 178, 43, .3);
+      color: #ffbf3f;
+    }
+
+    .social-btn:hover {
+      background: linear-gradient(180deg, #ffd46a, #f05a17);
+      color: #180604;
+      transform: translateY(-3px);
+    }
+
+    .footer-app {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-app .qr-wrap {
+      padding: 8px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, .35), 0 0 24px rgba(255, 183, 42, .2);
+    }
+
+    .qr-image {
+      width: 92px;
+      height: 92px;
+      border: 0;
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .btn-download-app {
+      min-height: 40px;
+      padding: 0 18px;
+      border-radius: 7px;
+      font-size: .76rem;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+
+    .footer-bottom {
+      position: relative;
+      padding: 18px 0;
+      background: rgba(0, 0, 0, .68);
+      border-top: 1px solid rgba(255, 190, 42, .16);
+    }
+
+    .footer-bottom-inner {
+      justify-content: center;
+    }
+
+    .footer-bottom-inner span {
+      color: rgba(255, 229, 188, .52);
+      font-size: .86rem;
+      letter-spacing: .4px;
+    }
+
+    @media (max-width: 1180px) {
+      .footer-top .footer-container {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 18px 0;
+      }
+
+      .footer-col + .footer-col {
+        border-left: 0;
+      }
+
+      .footer-col {
+        padding: 10px 18px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 190, 42, .12);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .footer-top {
+        padding: 34px 0 24px;
+      }
+
+      .footer-top .footer-container {
+        grid-template-columns: 1fr;
+        padding: 22px;
+        border-radius: 10px;
+      }
+
+      .footer-col,
+      .footer-brand {
+        padding: 12px 0;
+      }
+
+      .footer-brand {
+        border-bottom: 1px solid rgba(255, 190, 42, .12);
+      }
+
+      .footer-app {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo" aria-label="Benz.Game Home">
+        <span class="logo-icon"><i class="fas fa-dice"></i></span>
+        <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">HOME</a>
+        <a href="../index.html#games" class="nav-link active">GAMES</a>
+        <a href="../index.html#promotions" class="nav-link">PROMOTIONS</a>
+        <a href="../index.html#vip" class="nav-link has-dropdown">VIP CLUB <i class="fas fa-chevron-down"></i></a>
+        <a href="../index.html#how-to-start" class="nav-link has-dropdown">ABOUT US <i class="fas fa-chevron-down"></i></a>
+        <a href="#faq" class="nav-link">SUPPORT</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">HOME</a>
+      <a href="../index.html#games">GAMES</a>
+      <a href="../index.html#promotions">PROMOTIONS</a>
+      <a href="../index.html#vip">VIP CLUB</a>
+      <a href="../index.html#how-to-start">ABOUT US</a>
+      <a href="#faq">SUPPORT</a>
+      <div class="mobile-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main>
+    <section class="hero">
+      <div class="particles" id="particles"></div>
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-timer">
+            <div class="timer-inner">
+              <span class="timer-icon">⏰</span>
+              <span class="timer-label">RR9 BONUS EXPIRES IN</span>
+              <span class="timer-display" id="heroTimer">01:00</span>
+              <span class="timer-tag">LEFT</span>
+            </div>
+          </div>
+
+          <div class="live-badge">
+            <span class="pulse-dot"></span>
+            RR9 LIVE <strong>EX984JS</strong> referral code active for new players
+          </div>
+          <h1 class="hero-title">
+            <span class="hero-title-line">RR9 Game</span>
+            <span class="hero-highlight">Sign Up &amp; Win</span>
+          </h1>
+          <p class="hero-subtitle">Enter your real phone number, use referral code <strong>EX984JS</strong>,<br>and unlock the RR9 prize wheel, bonuses and online games.</p>
+          <div class="trust-badges">
+            <div class="trust-item"><i class="fas fa-shield-alt"></i><span>100%<br>Secure</span></div>
+            <div class="trust-item"><i class="fas fa-headset"></i><span>24/7<br>Support</span></div>
+            <div class="trust-item"><i class="fas fa-bolt"></i><span>Instant<br>Withdraw</span></div>
+          </div>
+          <div class="hero-cta">
+            <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
+            <p class="cta-sub">Open the official RR9 game website with code EX984JS</p>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-video-wrapper">
+            <video id="heroVideo" class="hero-video" src="../assect/Video_Generation_Prompt_Create.mp4" autoplay muted loop
+              playsinline preload="auto"></video>
+          </div>
+          <div class="free-spin-badge">
+            <div class="badge-glow"></div>
+            <span class="badge-label">FREE</span>
+            <span class="badge-main">SPIN</span>
+          </div>
+          <div class="reward-card">
+            <div class="reward-icon">🎁</div>
+            <div class="reward-text">
+              <span class="reward-percent">100%</span>
+              <span class="reward-label">reward</span>
+            </div>
+            <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
+          </div>
+          <div class="jackpot-winner">
+            <i class="fas fa-trophy"></i>
+            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rr9-lobby">
+      <div class="rr9-shell">
+        <div class="rr9-register-box">
+          <h1 class="rr9-register-title">Join now &amp; start winning!</h1>
+          <div class="rr9-register-row">
+            <!-- Country Selector -->
+            <div class="rr9-input-group rr9-country-group">
+              <i class="fas fa-mobile-screen-button"></i>
+              <span class="rr9-country-val">+91</span>
+              <i class="fas fa-chevron-down rr9-chevron"></i>
+            </div>
+            <!-- Phone Input -->
+            <div class="rr9-input-group rr9-phone-group">
+              <input class="rr9-phone" type="tel" placeholder="Enter your phone number" aria-label="Phone number" />
+            </div>
+            <!-- Referral Code Input -->
+            <div class="rr9-input-group rr9-ref-group">
+              <div class="rr9-ref-label-container">
+                <span class="rr9-ref-label">Referral / Invite Code (Optional)</span>
+              </div>
+              <input class="rr9-ref-input" type="text" value="EX984JS" readonly aria-label="Referral Code" />
+              <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
+            </div>
+            <!-- Play Now Button -->
+            <a href="#" class="rr9-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+          </div>
+          <div class="rr9-mini-steps">
+            <span>Sign up in seconds</span>
+            <span class="sep">&middot;</span>
+            <span>Get bonus</span>
+            <span class="sep">&middot;</span>
+            <span>Start playing &amp; earning</span>
+          </div>
+        </div>
+
+        <div class="rr9-section-head">
+          <div class="rr9-section-title-wrap">
+            <h2 class="rr9-heading">🔥 Hot Games</h2>
+            <p class="rr9-subheading">Play the hottest games &amp; win big rewards</p>
+          </div>
+          <a href="../index.html#games" class="rr9-view-all">View All Games <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="rr9-games">
+          <!-- Card 1 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_aviator.png" alt="Aviator" />
+            </a>
+            <span class="rr9-game-label">Aviator</span>
+          </div>
+          <!-- Card 2 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_mines.png" alt="Mines" />
+            </a>
+            <span class="rr9-game-label">Mines</span>
+          </div>
+          <!-- Card 3 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_crash.png" alt="1000x Crash" />
+            </a>
+            <span class="rr9-game-label">1000x Crash</span>
+          </div>
+          <!-- Card 4 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_crazy_time.png" alt="Crazy Time" />
+            </a>
+            <span class="rr9-game-label">Crazy Time</span>
+          </div>
+          <!-- Card 5 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_dragon_tiger.png" alt="Dragon Tiger" />
+            </a>
+            <span class="rr9-game-label">Dragon Tiger</span>
+          </div>
+          <!-- Card 6 -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/rr9_andar_bahar.png" alt="Andar Bahar" />
+            </a>
+            <span class="rr9-game-label">Andar Bahar</span>
+          </div>
+        </div>
+
+        <div class="rr9-trust-row">
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Secure &amp; Fair Play</h3>
+              <p>100% safe &amp; encrypted</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Instant Withdrawal</h3>
+              <p>Fast &amp; hassle-free</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-gift"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Real Cash Rewards</h3>
+              <p>Win &amp; withdraw real money</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>24/7 Support</h3>
+              <p>We're here for you</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rr9-promo-row">
+          <!-- Card 1 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Welcome Bonus</span>
+              <span class="rr9-promo-sub">Up to</span>
+              <div class="rr9-promo-value">&#8377;5,000</div>
+              <span class="rr9-promo-desc">on your first deposit</span>
+              <a href="#" class="rr9-promo-btn">Claim Bonus <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gift_box.png" alt="Welcome Bonus" class="rr9-promo-image" />
+          </div>
+          <!-- Card 2 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Invite &amp; Earn</span>
+              <div class="rr9-promo-value">&#8377;500</div>
+              <span class="rr9-promo-desc">Per Friend<br>Unlimited Earnings</span>
+              <a href="#" class="rr9-promo-btn">Invite Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gold_coins.png" alt="Invite & Earn" class="rr9-promo-image" />
+          </div>
+          <!-- Card 3 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Daily Rewards</span>
+              <span class="rr9-promo-sub">Win up to</span>
+              <div class="rr9-promo-value">&#8377;400,000</div>
+              <span class="rr9-promo-desc">Every Single Day</span>
+              <a href="#" class="rr9-promo-btn">Play &amp; Win <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gold_trophy.png" alt="Daily Rewards" class="rr9-promo-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIVE TICKER ===== -->
+    <div class="live-ticker-bar">
+      <div class="ticker-left">
+        <i class="fas fa-volume-up"></i>
+        <span class="ticker-badge">LIVE</span>
+      </div>
+      <div class="ticker-scroll-wrap">
+        <div class="ticker-scroll">
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="stats-bar">
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="1000000">0</span>
+            <span class="stat-label">Users</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-lock stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Secure</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Withdraw</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">24x7</span><span class="stat-label">Support</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RECENT WINNERS ===== -->
+    <section class="section-winners">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-trophy"></i> RECENT <span class="accent">BIG WINNERS</span></h2>
+          <span class="winners-live"><span class="pulse-dot"></span> LIVE UPDATES</span>
+        </div>
+        <div class="winners-grid">
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_rahul.png" alt="Rahul K.">
+              <span class="winner-rank rank-1">🥇</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Rahul K.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Fortune Gems</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹1,50,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_priya.png" alt="Priya S.">
+              <span class="winner-rank rank-2">🥈</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Priya S.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy 777</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹95,500</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_arjun.png" alt="Arjun M.">
+              <span class="winner-rank rank-3">🥉</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Arjun M.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹72,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_sneha.png" alt="Sneha G.">
+              <span class="winner-rank rank-4">⭐</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Sneha G.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy Time</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹48,750</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_vikram.png" alt="Vikram R.">
+              <span class="winner-rank rank-5">⭐</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Vikram R.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Money Coming</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹36,200</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="section-faq" id="faq">
+      <div class="section-container">
+        <h2 class="section-title centered">
+          <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
+        </h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is RR9 game and how does RR9 game online work?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p><strong>RR9 game</strong> is an online gaming platform where users can explore casino-style games, slot games, card games, live casino options, lucky wheel, spin game, jackpot game, crash game, aviator game, cricket betting and sports betting features in one place. Many players search for <strong>rr9 games</strong>, <strong>rr9 game online</strong>, <strong>rr9 online game</strong>, <strong>rr9 gaming platform</strong>, <strong>rr9 game India</strong> and <strong>rr9 mobile game</strong> because they want a fast, mobile-friendly game website with simple registration, quick access and support. To understand how to play RR9 game, first create an account, complete login, open the game lobby and select your preferred category such as rr9 casino games, rr9 online slots, rr9 rummy game, rr9 teen patti game, rr9 roulette game or rr9 real money games. This RR9 game guide is useful for beginners who want to know what is RR9 game, how does RR9 game work, RR9 game features, RR9 game review, account verification, KYC verification, terms and privacy before playing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to register on RR9 game and login online?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>RR9 registration is simple for new users who search <strong>rr9 game register</strong>, <strong>rr9 registration</strong>, <strong>rr9 game sign up</strong>, <strong>rr9 create account</strong> or <strong>rr9 new account registration</strong>. To create an RR9 account, open the RR9 game website or RR9 game official website, enter your mobile number, add the invitation code or referral code if available, verify OTP and set your password. After sign up, use the <strong>rr9 game login</strong> page for rr9 login online, rr9 app login or rr9 game login from mobile. If you are wondering how to register on RR9 game or how to login RR9 game, keep your phone number active because OTP verification may be required. For rr9 login problem, rr9 forgot password or rr9 login OTP not received, check your network, enter the correct number and use customer support if the issue continues. Hindi users also search rr9 game login kaise kare, rr9 game me account kaise banaye and rr9 game kya hai, so the registration flow is kept easy for beginners.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to download RR9 game app, APK and latest version?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Players looking for <strong>rr9 game download</strong>, <strong>rr9 app download</strong>, <strong>rr9 game apk</strong>, <strong>rr9 apk download</strong> or <strong>rr9 game apk download</strong> can use the download button on this page to access the mobile app. The RR9 game app is designed for Android users who search rr9 game download for Android, rr9 app download for Android, download RR9 game app and rr9 mobile app download. Before installing, make sure you use the official source, check that you are getting the rr9 game latest version, rr9 latest apk, rr9 apk latest version or rr9 updated version, and avoid unknown third-party files. To install, download the APK, allow installation if your phone asks permission, open the app, complete rr9 app login and start using the platform. If you want to know how to download RR9 game, how to update RR9 game, rr9 game install or rr9 game update, always keep enough storage, stable internet and the latest app version for smoother performance. Hindi users often search rr9 game download kaise kare, and the answer is to download only from the trusted RR9 game website.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What RR9 bonus, promo code and referral offers are available?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>RR9 game promotion offers may include <strong>rr9 game bonus</strong>, rr9 welcome bonus, rr9 registration bonus, rr9 signup bonus, rr9 login bonus, rr9 deposit bonus, rr9 referral bonus and rr9 daily bonus depending on active campaigns. New users can check the bonus area after registration to see whether a promo code, bonus code, invitation code or referral code is available. Many users search rr9 invitation code, rr9 referral code, rr9 promo code, rr9 bonus code, rr9 cashback offer and rr9 free spin bonus because they want extra value before starting. To claim any RR9 bonus, read the offer rules carefully, check minimum deposit, wagering terms, expiry time and eligible games. Referral offers usually require sharing your code with friends; when a friend creates an account and completes the required action, the invite reward may become available. If you search rr9 game bonus kaise milega or rr9 game referral code, the best step is to register, open Promotions, apply a valid code and contact support if your bonus is not credited. Bonus availability can change, so always verify current terms inside the platform.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to deposit and withdraw money from RR9 game?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>For payments, many users search <strong>rr9 deposit</strong>, rr9 deposit process, rr9 minimum deposit, rr9 UPI deposit, rr9 payment methods and rr9 transaction history. To deposit money in RR9, log in to your account, open the wallet or cashier section, choose UPI or another available payment method, enter the amount and follow the payment instructions. For withdrawal, users search <strong>rr9 game withdrawal</strong>, rr9 withdrawal, rr9 withdrawal process, rr9 withdrawal time, rr9 minimum withdrawal, rr9 UPI withdrawal, how to withdraw money from RR9 and how to deposit money in RR9. Before your first withdrawal, complete account verification and KYC verification if requested, because incorrect details can cause rr9 withdrawal problem or rr9 withdrawal pending status. If your withdrawal is delayed, check transaction history, confirm bank or UPI details, ensure bonus terms are completed and contact customer support. Hindi searches like rr9 game se paise kaise nikale, rr9 game withdrawal kaise kare, rr9 game me deposit kaise kare and rr9 game withdrawal pending solution are common, so users should follow the official wallet instructions and keep payment screenshots until the transaction is resolved.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which games and categories can I play on RR9?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>RR9 offers multiple entertainment categories for users who search rr9 casino games, rr9 slot games, rr9 live casino, rr9 card games, rr9 rummy game, rr9 teen patti game, rr9 roulette game, rr9 lucky wheel, rr9 spin game, rr9 jackpot game, rr9 crash game and rr9 aviator game. Players who prefer sports can also explore rr9 cricket betting and rr9 sports betting where available. The game lobby is built for mobile users, so rr9 mobile game players can browse online slots, spin and win games and real money games from one dashboard. Beginners should start with the game guide, read rules, understand risk, check limits and play responsibly. If a game is not opening, update the RR9 game latest version, clear cache, check internet and try again. Players searching rr9 game for beginners, how to play RR9 game, how to create RR9 account and rr9 game features can use the FAQ, support and game pages to learn the basics before depositing. Game availability, bonus eligibility and categories can vary by region, account status and platform updates.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How can I contact RR9 customer support?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>RR9 game customer support helps users with login, registration, download, deposit, withdrawal, app update, KYC verification and account problems. If you search rr9 game customer support, rr9 game customer care, rr9 game helpline number, rr9 game FAQs, rr9 login problem, rr9 game not opening, rr9 withdrawal pending or rr9 login OTP not received, first check whether your app is updated, your mobile number is correct and your internet is stable. For account issues, keep your registered phone number, transaction ID, deposit screenshot, withdrawal request ID and any error message ready before contacting support. Customer care can guide you about rr9 forgot password, rr9 app login, rr9 game login page, transaction history, payment methods and verification. Users should also read rr9 game terms and conditions and rr9 game privacy policy before sharing documents or payment details. Hindi users search rr9 game customer care number, rr9 game asli hai ya nakli and rr9 withdrawal pending solution; the safest approach is to use only official support links from the RR9 game website and never share OTP or password with anyone.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>RR9 game kya hai aur kya beginners ke liye easy hai?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>RR9 game kya hai? Simple words me, RR9 ek online gaming platform hai jahan users rr9 game online, rr9 game app, rr9 mobile game, casino games, slot games, card games, teen patti, rummy, roulette, lucky wheel, jackpot, crash game, aviator game aur spin and win type games explore kar sakte hain. Agar aap search karte hain rr9 game kaise khele, rr9 game download kaise kare, rr9 game login kaise kare, rr9 game me account kaise banaye, to process basic hai: official website open karein, registration karein, app download karein, login karein, wallet setup karein aur game rules padhkar start karein. Deposit ya withdrawal se pehle minimum deposit, minimum withdrawal, UPI deposit, UPI withdrawal, KYC verification aur bonus terms samajhna zaroori hai. Jo users rr9 game se paise kaise nikale, rr9 game withdrawal kaise kare, rr9 game me deposit kaise kare, rr9 game bonus kaise milega ya rr9 game referral code search karte hain, unhe platform ke official instructions follow karne chahiye. Beginners ke liye best advice hai: small amount se start karein, responsible gaming follow karein aur support se help lein.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PROMO TICKER ===== -->
+  <div class="promo-strip">
+    <div class="promo-ticker">
+      <div class="ticker-track">
+        <span>VIP CASHBACK 15%</span>
+        <span>REFER &amp; EARN INR 500</span>
+        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
+        <span>NEW GAME: RR9</span>
+        <span>DAILY BONUS UP TO INR 10,000</span>
+        <span>FREE SPINS EVERY FRIDAY</span>
+        <span>VIP CASHBACK 15%</span>
+        <span>REFER &amp; EARN INR 500</span>
+        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
+        <span>NEW GAME: RR9</span>
+        <span>DAILY BONUS UP TO INR 10,000</span>
+        <span>FREE SPINS EVERY FRIDAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon"><i class="fas fa-dice"></i></span>
+            <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+          </div>
+          <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
+            trusted by millions.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#games">Games</a></li>
+            <li><a href="../index.html#promotions">Promotions</a></li>
+            <li><a href="../index.html#vip">VIP Club</a></li>
+            <li><a href="../index.html#how-to-start">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">SUPPORT</h4>
+          <ul class="footer-links">
+            <li><a href="#faq">Support Center</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Responsible Gaming</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">CONTACT US</h4>
+          <ul class="footer-links footer-contact">
+            <li><i class="fas fa-envelope"></i> support@benz.game</li>
+            <li><i class="fas fa-phone"></i> +91 12345 67890</li>
+            <li><i class="fas fa-clock"></i> Available 24/7</li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-app">
+          <h4 class="footer-col-title">DOWNLOAD APP</h4>
+          <div class="qr-wrap">
+            <img src="../assect/qrcode.png" alt="Download App QR Code" class="qr-image" />
+          </div>
+          <button class="btn-download-app"><i class="fas fa-download"></i> DOWNLOAD APP</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-container footer-bottom-inner">
+        <span>&copy; 2026 Benz.Game. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const rr9TargetUrl = 'https://rr9game.live/?code=EX984JS';
+      const rr9ClickSelectors = [
+        '.btn-download-nav',
+        '.btn-cta-primary',
+        '.rr9-play-btn',
+        '.rr9-promo-btn',
+        '.btn-claim',
+        '.btn-download-app',
+        '.rr9-game-card',
+        '.game-play-btn',
+        '.game-card'
+      ];
+
+      document.addEventListener('click', function (event) {
+        const target = event.target.closest(rr9ClickSelectors.join(','));
+        if (!target) return;
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        window.open(rr9TargetUrl, '_blank');
+      }, true);
+    })();
+  </script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
