@@ -102,14 +102,14 @@
 /* ===== SCROLL REVEAL ===== */
 (function () {
   const items = document.querySelectorAll(
-    '.winner-card,.game-card,.promo-card,.step-card,.vip-perk,.stat-item,.hero-title,.hero-subtitle,.live-badge'
+    '.winner-card, .game-card, .promo-card, .step-card, .vip-perk, .stat-item, .hero-title, .hero-subtitle, .live-badge, .rr9-register-box, .rr9-game-card-wrapper, .rr9-trust-item, .rr9-promo-card, .faq-item, .hero-video-title, .free-spin-badge, .reward-card, .jackpot-winner'
   );
-  const cards = Array.from(document.querySelectorAll('.game-card'));
+  const cards = Array.from(document.querySelectorAll('.game-card, .rr9-game-card-wrapper'));
   const isMobile = window.matchMedia('(max-width: 560px)').matches;
   
   items.forEach((el, i) => {
     el.style.opacity = '0';
-    if (el.classList.contains('game-card') && !isMobile) {
+    if ((el.classList.contains('game-card') || el.classList.contains('rr9-game-card-wrapper')) && !isMobile) {
       const cardIdx = cards.indexOf(el);
       // Alternate left/right slide-in for cards
       if (cardIdx % 2 === 0) {
@@ -127,7 +127,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
-        if (e.target.classList.contains('game-card') && !isMobile) {
+        if ((e.target.classList.contains('game-card') || e.target.classList.contains('rr9-game-card-wrapper')) && !isMobile) {
           e.target.style.transform = 'translateX(0)';
         } else {
           e.target.style.transform = 'translateY(0)';

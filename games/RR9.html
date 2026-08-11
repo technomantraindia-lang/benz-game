@@ -852,34 +852,96 @@
     }
 
     .hero-content {
-      max-width: 560px;
-      padding-top: 28px;
-      padding-bottom: 34px;
+      position: absolute;
+      inset: 0;
+      z-index: 7;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      padding: 0;
+      pointer-events: none;
+      display: block;
     }
 
     .hero-timer {
-      width: min(500px, 100%);
-      margin-bottom: 18px;
+      position: absolute;
+      top: 12px;
+      left: 34px;
+      transform: none;
+      width: min(390px, calc(100% - 68px));
+      margin: 0;
+      z-index: 15;
     }
 
     .timer-inner {
-      min-height: 64px;
+      min-height: 54px;
       display: grid;
       grid-template-columns: auto 1fr auto auto;
       gap: 12px;
       align-items: center;
-      padding: 10px 18px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(15, 6, 6, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 195, 66, 0.4);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5), 
+        0 0 20px rgba(255, 195, 66, 0.15),
+        inset 0 0 15px rgba(255, 255, 255, 0.05);
+      animation: timerPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes timerPulse {
+      0% { border-color: rgba(255, 195, 66, 0.35); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 195, 66, 0.1); }
+      100% { border-color: rgba(255, 195, 66, 0.6); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 195, 66, 0.3); }
+    }
+
+    .timer-inner::before,
+    .timer-inner::after {
+      display: none;
+    }
+
+    .timer-icon {
+      font-size: 1.25rem;
+      animation: pulseDot 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseDot {
+      from { transform: scale(0.95); filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)); }
+      to { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(255, 195, 66, 0.8)); }
     }
 
     .timer-label {
-      line-height: 1.05;
-      max-width: 150px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      max-width: 140px;
+      font-size: .8rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .timer-display {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
       white-space: nowrap;
-      font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+      min-width: 74px;
+      font-size: clamp(1.25rem, 2vw, 1.72rem);
       letter-spacing: 2px;
+      color: #ffc342;
+      text-shadow: 0 0 10px rgba(255, 195, 66, 0.5);
+    }
+
+    .timer-tag {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      padding: 5px 10px;
+      font-size: .68rem;
+      background: linear-gradient(135deg, #ffc342, #ff9000);
+      color: #000;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(255, 144, 0, 0.4);
     }
 
     .live-badge {
@@ -894,7 +956,7 @@
 
     .hero-title {
       max-width: 520px;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
       font-size: clamp(2.65rem, 4.9vw, 5rem);
       line-height: .98;
     }
@@ -904,9 +966,10 @@
     }
 
     .hero-highlight {
-      font-size: clamp(2.8rem, 5.2vw, 5.25rem);
+      font-size: clamp(2.45rem, 4.8vw, 4.9rem);
       line-height: .95;
-      max-width: 560px;
+      max-width: none;
+      white-space: nowrap;
     }
 
     .hero-subtitle {
@@ -936,11 +999,88 @@
     }
 
     .hero-cta .btn-cta-primary {
-      min-width: 268px;
+      min-width: 250px;
       min-height: 48px;
       justify-content: center;
-      font-size: 1rem;
-      letter-spacing: 1.2px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      border: 1px solid rgba(255, 222, 115, 0.72);
+      box-shadow: 
+        0 0 25px rgba(255, 115, 0, 0.5), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: btnPulse 2s infinite alternate;
+    }
+
+    @keyframes btnPulse {
+      0% { box-shadow: 0 0 15px rgba(255, 115, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+      100% { box-shadow: 0 0 35px rgba(255, 115, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+    }
+
+    .hero-cta .btn-cta-primary:hover {
+      transform: scale(1.04);
+      box-shadow: 
+        0 0 45px rgba(255, 180, 30, 0.95), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-cta .btn-cta-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmerBtn 3.5s infinite;
+    }
+
+    @keyframes shimmerBtn {
+      0% { left: -100%; }
+      20%, 100% { left: 100%; }
+    }
+
+    .hero-cta {
+      position: absolute;
+      left: 50%;
+      top: auto;
+      bottom: 74px;
+      transform: translateX(-50%);
+      align-items: center;
+      pointer-events: auto;
+      z-index: 8;
+    }
+
+    @media (min-width: 901px) {
+      .hero-container {
+        position: static !important;
+        height: 100% !important;
+        display: block !important;
+      }
+
+      .hero-content {
+        position: absolute !important;
+        inset: 0 !important;
+        display: block !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .hero-cta {
+        top: 53.5%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
     }
 
     .cta-sub {
@@ -951,7 +1091,223 @@
     }
 
     .hero-visual {
-      width: 58%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      margin-top: 0;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .hero-video-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-visual::before {
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .34) 0%, rgba(0, 0, 0, .05) 26%, rgba(0, 0, 0, .08) 55%, rgba(0, 0, 0, .76) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0) 72%, rgba(0, 0, 0, .48) 100%);
+    }
+
+    .hero-visual::after {
+      background: linear-gradient(180deg, transparent 56%, rgba(5, 1, 3, .86) 100%);
+    }
+
+    .hero-video-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: auto;
+      bottom: 138px;
+      z-index: 6;
+      margin-left: auto;
+      margin-right: auto;
+      width: min(92%, 680px);
+      margin-top: 0;
+      margin-bottom: 0;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 3.8vw, 4rem);
+      font-style: normal;
+      font-weight: 900;
+      line-height: .98;
+      text-align: center;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: radial-gradient(circle, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 80%);
+      padding: 20px 40px;
+    }
+
+    .hero-video-title .hero-title-line {
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-video-title .hero-highlight {
+      display: block;
+      margin-top: 4px;
+      font-size: .8em;
+      white-space: nowrap;
+      background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+      text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+    }
+
+    /* ===== PREMIUM BADGES GLASSMORPHISM OVERRIDES ===== */
+    .free-spin-badge {
+      position: absolute;
+      top: 10%;
+      right: 4%;
+      z-index: 5;
+      background: rgba(139, 0, 0, 0.35) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.55) !important;
+      padding: 10px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 50, 50, 0.35),
+        inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .free-spin-badge:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 50, 50, 0.55),
+        inset 0 0 20px rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .badge-label {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .65rem !important;
+      letter-spacing: 3px !important;
+      color: #ffd166 !important;
+    }
+
+    .badge-main {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 1.15rem !important;
+      letter-spacing: 2px !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .reward-card {
+      position: absolute;
+      bottom: 14%;
+      right: 4%;
+      z-index: 5;
+      background: rgba(15, 7, 7, 0.65) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.45) !important;
+      padding: 12px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 195, 66, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .reward-card:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 195, 66, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .reward-percent {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 1.25rem !important;
+      color: #ffc342 !important;
+      text-shadow: 0 0 10px rgba(255, 195, 66, 0.5) !important;
+    }
+
+    .reward-label {
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px !important;
+      font-size: .7rem !important;
+      color: #fff2d2 !important;
+    }
+
+    .coin-value {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .82rem !important;
+      color: #ffd166 !important;
+    }
+
+    .jackpot-winner {
+      position: absolute;
+      bottom: 5%;
+      left: 4%;
+      z-index: 5;
+      background: rgba(15, 5, 5, 0.65) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.45) !important;
+      padding: 10px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 195, 66, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .jackpot-winner:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 195, 66, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .jackpot-winner i {
+      font-size: 1.25rem !important;
+      color: #ffc342 !important;
+      filter: drop-shadow(0 0 5px rgba(255, 195, 66, 0.5)) !important;
+    }
+
+    .jackpot-label {
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .65rem !important;
+      color: rgba(255, 255, 255, 0.7) !important;
+      letter-spacing: 1px !important;
+    }
+
+    .jackpot-amount {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: .95rem !important;
+      color: #ffc342 !important;
+      text-shadow: 0 0 8px rgba(255, 195, 66, 0.5) !important;
     }
 
     @media (max-width: 980px) {
@@ -977,8 +1333,29 @@
     }
 
     @media (max-width: 560px) {
+      .hero-timer {
+        top: 12px;
+        left: 12px;
+        width: min(92%, 360px);
+      }
+
+      .hero-cta {
+        top: auto;
+        bottom: 46px;
+        width: min(92%, 320px);
+      }
+
+      .hero-video-title {
+        top: auto;
+        bottom: 104px;
+        width: min(92%, 360px);
+        font-size: 1.72rem;
+      }
+
       .timer-inner {
         grid-template-columns: auto 1fr auto;
+        min-height: 48px;
+        padding: 7px 10px;
       }
 
       .timer-tag {
@@ -990,7 +1367,8 @@
       }
 
       .hero-highlight {
-        font-size: 2.55rem;
+        font-size: 2.12rem;
+        white-space: nowrap;
       }
 
       .hero-subtitle {
@@ -1449,42 +1827,31 @@
       <div class="glow-orb orb-1"></div>
       <div class="glow-orb orb-2"></div>
 
+      <div class="hero-timer">
+        <div class="timer-inner">
+          <span class="timer-icon">⏰</span>
+          <span class="timer-label">RR9 BONUS EXPIRES IN</span>
+          <span class="timer-display" id="heroTimer">01:00</span>
+          <span class="timer-tag">LEFT</span>
+        </div>
+      </div>
+
       <div class="hero-container">
         <div class="hero-content">
-          <div class="hero-timer">
-            <div class="timer-inner">
-              <span class="timer-icon">⏰</span>
-              <span class="timer-label">RR9 BONUS EXPIRES IN</span>
-              <span class="timer-display" id="heroTimer">01:00</span>
-              <span class="timer-tag">LEFT</span>
-            </div>
-          </div>
-
-          <div class="live-badge">
-            <span class="pulse-dot"></span>
-            RR9 LIVE <strong>EX984JS</strong> referral code active for new players
-          </div>
-          <h1 class="hero-title">
-            <span class="hero-title-line">RR9 Game</span>
-            <span class="hero-highlight">Sign Up &amp; Win</span>
-          </h1>
-          <p class="hero-subtitle">Enter your real phone number, use referral code <strong>EX984JS</strong>,<br>and unlock the RR9 prize wheel, bonuses and online games.</p>
-          <div class="trust-badges">
-            <div class="trust-item"><i class="fas fa-shield-alt"></i><span>100%<br>Secure</span></div>
-            <div class="trust-item"><i class="fas fa-headset"></i><span>24/7<br>Support</span></div>
-            <div class="trust-item"><i class="fas fa-bolt"></i><span>Instant<br>Withdraw</span></div>
-          </div>
           <div class="hero-cta">
             <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
-            <p class="cta-sub">Open the official RR9 game website with code EX984JS</p>
           </div>
         </div>
 
         <div class="hero-visual">
           <div class="hero-video-wrapper">
-            <video id="heroVideo" class="hero-video" src="../assect/Video_Generation_Prompt_Create.mp4" autoplay muted loop
+            <video id="heroVideo" class="hero-video" src="../assect/Bilkul_—_ye_banner_video_ke_li.mp4" autoplay muted loop
               playsinline preload="auto"></video>
           </div>
+          <h1 class="hero-video-title">
+            <span class="hero-title-line">RR9 Game</span>
+            <span class="hero-highlight">Sign Up &amp; Win</span>
+          </h1>
           <div class="free-spin-badge">
             <div class="badge-glow"></div>
             <span class="badge-label">FREE</span>
