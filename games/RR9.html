@@ -881,14 +881,13 @@
       align-items: center;
       padding: 8px 16px;
       border-radius: 12px;
-      background: rgba(15, 6, 6, 0.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(255, 195, 66, 0.4);
+      background: rgba(18, 7, 7, 0.92);
+      border: 1.5px solid rgba(255, 195, 66, 0.45);
       box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.5), 
-        0 0 20px rgba(255, 195, 66, 0.15),
-        inset 0 0 15px rgba(255, 255, 255, 0.05);
+        0 8px 24px rgba(0, 0, 0, 0.6), 
+        0 0 15px rgba(255, 195, 66, 0.12);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
       animation: timerPulse 3s ease-in-out infinite alternate;
     }
 
@@ -1114,6 +1113,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transform: translate3d(0,0,0);
+      backface-visibility: hidden;
     }
 
     .hero-visual::before {
@@ -1781,6 +1782,19 @@
         align-items: flex-start;
       }
     }
+
+    /* ===== PERFORMANCE OPTIMIZATIONS ===== */
+    .rr9-register-box,
+    .rr9-game-card-wrapper,
+    .rr9-trust-item,
+    .rr9-promo-card,
+    .faq-item,
+    .hero-video-title,
+    .free-spin-badge,
+    .reward-card,
+    .jackpot-winner {
+      will-change: transform, opacity;
+    }
   </style>
 </head>
 
@@ -1823,10 +1837,7 @@
   <!-- ===== HERO ===== -->
   <main>
     <section class="hero">
-      <div class="particles" id="particles"></div>
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
-
+      <!-- Removed redundant particles/orbs overlays to optimize video rendering performance -->
       <div class="hero-timer">
         <div class="timer-inner">
           <span class="timer-icon">⏰</span>
