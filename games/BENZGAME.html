@@ -1133,13 +1133,11 @@
         '.btn-download-app',
         '.game-play-btn',
         '.social-btn',
-        '.btn-vip-join',
-        '.btn-hub-play',
-        '.rr9-game-card'
+        '.btn-vip-join'
       ];
 
       document.addEventListener('click', function (event) {
-        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a');
+        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a, .btn-hub-play, .rr9-game-card');
         if (navLink && (navLink.getAttribute('href')?.includes('.html') || navLink.getAttribute('href')?.startsWith('#') || navLink.classList.contains('faq-question') || navLink.classList.contains('hamburger'))) {
           return;
         }
