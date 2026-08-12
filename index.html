@@ -244,10 +244,12 @@
     .hero {
       position: relative;
       margin-top: 70px !important;
-      padding-top: 35px !important;
-      padding-bottom: 40px;
+      padding-top: 25px !important;
+      padding-bottom: 40px !important;
+      height: auto !important;
+      min-height: auto !important;
       background:
-        radial-gradient(circle at 74% 32%, rgba(255, 149, 25, .22), transparent 31%),
+        radial-gradient(circle at 50% 30%, rgba(255, 149, 25, .25), transparent 45%),
         radial-gradient(circle at 18% 48%, rgba(186, 13, 9, .28), transparent 38%),
         linear-gradient(155deg, #060103 0%, #180404 46%, #050102 100%);
     }
@@ -256,9 +258,71 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto 25px auto !important;
+      margin: 0 auto 20px auto !important;
       position: relative;
       z-index: 10;
+    }
+
+    /* FULL WIDTH HERO & CENTERED PLAY BUTTON */
+    .hero-container.full-width-hero {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 1300px !important;
+      padding: 0 20px !important;
+      margin: 0 auto !important;
+    }
+
+    .hero-visual.full-width-visual {
+      width: 100% !important;
+      max-width: 1100px !important;
+      margin: 0 auto 25px auto !important;
+    }
+
+    .hero-video-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 184, 41, 0.3) !important;
+      border: 2px solid rgba(255, 184, 41, 0.4) !important;
+    }
+
+    .hero-video {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 540px !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    .hero-content.centered-cta-wrap {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 10px auto 0 auto !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    .hero-cta.centered-cta {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    .btn-hero-center {
+      padding: 16px 55px !important;
+      font-size: 1.3rem !important;
+      letter-spacing: 2px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 0 30px rgba(255, 100, 0, 0.6), 0 0 50px rgba(255, 184, 41, 0.4) !important;
+      cursor: pointer;
     }
 
     .btn-download-nav,
@@ -376,14 +440,8 @@
         </div>
       </div>
 
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-cta">
-            <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY NOW</button>
-          </div>
-        </div>
-
-        <div class="hero-visual">
+      <div class="hero-container full-width-hero">
+        <div class="hero-visual full-width-visual">
           <div class="hero-video-wrapper">
             <video id="heroVideo" class="hero-video" src="assect/Create_a_premium_cinematic_cas.mp4" autoplay muted loop
               playsinline preload="auto"></video>
@@ -408,6 +466,12 @@
           <div class="jackpot-winner">
             <i class="fas fa-trophy"></i>
             <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹7,77,000</span></div>
+          </div>
+        </div>
+
+        <div class="hero-content centered-cta-wrap">
+          <div class="hero-cta centered-cta">
+            <button class="btn-cta-primary btn-hero-center"><i class="fas fa-play"></i> PLAY NOW</button>
           </div>
         </div>
       </div>
