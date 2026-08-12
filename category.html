@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Categories - Benz.Game | Slots, Crash, Live Casino &amp; Color Prediction</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ===== CATEGORY PAGE EXCLUSIVE STYLING ===== */
+    .category-hero {
+      position: relative;
+      margin-top: 60px;
+      padding: 70px 0 45px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 184, 41, 0.22), transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(230, 57, 70, 0.2), transparent 35%),
+        linear-gradient(180deg, #070305 0%, #170707 50%, #070305 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 184, 41, 0.25);
+    }
+
+    .category-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 25px rgba(255, 184, 41, 0.35);
+    }
+
+    .category-hero-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.25rem);
+      font-weight: 600;
+      color: rgba(247, 230, 198, 0.85);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 184, 41, 0.3);
+      color: #f7e6c6;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ffe46a, #ff9d20);
+      border-color: #ffe46a;
+      color: #170604;
+      box-shadow: 0 0 25px rgba(255, 184, 41, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn i {
+      font-size: 1rem;
+    }
+
+    /* Category Grid Sections */
+    .category-block {
+      padding: 55px 0;
+      border-bottom: 1px solid rgba(255, 184, 41, 0.12);
+    }
+
+    .category-block:nth-child(even) {
+      background: linear-gradient(180deg, #090405 0%, #0d0607 100%);
+    }
+
+    .category-block-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cat-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cat-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(230, 57, 70, 0.18);
+      border: 1.5px solid rgba(230, 57, 70, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff4937;
+      font-size: 1.4rem;
+      box-shadow: 0 0 18px rgba(230, 57, 70, 0.35);
+    }
+
+    .cat-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .cat-count-badge {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 184, 41, 0.12);
+      border: 1px solid rgba(255, 184, 41, 0.35);
+      color: #ffc342;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .cat-games-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .cat-game-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(25, 10, 6, 0.94) 0%, rgba(10, 4, 3, 0.98) 100%);
+      border: 1.5px solid rgba(255, 184, 41, 0.3);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cat-game-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #ffc342;
+      box-shadow: 0 18px 40px rgba(255, 184, 41, 0.35);
+    }
+
+    .cat-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .cat-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .cat-game-card:hover .cat-thumb-wrap img {
+      transform: scale(1.08);
+    }
+
+    .cat-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 3;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 0.65rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .tag-hot {
+      background: linear-gradient(135deg, #ff1a1a, #d30000);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(255, 26, 26, 0.6);
+    }
+
+    .tag-jackpot {
+      background: linear-gradient(135deg, #ffb700, #ff8800);
+      color: #110402;
+      box-shadow: 0 0 12px rgba(255, 184, 0, 0.6);
+    }
+
+    .tag-multiplier {
+      background: linear-gradient(135deg, #00e5ff, #0088ff);
+      color: #041117;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+    }
+
+    .cat-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .cat-game-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+
+    .cat-game-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(247, 230, 198, 0.7);
+      margin-bottom: 14px;
+    }
+
+    .cat-rtp {
+      color: #00ff66;
+      font-weight: 700;
+    }
+
+    .cat-play-btn {
+      margin-top: auto;
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(255, 100, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cat-play-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.55);
+      color: #170604;
+    }
+
+    @media (max-width: 1200px) {
+      .cat-games-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cat-games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .tab-btn {
+        padding: 9px 16px;
+        font-size: 0.78rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cat-games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .cat-card-body {
+        padding: 12px;
+      }
+      .cat-game-name {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Benz.Game Home">
+        <span class="logo-icon"><i class="fas fa-dice"></i></span>
+        <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+
+        <!-- GAMES DROPDOWN -->
+        <div class="nav-item-dropdown">
+          <a href="index.html#games" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="games/777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
+            <a href="games/BENZGAME.html"><i class="fas fa-crown"></i> Benz Game</a>
+            <a href="games/RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
+            <a href="games/x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
+          </div>
+        </div>
+
+        <a href="category.html" class="nav-link active">CATEGORIES</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">HOME</a>
+      <a href="index.html#games">ALL GAMES</a>
+      <div class="mobile-dropdown">
+        <a href="games/777.html">🎰 777 Game</a>
+        <a href="games/BENZGAME.html">👑 Benz Game</a>
+        <a href="games/RR9.html">🔥 RR9 Game</a>
+        <a href="games/x89.html">⚡ X89 Game</a>
+      </div>
+      <a href="category.html">CATEGORIES</a>
+      <a href="index.html#faq">FAQ</a>
+      <div class="mobile-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== CATEGORY HERO BANNER ===== -->
+    <section class="category-hero">
+      <div class="section-container">
+        <h1 class="category-hero-title">EXPLORE GAME <span class="accent">CATEGORIES</span></h1>
+        <p class="category-hero-subtitle">Discover over 500+ premium slots, high-stakes crash multipliers, live casino tables, fishing arcades, and color prediction games with instant cashouts.</p>
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs-wrap">
+          <button class="tab-btn active" onclick="filterCat('all')"><i class="fas fa-border-all"></i> ALL CATEGORIES</button>
+          <button class="tab-btn" onclick="filterCat('slots')"><i class="fas fa-dice-five"></i> SLOTS PARADISE</button>
+          <button class="tab-btn" onclick="filterCat('crash')"><i class="fas fa-plane-departure"></i> CRASH &amp; MULTIPLIER</button>
+          <button class="tab-btn" onclick="filterCat('live')"><i class="fas fa-car"></i> CAR ROULETTE &amp; LIVE</button>
+          <button class="tab-btn" onclick="filterCat('fishing')"><i class="fas fa-fish"></i> JILI FISHING</button>
+          <button class="tab-btn" onclick="filterCat('prediction')"><i class="fas fa-palette"></i> COLOR PREDICTION</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 1: SLOTS PARADISE ===== -->
+    <section class="category-block cat-sec" id="cat-slots">
+      <div class="section-container">
+        <div class="category-block-head">
+          <div class="cat-title-group">
+            <span class="cat-icon-badge"><i class="fas fa-dice-five"></i></span>
+            <h2 class="cat-title">SLOTS <span class="accent">PARADISE</span></h2>
+          </div>
+          <span class="cat-count-badge">120+ GAMES</span>
+        </div>
+
+        <div class="cat-games-grid">
+          <!-- Game 1 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">JACKPOT</span>
+              <img src="assect/crazy_777.png" alt="777 Spin Slot" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">777 Spin Slot</h3>
+              <div class="cat-game-meta">
+                <span>Classic Reels</span>
+                <span class="cat-rtp">98.5% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/fortune_gems.png" alt="Fortune Gems 2" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Fortune Gems 2</h3>
+              <div class="cat-game-meta">
+                <span>Jili Slot</span>
+                <span class="cat-rtp">97.8% RTP</span>
+              </div>
+              <a href="games/RR9.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">1000x</span>
+              <img src="assect/top_lucky_wheel.png" alt="Super Ace Slot" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Super Ace Slot</h3>
+              <div class="cat-game-meta">
+                <span>Mega Combo</span>
+                <span class="cat-rtp">98.2% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/money_coming.png" alt="Money Coming" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Money Coming</h3>
+              <div class="cat-game-meta">
+                <span>Wild Multiplier</span>
+                <span class="cat-rtp">97.5% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">JACKPOT</span>
+              <img src="assect/funky_time.png" alt="Crazy Seven 777" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Crazy Seven 777</h3>
+              <div class="cat-game-meta">
+                <span>Retro Slots</span>
+                <span class="cat-rtp">98.0% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 2: CRASH & MULTIPLIER ===== -->
+    <section class="category-block cat-sec" id="cat-crash">
+      <div class="section-container">
+        <div class="category-block-head">
+          <div class="cat-title-group">
+            <span class="cat-icon-badge"><i class="fas fa-plane-departure"></i></span>
+            <h2 class="cat-title">CRASH &amp; <span class="accent">MULTIPLIER</span></h2>
+          </div>
+          <span class="cat-count-badge">45+ GAMES</span>
+        </div>
+
+        <div class="cat-games-grid">
+          <!-- Game 1 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">1000x</span>
+              <img src="assect/aviator.png" alt="Aviator Crash" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Aviator Crash</h3>
+              <div class="cat-game-meta">
+                <span>Flight Multiplier</span>
+                <span class="cat-rtp">99.0% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/chicken_road.png" alt="Chicken Road" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Chicken Road</h3>
+              <div class="cat-game-meta">
+                <span>Cross &amp; Earn</span>
+                <span class="cat-rtp">98.4% RTP</span>
+              </div>
+              <a href="games/RR9.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/rr9_mines.png" alt="Minesweeper Cash" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Minesweeper Cash</h3>
+              <div class="cat-game-meta">
+                <span>Grid Multiplier</span>
+                <span class="cat-rtp">98.8% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">500x</span>
+              <img src="assect/rr9_crash.png" alt="X89 Rocket Crash" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">X89 Rocket Crash</h3>
+              <div class="cat-game-meta">
+                <span>Instant Cashout</span>
+                <span class="cat-rtp">98.6% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">HOT</span>
+              <img src="assect/squidss_game.png" alt="Squid Survival Win" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Squid Survival Win</h3>
+              <div class="cat-game-meta">
+                <span>High Stakes</span>
+                <span class="cat-rtp">97.9% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 3: CAR ROULETTE & LIVE CASINO ===== -->
+    <section class="category-block cat-sec" id="cat-live">
+      <div class="section-container">
+        <div class="category-block-head">
+          <div class="cat-title-group">
+            <span class="cat-icon-badge"><i class="fas fa-car"></i></span>
+            <h2 class="cat-title">CAR ROULETTE &amp; <span class="accent">LIVE CASINO</span></h2>
+          </div>
+          <span class="cat-count-badge">60+ TABLES</span>
+        </div>
+
+        <div class="cat-games-grid">
+          <!-- Game 1 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">POPULAR</span>
+              <img src="assect/JOIN OUR.png" alt="BMW vs Benz Game" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">BMW vs Benz Game</h3>
+              <div class="cat-game-meta">
+                <span>Car Roulette</span>
+                <span class="cat-rtp">98.7% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">LIVE</span>
+              <img src="assect/crazy_time.png" alt="Crazy Time Live" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Crazy Time Live</h3>
+              <div class="cat-game-meta">
+                <span>Live Host Wheel</span>
+                <span class="cat-rtp">97.2% RTP</span>
+              </div>
+              <a href="games/RR9.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">LIVE</span>
+              <img src="assect/rr9_dragon_tiger.png" alt="Dragon vs Tiger" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Dragon vs Tiger</h3>
+              <div class="cat-game-meta">
+                <span>Fast Card Battle</span>
+                <span class="cat-rtp">98.1% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">LIVE</span>
+              <img src="assect/rr9_andar_bahar.png" alt="Andar Bahar Live" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Andar Bahar Live</h3>
+              <div class="cat-game-meta">
+                <span>Indian Classic</span>
+                <span class="cat-rtp">98.0% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">VIP</span>
+              <img src="assect/top_lucky_wheel.png" alt="Wheel of Wealth" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Wheel of Wealth</h3>
+              <div class="cat-game-meta">
+                <span>Fortune Spin</span>
+                <span class="cat-rtp">97.6% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 4: JILI FISHING ARCADE ===== -->
+    <section class="category-block cat-sec" id="cat-fishing">
+      <div class="section-container">
+        <div class="category-block-head">
+          <div class="cat-title-group">
+            <span class="cat-icon-badge"><i class="fas fa-fish"></i></span>
+            <h2 class="cat-title">JILI FISHING <span class="accent">ARCADE</span></h2>
+          </div>
+          <span class="cat-count-badge">30+ GAMES</span>
+        </div>
+
+        <div class="cat-games-grid">
+          <!-- Game 1 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">1000x</span>
+              <img src="assect/promo_deposit.png" alt="Mega Fishing" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Mega Fishing</h3>
+              <div class="cat-game-meta">
+                <span>Jili Shooter</span>
+                <span class="cat-rtp">98.3% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">JACKPOT</span>
+              <img src="assect/promo_reload.png" alt="Jackpot Fishing" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Jackpot Fishing</h3>
+              <div class="cat-game-meta">
+                <span>Ocean King</span>
+                <span class="cat-rtp">98.0% RTP</span>
+              </div>
+              <a href="games/RR9.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/promo_welcome.png" alt="Bombing Fishing" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Bombing Fishing</h3>
+              <div class="cat-game-meta">
+                <span>Cannon Blaster</span>
+                <span class="cat-rtp">97.9% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">500x</span>
+              <img src="assect/top_fortune_gems.png" alt="Dragon Fortune" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Dragon Fortune</h3>
+              <div class="cat-game-meta">
+                <span>Mythic Boss</span>
+                <span class="cat-rtp">98.4% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">HOT</span>
+              <img src="assect/top_chicken_road.png" alt="Happy Fishing" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Happy Fishing</h3>
+              <div class="cat-game-meta">
+                <span>Arcade Shooter</span>
+                <span class="cat-rtp">97.8% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 5: COLOR PREDICTION ===== -->
+    <section class="category-block cat-sec" id="cat-prediction">
+      <div class="section-container">
+        <div class="category-block-head">
+          <div class="cat-title-group">
+            <span class="cat-icon-badge"><i class="fas fa-palette"></i></span>
+            <h2 class="cat-title">COLOR PREDICTION &amp; <span class="accent">LUDO</span></h2>
+          </div>
+          <span class="cat-count-badge">25+ GAMES</span>
+        </div>
+
+        <div class="cat-games-grid">
+          <!-- Game 1 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">91CLUB</span>
+              <img src="assect/rr9_gift_box.png" alt="91Club Color Predict" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">91Club Color Predict</h3>
+              <div class="cat-game-meta">
+                <span>Red/Green/Violet</span>
+                <span class="cat-rtp">98.2% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">DAMAN</span>
+              <img src="assect/rr9_gold_coins.png" alt="Daman Game Win" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Daman Game Win</h3>
+              <div class="cat-game-meta">
+                <span>Color &amp; Number</span>
+                <span class="cat-rtp">98.0% RTP</span>
+              </div>
+              <a href="games/RR9.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-multiplier">TIRANGA</span>
+              <img src="assect/rr9_gold_trophy.png" alt="Tiranga Games" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Tiranga Games</h3>
+              <div class="cat-game-meta">
+                <span>Fast 1-Min Round</span>
+                <span class="cat-rtp">98.5% RTP</span>
+              </div>
+              <a href="games/777.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-hot">BHARAT</span>
+              <img src="assect/top_aviator.png" alt="Bharat Club Predict" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Bharat Club Predict</h3>
+              <div class="cat-game-meta">
+                <span>VIP Earnings</span>
+                <span class="cat-rtp">98.1% RTP</span>
+              </div>
+              <a href="games/BENZGAME.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div class="cat-game-card">
+            <div class="cat-thumb-wrap">
+              <span class="cat-tag tag-jackpot">LUDO</span>
+              <img src="assect/top_crazy_777.png" alt="Ludo Quick Real Cash" />
+            </div>
+            <div class="cat-card-body">
+              <h3 class="cat-game-name">Ludo Quick Real Cash</h3>
+              <div class="cat-game-meta">
+                <span>2-Player Match</span>
+                <span class="cat-rtp">99.1% RTP</span>
+              </div>
+              <a href="games/x89.html" class="cat-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW TO GET STARTED ===== -->
+    <section class="section-howto" id="how-to-start">
+      <div class="section-container">
+        <div class="howto-card">
+          <div class="howto-header">
+            <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
+            <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
+          </div>
+          <div class="steps-flow">
+            <!-- Step 1 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-mobile-screen-button"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">1</span>
+                  <h3 class="step-name">REGISTER</h3>
+                </div>
+                <p class="step-text">Enter your phone number &amp; sign up</p>
+              </div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="step-connector">
+              <span class="line-dot"></span>
+              <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-download"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">2</span>
+                  <h3 class="step-name">DOWNLOAD</h3>
+                </div>
+                <p class="step-text">Download our app for the best experience</p>
+              </div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="step-connector">
+              <span class="line-dot"></span>
+              <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-gift"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">3</span>
+                  <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
+                </div>
+                <p class="step-text">Add cash and enjoy exciting games</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon"><i class="fas fa-dice"></i></span>
+            <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+          </div>
+          <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and trusted by millions.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games/777.html">777 Game</a></li>
+            <li><a href="games/BENZGAME.html">Benz Game</a></li>
+            <li><a href="games/RR9.html">RR9 Game</a></li>
+            <li><a href="games/x89.html">X89 Game</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">CATEGORIES</h4>
+          <ul class="footer-links">
+            <li><a href="#cat-slots">Slots Paradise</a></li>
+            <li><a href="#cat-crash">Crash &amp; Multiplier</a></li>
+            <li><a href="#cat-live">Car Roulette &amp; Live</a></li>
+            <li><a href="#cat-fishing">Jili Fishing Arcade</a></li>
+            <li><a href="#cat-prediction">Color Prediction</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-app">
+          <h4 class="footer-col-title">GET OUR APP</h4>
+          <div class="qr-wrap">
+            <img src="assect/qrcode.png" alt="Scan QR Code" class="qr-image" />
+          </div>
+          <button class="btn-download-app"><i class="fab fa-android"></i> Download APK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <div class="footer-bottom-inner">
+          <span>&copy; 2026 Benz.Game. All Rights Reserved. 18+ Play Responsibly.</span>
+          <div class="footer-badges">
+            <span class="f-badge">100% Safe</span>
+            <span class="f-badge">RNG Certified</span>
+            <span class="f-badge">Instant Withdrawal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function filterCat(type) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const sections = document.querySelectorAll('.cat-sec');
+      sections.forEach(sec => {
+        if (type === 'all') {
+          sec.style.display = 'block';
+        } else {
+          if (sec.id === 'cat-' + type) {
+            sec.style.display = 'block';
+          } else {
+            sec.style.display = 'none';
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
