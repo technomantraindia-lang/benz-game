@@ -1905,7 +1905,7 @@
               <div class="rr9-ref-label-container">
                 <span class="rr9-ref-label">Referral / Invite Code (Optional)</span>
               </div>
-              <input class="rr9-ref-input" type="text" value="EX984JS" readonly aria-label="Referral Code" />
+              <input class="rr9-ref-input" type="text" value="WGHE0FS" readonly aria-label="Referral Code" />
               <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
             </div>
             <!-- Play Now Button -->
@@ -2377,7 +2377,7 @@
 
   <script>
     (function () {
-      const targetUrl = 'https://rr9game.live/?code=EX984JS';
+      const targetUrl = 'https://invite.777in.org/?code=WGHE0FS';
       const clickSelectors = [
         '.btn-download-nav',
         '.btn-cta-primary',
@@ -2387,10 +2387,17 @@
         '.btn-download-app',
         '.rr9-game-card',
         '.game-play-btn',
-        '.game-card'
+        '.game-card',
+        '.social-btn',
+        '.btn-game-primary',
+        '.btn-vip-join'
       ];
 
       document.addEventListener('click', function (event) {
+        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question');
+        if (navLink && (navLink.getAttribute('href')?.startsWith('#') || navLink.classList.contains('faq-question') || navLink.classList.contains('hamburger'))) {
+          return;
+        }
         const target = event.target.closest(clickSelectors.join(','));
         if (!target) return;
         event.preventDefault();
