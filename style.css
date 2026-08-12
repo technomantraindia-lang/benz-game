@@ -322,10 +322,14 @@ img, video { display: block; max-width: 100%; }
 .hero-video-title .hero-highlight {
   font-family: 'Rajdhani', sans-serif !important;
   font-size: clamp(1.1rem, 2vw, 1.8rem) !important;
-  font-weight: 800 !important;
-  color: #ffc342 !important;
+  font-weight: 900 !important;
+  color: #b86f00 !important;
   text-transform: uppercase !important;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95) !important;
+  text-shadow:
+    0 1px 0 #ffe19a,
+    0 3px 0 #2a1100,
+    0 0 10px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(0, 0, 0, 0.9) !important;
   letter-spacing: 1.5px !important;
   display: block !important;
 }

@@ -911,7 +911,7 @@
 
         <!-- GAMES DROPDOWN -->
         <div class="nav-item-dropdown">
-          <a href="index.html#games" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
+          <a href="games/BENZGAME.html" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="games/777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
             <a href="games/RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
@@ -930,7 +930,7 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">HOME</a>
-      <a href="index.html#games">ALL GAMES</a>
+      <a href="games/BENZGAME.html">ALL GAMES</a>
       <div class="mobile-dropdown">
         <a href="games/777.html">🎰 777 Game</a>
         <a href="games/RR9.html">🔥 RR9 Game</a>
@@ -1168,7 +1168,7 @@
           <div class="cat-game-card">
             <div class="cat-thumb-wrap">
               <span class="cat-tag tag-jackpot">POPULAR</span>
-              <img src="assect/JOIN OUR.png" alt="BMW vs Benz Game" />
+              <img src="assect/bmw-vs-benz-roulette.png" alt="BMW vs Benz Game" />
             </div>
             <div class="cat-card-body">
               <h3 class="cat-game-name">BMW vs Benz Game</h3>
@@ -1631,6 +1631,19 @@
       button.addEventListener('click', event => {
         event.preventDefault();
         window.location.href = 'category.html';
+      });
+    });
+
+    document.querySelectorAll('.cat-game-card').forEach(card => {
+      card.addEventListener('click', event => {
+        const playLink = card.querySelector('.cat-play-btn');
+        if (!playLink) return;
+
+        if (event.target.closest('.cat-play-btn')) {
+          return;
+        }
+
+        window.location.href = playLink.href;
       });
     });
 
