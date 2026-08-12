@@ -19,7 +19,7 @@
 }
 
 html { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); color: var(--text); overflow-x: hidden; width: 100%; max-width: 100%; }
+body { font-family: 'Rajdhani', sans-serif; font-weight: 600; background: var(--bg); color: var(--text); overflow-x: hidden; width: 100%; max-width: 100%; }
 a { text-decoration: none; }
 img, video { display: block; max-width: 100%; }
 
@@ -2908,4 +2908,522 @@ img, video { display: block; max-width: 100%; }
   color: rgba(255, 184, 41, 0.7);
   font-size: 0.75rem;
   margin-left: 2px;
+}
+
+/* ===== RR9 LOBBY SECTION & COMPONENTS ===== */
+.rr9-lobby {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 54px;
+  min-height: 720px;
+  background: #050204 url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+}
+
+.rr9-lobby::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 2, 4, .2) 0%, rgba(5, 2, 4, .08) 34%, rgba(5, 2, 4, .9) 100%),
+    radial-gradient(circle at 50% 26%, rgba(255, 177, 43, .18), transparent 34%);
+  pointer-events: none;
+}
+
+.rr9-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.rr9-register-box {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 28px;
+  padding: 24px 28px 20px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(20, 10, 5, 0.95) 0%, rgba(10, 5, 2, 0.98) 100%);
+  border: 1.5px solid rgba(255, 161, 0, 0.5);
+  box-shadow: 0 0 35px rgba(255, 120, 0, 0.25), inset 0 0 20px rgba(255, 60, 0, 0.15);
+}
+
+.rr9-register-title {
+  margin: 0 0 16px;
+  color: #ffd700;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  letter-spacing: 0.5px;
+}
+
+.rr9-register-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 180px;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.rr9-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 161, 0, 0.3);
+  border-radius: 8px;
+  height: 50px;
+  padding: 0 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.rr9-input-group:focus-within {
+  border-color: rgba(255, 161, 0, 0.8);
+  box-shadow: 0 0 8px rgba(255, 161, 0, 0.3);
+}
+
+.rr9-country-group {
+  cursor: pointer;
+  gap: 8px;
+  color: #ffd15a;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.rr9-country-group i.fa-mobile-screen-button {
+  font-size: 1.15rem;
+}
+
+.rr9-country-group i.rr9-chevron {
+  font-size: 0.8rem;
+  color: rgba(255, 209, 90, 0.6);
+  margin-left: auto;
+}
+
+.rr9-phone-group input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+}
+
+.rr9-phone-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+.rr9-ref-group {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4px 34px 2px 14px;
+}
+
+.rr9-ref-label-container {
+  height: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.rr9-ref-label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.rr9-ref-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffd15a;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.rr9-check-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ff66;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.rr9-play-btn {
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #d31a1a 0%, #ff8c00 50%, #d31a1a 100%);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+.rr9-play-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 28px rgba(255, 140, 0, 0.6);
+  color: #fff;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.3); }
+  100% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.6); }
+}
+
+.rr9-mini-steps {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  color: #ffd15a;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.rr9-mini-steps .sep {
+  color: rgba(255, 209, 90, 0.4);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* === HOT GAMES === */
+.rr9-section-head {
+  margin-top: 36px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.rr9-section-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rr9-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.rr9-subheading {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.88rem;
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+}
+
+.rr9-view-all {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffd15a;
+  border: 1px solid rgba(255, 209, 90, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.rr9-view-all:hover {
+  background: rgba(255, 209, 90, 0.1);
+  border-color: rgba(255, 209, 90, 0.8);
+  color: #ffd15a;
+}
+
+.rr9-games {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.rr9-game-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.rr9-game-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 161, 0, 0.4);
+  background: #0f090b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  display: block;
+}
+
+.rr9-game-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffa100;
+  box-shadow: 0 10px 25px rgba(255, 161, 0, 0.3);
+}
+
+.rr9-game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rr9-hot {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  background: #ff1a1a;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.rr9-game-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  transition: color 0.3s;
+}
+
+.rr9-game-card-wrapper:hover .rr9-game-label {
+  color: #ffd15a;
+}
+
+/* === TRUST ROW === */
+.rr9-trust-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.rr9-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(20, 10, 5, 0.75);
+  border: 1px solid rgba(255, 161, 0, 0.25);
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.rr9-trust-icon-box {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 161, 0, 0.12);
+  border: 1px solid rgba(255, 161, 0, 0.35);
+  border-radius: 50%;
+  color: #ffd15a;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.rr9-trust-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.rr9-trust-text h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.rr9-trust-text p {
+  margin: 2px 0 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+}
+
+/* === PROMOTION ROW === */
+.rr9-promo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.rr9-promo-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(35, 12, 8, 0.95) 0%, rgba(15, 6, 4, 0.98) 100%);
+  border: 1px solid rgba(255, 90, 0, 0.35);
+  border-radius: 14px;
+  padding: 22px 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 60, 0, 0.05);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.rr9-promo-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffa100;
+  box-shadow: 0 8px 25px rgba(255, 90, 0, 0.25);
+}
+
+.rr9-promo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.rr9-promo-title {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 4px;
+}
+
+.rr9-promo-sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 2px;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+.rr9-promo-value {
+  color: #ffd15a;
+  font-size: 1.95rem;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 1.1;
+  margin: 4px 0;
+  text-shadow: 0 0 10px rgba(255, 209, 90, 0.25);
+}
+
+.rr9-promo-desc {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.25;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.rr9-promo-btn {
+  height: 36px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #ffd861 0%, #e19018 100%);
+  color: #170806;
+  font-weight: 800;
+  font-size: 0.85rem;
+  font-family: 'Rajdhani', sans-serif;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.rr9-promo-btn:hover {
+  transform: scale(1.03);
+  color: #170806;
+}
+
+.rr9-promo-image {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  height: 110%;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+@media (max-width: 1024px) {
+  .rr9-register-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .rr9-games {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .rr9-trust-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rr9-promo-row {
+    grid-template-columns: 1fr;
+  }
+  .rr9-shell {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rr9-register-row {
+    grid-template-columns: 1fr;
+  }
+  .rr9-games {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rr9-trust-row {
+    grid-template-columns: 1fr;
+  }
 }
