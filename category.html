@@ -470,6 +470,47 @@
     }
 
     @media (max-width: 768px) {
+      .category-block-head {
+        justify-content: center;
+        text-align: center;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+
+      .cat-title-group {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .cat-icon-badge {
+        width: 46px;
+        height: 46px;
+        border-radius: 13px;
+        font-size: 1.15rem;
+      }
+
+      .cat-title {
+        flex: 0 1 auto;
+        max-width: min(100%, 330px);
+        font-size: clamp(1.45rem, 7.4vw, 2.05rem);
+        line-height: 1.12;
+        letter-spacing: 0.5px;
+        text-align: left;
+      }
+
+      .cat-title .accent {
+        display: inline;
+        margin-left: 0;
+      }
+
+      .cat-count-badge {
+        margin: 0 auto;
+        padding: 7px 16px;
+        font-size: 0.78rem;
+      }
+
       .cat-games-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
@@ -489,9 +530,107 @@
       .howto-card.reveal-from-right {
         transform: translate3d(0, 24px, 0);
       }
+
+      .section-howto {
+        padding: 42px 0;
+      }
+
+      .section-howto .section-container {
+        padding: 0 14px;
+      }
+
+      .howto-card {
+        width: 100%;
+        padding: 22px 16px 24px;
+        border-radius: 18px;
+      }
+
+      .howto-header {
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 18px;
+        margin-bottom: 22px;
+        text-align: left;
+      }
+
+      .howto-header .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        font-size: 1rem;
+      }
+
+      .howto-header .section-title {
+        max-width: 230px;
+        font-size: clamp(1.45rem, 7.5vw, 2rem);
+        line-height: 1.12;
+        letter-spacing: 0.5px;
+      }
+
+      .howto-header .accent {
+        display: block;
+        margin-left: 0;
+      }
+
+      .steps-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .step-connector {
+        display: none;
+      }
+
+      .step-item {
+        width: 100%;
+        min-width: 0;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 184, 41, 0.13);
+      }
+
+      .step-icon-wrap {
+        width: 54px;
+        height: 54px;
+        font-size: 1.25rem;
+      }
+
+      .step-info {
+        min-width: 0;
+      }
+
+      .step-heading-row {
+        gap: 7px;
+      }
+
+      .step-badge {
+        width: 20px;
+        height: 20px;
+        font-size: 0.68rem;
+      }
+
+      .step-name {
+        font-size: clamp(0.9rem, 4.8vw, 1.1rem);
+        line-height: 1.1;
+      }
+
+      .step-text {
+        font-size: 0.84rem;
+        line-height: 1.25;
+      }
     }
 
     @media (max-width: 480px) {
+      .category-hero {
+        padding-top: 92px;
+        padding-bottom: 34px;
+      }
+
       .cat-games-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -507,6 +646,237 @@
       }
       .category-block-head {
         align-items: flex-start;
+      }
+
+      .cat-title-group {
+        justify-content: flex-start;
+      }
+
+      .cat-title {
+        max-width: calc(100% - 60px);
+        font-size: clamp(1.35rem, 8.8vw, 1.86rem);
+        overflow-wrap: anywhere;
+      }
+
+      .cat-count-badge {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .cat-title {
+        font-size: clamp(1.18rem, 8.1vw, 1.55rem);
+        letter-spacing: 0.2px;
+      }
+
+      .cat-icon-badge {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .howto-card {
+        padding: 20px 12px 22px;
+      }
+
+      .howto-header .section-title {
+        font-size: clamp(1.22rem, 7.8vw, 1.62rem);
+      }
+
+      .step-item {
+        padding: 12px;
+      }
+
+      .step-icon-wrap {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* RR9-style compact footer for category mobile view */
+    @media (max-width: 560px) {
+      .footer {
+        overflow: hidden !important;
+      }
+
+      .footer-top {
+        padding: 34px 0 24px !important;
+      }
+
+      .footer-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+
+      .footer-top .footer-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px 12px !important;
+      }
+
+      .footer-col {
+        min-width: 0 !important;
+        padding-right: 0 !important;
+        border-right: 0 !important;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1 !important;
+        padding: 16px !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.025) !important;
+        border: 1px solid rgba(240, 165, 0, 0.12) !important;
+        text-align: center !important;
+      }
+
+      .footer-brand .footer-logo {
+        justify-content: center !important;
+        margin-bottom: 12px !important;
+      }
+
+      .footer-brand .logo-icon {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 1.05rem !important;
+      }
+
+      .footer-brand .logo-text {
+        font-size: 1rem !important;
+        letter-spacing: 1.3px !important;
+      }
+
+      .footer-brand-desc {
+        max-width: none !important;
+        margin-bottom: 14px !important;
+        font-size: 0.82rem !important;
+        line-height: 1.55 !important;
+      }
+
+      .footer-socials {
+        justify-content: center !important;
+        gap: 9px !important;
+        flex-wrap: wrap !important;
+      }
+
+      .social-btn {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.92rem !important;
+      }
+
+      .footer-col-title {
+        margin-bottom: 12px !important;
+        padding-bottom: 8px !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 1px !important;
+      }
+
+      .footer-links {
+        gap: 9px !important;
+      }
+
+      .footer-links li,
+      .footer-links li a {
+        min-width: 0 !important;
+        font-size: 0.82rem !important;
+        line-height: 1.25 !important;
+        letter-spacing: 0.1px !important;
+        word-break: break-word !important;
+      }
+
+      .footer-top .footer-col:nth-child(4),
+      .footer-app {
+        grid-column: 1 / -1 !important;
+      }
+
+      .footer-contact {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }
+
+      .footer-contact li {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 9px 10px !important;
+        border-radius: 8px !important;
+        background: rgba(255, 255, 255, 0.025) !important;
+        border: 1px solid rgba(240, 165, 0, 0.1) !important;
+        font-size: 0.8rem !important;
+      }
+
+      .footer-app {
+        display: grid !important;
+        grid-template-columns: 80px minmax(0, 1fr) !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 14px !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.025) !important;
+        border: 1px solid rgba(240, 165, 0, 0.12) !important;
+      }
+
+      .footer-app .footer-col-title {
+        grid-column: 1 / -1 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .footer-app .qr-wrap {
+        margin-bottom: 0 !important;
+      }
+
+      .qr-image {
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 8px !important;
+      }
+
+      .btn-download-app {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 10px 12px !important;
+        font-size: 0.76rem !important;
+        letter-spacing: 0.8px !important;
+        white-space: normal !important;
+      }
+
+      .footer-bottom {
+        padding: 16px 0 !important;
+      }
+
+      .footer-bottom-inner {
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0 !important;
+      }
+
+      .footer-bottom-inner span {
+        width: 100% !important;
+        font-size: 0.72rem !important;
+        line-height: 1.45 !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .footer-top .footer-container {
+        gap: 16px 10px !important;
+      }
+
+      .footer-links li,
+      .footer-links li a {
+        font-size: 0.78rem !important;
+      }
+
+      .footer-app {
+        grid-template-columns: 72px minmax(0, 1fr) !important;
+      }
+
+      .qr-image {
+        width: 72px !important;
+        height: 72px !important;
       }
     }
   </style>
