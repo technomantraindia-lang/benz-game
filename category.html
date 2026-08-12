@@ -389,6 +389,80 @@
       color: #170604;
     }
 
+    /* Entry animations for category page */
+    .category-hero-title,
+    .category-hero-subtitle,
+    .filter-tabs-wrap {
+      animation: catHeroRise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .category-hero-subtitle {
+      animation-delay: 0.12s;
+    }
+
+    .filter-tabs-wrap {
+      animation-delay: 0.22s;
+    }
+
+    @keyframes catHeroRise {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category-block-head,
+    .cat-game-card,
+    .howto-card {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .category-block-head.reveal-from-left,
+    .cat-game-card.reveal-from-left,
+    .howto-card.reveal-from-left {
+      transform: translate3d(-54px, 18px, 0);
+    }
+
+    .category-block-head.reveal-from-right,
+    .cat-game-card.reveal-from-right,
+    .howto-card.reveal-from-right {
+      transform: translate3d(54px, 18px, 0);
+    }
+
+    .category-block-head.is-visible,
+    .cat-game-card.is-visible,
+    .howto-card.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .cat-game-card.is-visible:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .category-hero-title,
+      .category-hero-subtitle,
+      .filter-tabs-wrap,
+      .category-block-head,
+      .cat-game-card,
+      .howto-card {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
     @media (max-width: 1200px) {
       .cat-games-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -404,6 +478,17 @@
         padding: 9px 16px;
         font-size: 0.78rem;
       }
+      .category-block {
+        padding: 44px 0;
+      }
+      .category-block-head.reveal-from-left,
+      .category-block-head.reveal-from-right,
+      .cat-game-card.reveal-from-left,
+      .cat-game-card.reveal-from-right,
+      .howto-card.reveal-from-left,
+      .howto-card.reveal-from-right {
+        transform: translate3d(0, 24px, 0);
+      }
     }
 
     @media (max-width: 480px) {
@@ -416,6 +501,12 @@
       }
       .cat-game-name {
         font-size: 0.92rem;
+      }
+      .category-block {
+        padding: 38px 0;
+      }
+      .category-block-head {
+        align-items: flex-start;
       }
     }
   </style>
@@ -445,7 +536,6 @@
         </div>
 
         <a href="category.html" class="nav-link active">CATEGORIES</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
       </nav>
       <div class="nav-actions">
         <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
@@ -464,7 +554,6 @@
         <a href="games/x89.html">⚡ X89 Game</a>
       </div>
       <a href="category.html">CATEGORIES</a>
-      <a href="index.html#faq">FAQ</a>
       <div class="mobile-actions">
         <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
       </div>
@@ -480,12 +569,12 @@
         
         <!-- Filter Tabs -->
         <div class="filter-tabs-wrap">
-          <button class="tab-btn active" onclick="filterCat('all')"><i class="fas fa-border-all"></i> ALL CATEGORIES</button>
-          <button class="tab-btn" onclick="filterCat('slots')"><i class="fas fa-dice-five"></i> SLOTS PARADISE</button>
-          <button class="tab-btn" onclick="filterCat('crash')"><i class="fas fa-plane-departure"></i> CRASH &amp; MULTIPLIER</button>
-          <button class="tab-btn" onclick="filterCat('live')"><i class="fas fa-car"></i> CAR ROULETTE &amp; LIVE</button>
-          <button class="tab-btn" onclick="filterCat('fishing')"><i class="fas fa-fish"></i> JILI FISHING</button>
-          <button class="tab-btn" onclick="filterCat('prediction')"><i class="fas fa-palette"></i> COLOR PREDICTION</button>
+          <button class="tab-btn active" onclick="filterCat(event, 'all')"><i class="fas fa-border-all"></i> ALL CATEGORIES</button>
+          <button class="tab-btn" onclick="filterCat(event, 'slots')"><i class="fas fa-dice-five"></i> SLOTS PARADISE</button>
+          <button class="tab-btn" onclick="filterCat(event, 'crash')"><i class="fas fa-plane-departure"></i> CRASH &amp; MULTIPLIER</button>
+          <button class="tab-btn" onclick="filterCat(event, 'live')"><i class="fas fa-car"></i> CAR ROULETTE &amp; LIVE</button>
+          <button class="tab-btn" onclick="filterCat(event, 'fishing')"><i class="fas fa-fish"></i> JILI FISHING</button>
+          <button class="tab-btn" onclick="filterCat(event, 'prediction')"><i class="fas fa-palette"></i> COLOR PREDICTION</button>
         </div>
       </div>
     </section>
@@ -1121,7 +1210,34 @@
 
   <script src="script.js"></script>
   <script>
-    function filterCat(type) {
+    function revealCategoryItems(scope = document) {
+      const revealItems = scope.querySelectorAll('.category-block-head, .cat-game-card, .howto-card');
+
+      revealItems.forEach((item, index) => {
+        item.classList.add(index % 2 === 0 ? 'reveal-from-left' : 'reveal-from-right');
+        item.style.transitionDelay = `${Math.min(index % 5, 4) * 80}ms`;
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+      revealItems.forEach(item => observer.observe(item));
+    }
+
+    revealCategoryItems();
+
+    function filterCat(event, type) {
       const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach(t => t.classList.remove('active'));
       event.currentTarget.classList.add('active');
@@ -1136,6 +1252,12 @@
           } else {
             sec.style.display = 'none';
           }
+        }
+      });
+
+      document.querySelectorAll('.cat-sec .category-block-head, .cat-sec .cat-game-card').forEach(item => {
+        if (item.closest('.cat-sec').style.display !== 'none') {
+          item.classList.add('is-visible');
         }
       });
     }

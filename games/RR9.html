@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RR9 Game - Benz.Game</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
     rel="stylesheet" />
@@ -1883,6 +1883,114 @@
       color: rgba(255, 215, 0, 0.85) !important;
       padding: 4px 10px !important;
     }
+    /* Final game-page hero override: full-bleed video banner, no boxed frame. */
+    .hero {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      margin-top: 70px !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      overflow: hidden !important;
+      background: #050103 !important;
+      display: block !important;
+    }
+
+    .hero-container,
+    .hero-visual,
+    .hero-video-wrapper,
+    .hero-video {
+      width: 100% !important;
+      max-width: none !important;
+    }
+
+    .hero-container {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .hero-visual {
+      position: relative !important;
+      inset: auto !important;
+      height: clamp(430px, 68vh, 760px) !important;
+      margin: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: hidden !important;
+    }
+
+    .hero-video-wrapper {
+      position: absolute !important;
+      inset: 0 !important;
+      height: 100% !important;
+    }
+
+    .hero-video {
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    .hero-center-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 20 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 36px 20px !important;
+      transform: translateY(52px) !important;
+      text-align: center !important;
+      pointer-events: none !important;
+    }
+
+    .hero-video-title {
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: translateY(38px) !important;
+      width: min(92vw, 920px) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      pointer-events: none !important;
+    }
+
+    .hero-video-title .hero-title-line,
+    .hero-video-title .hero-highlight {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .hero-cta-wrap {
+      margin-top: clamp(120px, 18vh, 190px) !important;
+      pointer-events: auto !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero-visual {
+        height: clamp(360px, 62vh, 620px) !important;
+      }
+
+      .hero-cta-wrap {
+        margin-top: clamp(92px, 15vh, 145px) !important;
+      }
+
+      .hero-center-overlay {
+        transform: translateY(34px) !important;
+      }
+
+      .hero-video-title {
+        transform: translateY(26px) !important;
+      }
+    }
   </style>
 </head>
 
@@ -1938,37 +2046,48 @@
   <!-- ===== HERO ===== -->
   <main>
     <section class="hero">
-      <!-- Removed redundant particles/orbs overlays to optimize video rendering performance -->
-      <div class="hero-timer">
-        <div class="timer-inner">
-          <span class="timer-icon">⏰</span>
-          <span class="timer-label">RR9 BONUS EXPIRES IN</span>
-          <span class="timer-display" id="heroTimer">01:00</span>
-          <span class="timer-tag">LEFT</span>
-        </div>
-      </div>
-
       <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-cta">
-            <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
-          </div>
-        </div>
-
         <div class="hero-visual">
           <div class="hero-video-wrapper">
             <video id="heroVideo" class="hero-video" src="../assect/Bilkul_—_ye_banner_video_ke_li.mp4" autoplay muted loop
               playsinline preload="auto"></video>
           </div>
-          <h1 class="hero-video-title">
-            <span class="hero-title-line">RR9 Game</span>
-            <span class="hero-highlight">Sign Up &amp; Win</span>
-          </h1>
+
+          <!-- TOP LEFT TIMER BADGE -->
+          <div class="hero-timer-corner">
+            <div class="timer-inner">
+              <span class="timer-icon">⏰</span>
+              <span class="timer-label">RR9 BONUS EXPIRES IN</span>
+              <span class="timer-display" id="heroTimer">01:00</span>
+              <span class="timer-tag">LEFT</span>
+            </div>
+          </div>
+
+          <!-- TOP RIGHT FREE SPIN BADGE -->
           <div class="free-spin-badge">
             <div class="badge-glow"></div>
             <span class="badge-label">FREE</span>
             <span class="badge-main">SPIN</span>
           </div>
+
+          <!-- CENTER OVERLAY: TITLE + HIGHLIGHT + PLAY BUTTON STACKED -->
+          <div class="hero-center-overlay">
+            <h1 class="hero-video-title">
+              <span class="hero-title-line">RR9 Game</span>
+              <span class="hero-highlight">Sign Up &amp; Win</span>
+            </h1>
+            <div class="hero-cta-wrap">
+              <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY RR9 NOW</button>
+            </div>
+          </div>
+
+          <!-- BOTTOM LEFT JACKPOT BADGE -->
+          <div class="jackpot-winner">
+            <i class="fas fa-trophy"></i>
+            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
+          </div>
+
+          <!-- BOTTOM RIGHT REWARD CARD -->
           <div class="reward-card">
             <div class="reward-icon">🎁</div>
             <div class="reward-text">
@@ -1976,10 +2095,6 @@
               <span class="reward-label">reward</span>
             </div>
             <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
-          </div>
-          <div class="jackpot-winner">
-            <i class="fas fa-trophy"></i>
-            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
           </div>
         </div>
       </div>
