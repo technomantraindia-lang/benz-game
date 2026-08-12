@@ -244,7 +244,7 @@
     .hero {
       position: relative;
       margin-top: 70px !important;
-      padding-top: 25px !important;
+      padding-top: 20px !important;
       padding-bottom: 40px !important;
       height: auto !important;
       min-height: auto !important;
@@ -263,45 +263,57 @@
       z-index: 10;
     }
 
-    /* FULL WIDTH HERO & CENTERED PLAY BUTTON */
+    /* FULL WIDTH HERO & CENTERED PLAY BUTTON FIX */
     .hero-container.full-width-hero {
+      position: relative !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       width: 100% !important;
-      max-width: 1300px !important;
-      padding: 0 20px !important;
+      max-width: 1400px !important;
+      padding: 0 16px !important;
       margin: 0 auto !important;
     }
 
     .hero-visual.full-width-visual {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
       width: 100% !important;
-      max-width: 1100px !important;
-      margin: 0 auto 25px auto !important;
+      max-width: 1350px !important;
+      height: clamp(340px, 50vh, 560px) !important;
+      margin: 0 auto 20px auto !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 184, 41, 0.35) !important;
+      border: 2px solid rgba(255, 184, 41, 0.45) !important;
     }
 
     .hero-video-wrapper {
+      position: absolute !important;
+      inset: 0 !important;
       width: 100% !important;
-      max-width: 100% !important;
-      border-radius: 20px !important;
+      height: 100% !important;
       overflow: hidden !important;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 184, 41, 0.3) !important;
-      border: 2px solid rgba(255, 184, 41, 0.4) !important;
+      z-index: 2 !important;
     }
 
     .hero-video {
       width: 100% !important;
-      height: auto !important;
-      max-height: 540px !important;
+      height: 100% !important;
       object-fit: cover !important;
+      object-position: center !important;
       display: block !important;
     }
 
     .hero-content.centered-cta-wrap {
+      position: relative !important;
+      z-index: 10 !important;
       width: 100% !important;
       max-width: 100% !important;
       padding: 0 !important;
-      margin: 10px auto 0 auto !important;
+      margin: 15px auto 0 auto !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
@@ -317,11 +329,11 @@
     }
 
     .btn-hero-center {
-      padding: 16px 55px !important;
-      font-size: 1.3rem !important;
+      padding: 16px 65px !important;
+      font-size: 1.35rem !important;
       letter-spacing: 2px !important;
       border-radius: 12px !important;
-      box-shadow: 0 0 30px rgba(255, 100, 0, 0.6), 0 0 50px rgba(255, 184, 41, 0.4) !important;
+      box-shadow: 0 0 35px rgba(255, 100, 0, 0.7), 0 0 50px rgba(255, 184, 41, 0.45) !important;
       cursor: pointer;
     }
 
