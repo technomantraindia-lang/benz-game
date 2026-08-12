@@ -3631,3 +3631,371 @@ img, video { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== SHARED MOBILE HOW-TO DESIGN ===== */
+@media (max-width: 560px) {
+  .section-howto {
+    padding: 34px 0 42px !important;
+    background: #050202 !important;
+  }
+
+  .section-howto .section-container {
+    padding: 0 18px !important;
+  }
+
+  .howto-card {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 28px 20px 30px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, rgba(20, 7, 5, 0.98), rgba(6, 2, 2, 0.99)) !important;
+    border: 1.5px solid rgba(240, 165, 0, 0.55) !important;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.72), inset 0 0 32px rgba(255, 86, 14, 0.05) !important;
+  }
+
+  .howto-header {
+    display: grid !important;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    align-items: center !important;
+    justify-content: start !important;
+    gap: 18px !important;
+    padding: 0 0 24px !important;
+    margin: 0 0 28px !important;
+    border-bottom: 1px solid rgba(240, 165, 0, 0.32) !important;
+    text-align: left !important;
+  }
+
+  .howto-header .logo-icon,
+  .howto-header .red-accent {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 11px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.05rem !important;
+    color: #ff4937 !important;
+    background: rgba(230, 57, 70, 0.18) !important;
+    border: 1px solid rgba(230, 57, 70, 0.55) !important;
+    box-shadow: 0 0 26px rgba(230, 57, 70, 0.62) !important;
+  }
+
+  .howto-header .section-title {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.5px !important;
+    text-align: left !important;
+    color: #fff !important;
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .howto-header .accent {
+    display: block !important;
+    margin-left: 0 !important;
+    color: #ffc342 !important;
+    text-shadow: 0 0 20px rgba(255, 195, 66, 0.55) !important;
+  }
+
+  .steps-flow {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+  }
+
+  .step-connector {
+    display: none !important;
+  }
+
+  .step-item {
+    width: 100% !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 72px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 16px 18px !important;
+    border-radius: 12px !important;
+    background: rgba(17, 9, 8, 0.92) !important;
+    border: 1px solid rgba(240, 165, 0, 0.17) !important;
+    box-shadow: inset 0 0 22px rgba(255, 96, 16, 0.035) !important;
+  }
+
+  .step-icon-wrap {
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: 50% !important;
+    border: 2px solid rgba(240, 165, 0, 0.72) !important;
+    color: #ffc342 !important;
+    font-size: 1.5rem !important;
+    box-shadow: 0 0 22px rgba(240, 165, 0, 0.3), inset 0 0 14px rgba(240, 165, 0, 0.1) !important;
+  }
+
+  .step-info {
+    min-width: 0 !important;
+    gap: 5px !important;
+  }
+
+  .step-heading-row {
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .step-badge {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.75rem !important;
+    box-shadow: 0 0 14px rgba(255, 195, 66, 0.48) !important;
+  }
+
+  .step-name {
+    font-size: clamp(1.05rem, 5.8vw, 1.42rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.4px !important;
+    color: #ffc342 !important;
+  }
+
+  .step-text {
+    font-size: clamp(0.82rem, 3.8vw, 0.98rem) !important;
+    line-height: 1.32 !important;
+    color: rgba(247, 230, 198, 0.76) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .section-howto .section-container {
+    padding: 0 12px !important;
+  }
+
+  .howto-card {
+    padding: 24px 14px 26px !important;
+  }
+
+  .howto-header {
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  .howto-header .logo-icon,
+  .howto-header .red-accent {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .howto-header .section-title {
+    font-size: clamp(1.75rem, 9.5vw, 2.45rem) !important;
+  }
+
+  .step-item {
+    grid-template-columns: 58px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .step-icon-wrap {
+    width: 58px !important;
+    height: 58px !important;
+    font-size: 1.28rem !important;
+  }
+}
+
+/* ===== MOBILE HERO BADGE SPACING FIX ===== */
+@media (max-width: 560px) {
+  .hero-timer-corner {
+    top: 14px !important;
+    left: 12px !important;
+    right: 94px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .hero-timer-corner .timer-inner {
+    width: 100% !important;
+    min-height: 48px !important;
+    display: grid !important;
+    grid-template-columns: 24px minmax(0, 1fr) auto !important;
+    gap: 7px !important;
+    padding: 7px 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .hero-timer-corner .timer-icon {
+    font-size: 1rem !important;
+  }
+
+  .hero-timer-corner .timer-label {
+    min-width: 0 !important;
+    max-width: none !important;
+    font-size: 0.72rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.35px !important;
+  }
+
+  .hero-timer-corner .timer-display {
+    min-width: 66px !important;
+    font-size: 1.28rem !important;
+    letter-spacing: 1.2px !important;
+  }
+
+  .hero-timer-corner .timer-tag {
+    display: none !important;
+  }
+
+  .free-spin-badge {
+    top: 14px !important;
+    right: 12px !important;
+    width: 74px !important;
+    min-width: 74px !important;
+    padding: 7px 8px !important;
+    border-radius: 10px !important;
+    z-index: 18 !important;
+  }
+
+  .free-spin-badge .badge-label {
+    font-size: 0.52rem !important;
+    letter-spacing: 1.6px !important;
+  }
+
+  .free-spin-badge .badge-main {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-timer-corner {
+    right: 86px !important;
+  }
+
+  .hero-timer-corner .timer-inner {
+    grid-template-columns: 20px minmax(0, 1fr) auto !important;
+    gap: 5px !important;
+    padding: 6px 8px !important;
+  }
+
+  .hero-timer-corner .timer-label {
+    font-size: 0.62rem !important;
+  }
+
+  .hero-timer-corner .timer-display {
+    min-width: 56px !important;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.8px !important;
+  }
+
+  .free-spin-badge {
+    width: 68px !important;
+    min-width: 68px !important;
+    padding: 6px 7px !important;
+  }
+
+  .free-spin-badge .badge-main {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ===== REFINED MOBILE HOW-TO CARD ===== */
+@media (max-width: 560px) {
+  .section-howto {
+    padding: 28px 0 34px !important;
+  }
+
+  .section-howto .section-container {
+    padding: 0 12px !important;
+  }
+
+  .howto-card {
+    padding: 24px 16px 24px !important;
+    border-radius: 18px !important;
+  }
+
+  .howto-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 0 0 20px !important;
+    margin: 0 0 22px !important;
+    text-align: center !important;
+  }
+
+  .howto-header .logo-icon,
+  .howto-header .red-accent {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+  }
+
+  .howto-header .section-title {
+    max-width: 100% !important;
+    font-size: clamp(1.72rem, 8.4vw, 2.35rem) !important;
+    line-height: 1.08 !important;
+    text-align: center !important;
+  }
+
+  .steps-flow {
+    gap: 12px !important;
+  }
+
+  .step-item {
+    grid-template-columns: 58px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 14px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .step-icon-wrap {
+    width: 58px !important;
+    height: 58px !important;
+    font-size: 1.28rem !important;
+  }
+
+  .step-heading-row {
+    gap: 7px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .step-badge {
+    width: 23px !important;
+    height: 23px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .step-name {
+    font-size: clamp(0.98rem, 5vw, 1.22rem) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .step-text {
+    font-size: clamp(0.76rem, 3.6vw, 0.9rem) !important;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .howto-card {
+    padding: 22px 12px !important;
+  }
+
+  .howto-header .section-title {
+    font-size: clamp(1.5rem, 8vw, 2rem) !important;
+  }
+
+  .step-item {
+    grid-template-columns: 50px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px 10px !important;
+  }
+
+  .step-icon-wrap {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.12rem !important;
+  }
+}
