@@ -60,16 +60,20 @@ img, video { display: block; max-width: 100%; }
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(8,5,4,.97);
-  border-bottom: 1px solid rgba(240,165,0,.15);
-  backdrop-filter: blur(10px);
+  height: 70px;
+  background: rgba(8, 4, 4, 0.98) !important;
+  border-bottom: 1.5px solid rgba(255, 184, 41, 0.35) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 184, 41, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 .nav-container {
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
-  padding: 0 48px; height: 60px;
-  display: flex; align-items: center; gap: 28px;
+  height: 100%;
+  padding: 0 30px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
 .logo { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .logo-icon { color: var(--gold); font-size: 1.4rem; }
