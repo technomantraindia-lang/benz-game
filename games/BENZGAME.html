@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benz.Game - Register & Download to Get 17-1777</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ===== GAMES DROPDOWN MENU ===== */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: rgba(12, 5, 5, 0.96);
+      border: 1.5px solid rgba(255, 195, 66, 0.45);
+      border-radius: 12px;
+      padding: 10px 0;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 184, 41, 0.15);
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-item-dropdown:hover .dropdown-menu,
+    .nav-item-dropdown:focus-within .dropdown-menu {
+      display: flex;
+      flex-direction: column;
+      animation: fadeInDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      color: #f7e6c6;
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255, 195, 66, 0.16);
+      color: #ffc342;
+      padding-left: 24px;
+    }
+
+    .dropdown-menu a i {
+      color: #ffc342;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .mobile-dropdown {
+      display: flex;
+      flex-direction: column;
+      padding-left: 16px;
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .mobile-dropdown a {
+      font-size: 0.9rem !important;
+      color: rgba(255, 215, 0, 0.85) !important;
+      padding: 4px 10px !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo" aria-label="Benz.Game Home">
+        <span class="logo-icon"><i class="fas fa-dice"></i></span>
+        <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">HOME</a>
+
+        <!-- GAMES DROPDOWN -->
+        <div class="nav-item-dropdown">
+          <a href="../index.html#games" class="nav-link active has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
+            <a href="777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
+            <a href="x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
+            <a href="BENZGAME.html"><i class="fas fa-crown"></i> Benz Game</a>
+          </div>
+        </div>
+
+        <a href="../index.html#promotions" class="nav-link">PROMOTIONS</a>
+        <a href="../index.html#vip" class="nav-link has-dropdown">VIP CLUB <i class="fas fa-chevron-down"></i></a>
+        <a href="../index.html#how-to-start" class="nav-link has-dropdown">ABOUT US <i class="fas fa-chevron-down"></i></a>
+        <a href="#faq" class="nav-link">SUPPORT</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-download-nav"><i class="fas fa-download"></i> DOWNLOAD NOW</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">HOME</a>
+      <a href="../index.html#games">ALL GAMES</a>
+      <div class="mobile-dropdown">
+        <a href="RR9.html">🔥 RR9 Game</a>
+        <a href="777.html">🎰 777 Game</a>
+        <a href="x89.html">⚡ X89 Game</a>
+        <a href="BENZGAME.html">👑 Benz Game</a>
+      </div>
+      <a href="../index.html#promotions">PROMOTIONS</a>
+      <a href="../index.html#vip">VIP CLUB</a>
+      <a href="../index.html#how-to-start">ABOUT US</a>
+      <a href="#faq">SUPPORT</a>
+      <div class="mobile-actions">
+        <button class="btn-download-nav"><i class="fas fa-download"></i> DOWNLOAD NOW</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="particles" id="particles"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <div class="hero-container">
+      <!-- LEFT -->
+      <div class="hero-content">
+        <!-- Countdown Timer -->
+      <div class="hero-timer">
+        <div class="timer-inner">
+          <span class="timer-icon">⏰</span>
+          <span class="timer-label">OFFER EXPIRES IN</span>
+          <span class="timer-display" id="heroTimer">01:00</span>
+          <span class="timer-tag">LEFT</span>
+        </div>
+      </div>
+
+      <div class="live-badge">
+          <span class="pulse-dot"></span>
+          AWESOME LIVE <strong>***</strong> won over ₹99,000 on Fortune Games
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">Register &amp; Download to</span>
+          <span class="hero-highlight">Get 17-1777</span>
+        </h1>
+        <p class="hero-subtitle">Join Benz.Game and enjoy exciting rewards,<br>free spins and non-stop entertainment.
+        </p>
+        <div class="trust-badges">
+          <div class="trust-item"><i class="fas fa-shield-alt"></i><span>100%<br>Secure</span></div>
+          <div class="trust-item"><i class="fas fa-headset"></i><span>24/7<br>Support</span></div>
+          <div class="trust-item"><i class="fas fa-bolt"></i><span>Instant<br>Withdraw</span></div>
+        </div>
+        <div class="hero-cta">
+          <button class="btn-cta-primary"><i class="fas fa-download"></i> DOWNLOAD NOW</button>
+          <p class="cta-sub">Download App for the Best Experience</p>
+        </div>
+      </div>
+      <!-- RIGHT VIDEO -->
+      <div class="hero-visual">
+        <div class="hero-video-wrapper">
+          <video id="heroVideo" class="hero-video" src="assect/Video_Generation_Prompt_Create.mp4" autoplay muted loop
+            playsinline preload="auto"></video>
+        </div>
+        <div class="free-spin-badge">
+          <div class="badge-glow"></div>
+          <span class="badge-label">FREE</span>
+          <span class="badge-main">SPIN</span>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">🎁</div>
+          <div class="reward-text">
+            <span class="reward-percent">100%</span>
+            <span class="reward-label">reward</span>
+          </div>
+          <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
+        </div>
+        <div class="jackpot-winner">
+          <i class="fas fa-trophy"></i>
+          <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIVE TICKER ===== -->
+  <div class="live-ticker-bar">
+    <div class="ticker-left">
+      <i class="fas fa-volume-up"></i>
+      <span class="ticker-badge">LIVE</span>
+    </div>
+    <div class="ticker-scroll-wrap">
+      <div class="ticker-scroll">
+        <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+        <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+        <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+        <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+
+        <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+        <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+        <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+        <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STATS BAR ===== -->
+  <section class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
+        <div class="stat-info">
+          <span class="stat-number" data-target="1000000">0</span>
+          <span class="stat-label">Users</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-lock stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Secure</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Withdraw</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">24x7</span><span class="stat-label">Support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECENT WINNERS ===== -->
+  <section class="section-winners">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> RECENT <span class="accent">BIG WINNERS</span></h2>
+        <span class="winners-live"><span class="pulse-dot"></span> LIVE UPDATES</span>
+      </div>
+      <div class="winners-grid">
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_rahul.png" alt="Rahul K.">
+            <span class="winner-rank rank-1">🥇</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Rahul K.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Fortune Gems</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹1,50,000</span>
+          </div>
+        </div>
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_priya.png" alt="Priya S.">
+            <span class="winner-rank rank-2">🥈</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Priya S.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy 777</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹95,500</span>
+          </div>
+        </div>
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_arjun.png" alt="Arjun M.">
+            <span class="winner-rank rank-3">🥉</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Arjun M.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹72,000</span>
+          </div>
+        </div>
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_sneha.png" alt="Sneha G.">
+            <span class="winner-rank rank-4">⭐</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Sneha G.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy Time</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹48,750</span>
+          </div>
+        </div>
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_vikram.png" alt="Vikram R.">
+            <span class="winner-rank rank-5">⭐</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Vikram R.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Money Coming</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹36,200</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOT GAMES ===== -->
+  <section class="section-games" id="games">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-fire"></i> EXPLORE OUR <span class="accent">HOT GAMES</span></h2>
+        <a href="#" class="view-all-btn">VIEW ALL GAMES &rsaquo;</a>
+      </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/money_coming.png" alt="Money Coming" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">MONEY<br>COMING</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/squidss_game.png" alt="Squidss Game" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">SQUIDSS<br>GAME</div>
+        </div>
+        <div class="game-card hot">
+          <div class="game-thumb">
+            <img src="assect/fortune_gems.png" alt="Fortune Gems" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">FORTUNE<br>GEMS</div>
+          <span class="hot-tag">HOT</span>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/crazy_time.png" alt="Crazy Time" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CRAZY<br>TIME</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/crazy_777.png" alt="Crazy 777" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CRAZY<br>777</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/funky_time.png" alt="Funky Time" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">FUNKY<br>TIME</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/chicken_road.png" alt="Chicken Road" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CHICKEN<br>ROAD</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/aviator.png" alt="Aviator" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">AVIATOR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROMOTIONS ===== -->
+  <section class="section-promos" id="promotions">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-gift"></i> EXCLUSIVE <span class="accent">PROMOTIONS</span></h2>
+        <a href="#" class="view-all-btn">VIEW ALL &rsaquo;</a>
+      </div>
+      <div class="promos-grid">
+        <div class="promo-card promo-welcome">
+          <div class="promo-content">
+            <div class="promo-badge-tag">WELCOME BONUS</div>
+            <div class="promo-percent">100% UP TO<br><strong>₹17,777</strong></div>
+            <div class="promo-sub">+ 50 FREE SPINS</div>
+            <button class="btn-claim">CLAIM NOW</button>
+          </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_welcome.png" alt="Welcome Bonus" class="promo-img" />
+          </div>
+        </div>
+        <div class="promo-card promo-deposit">
+          <div class="promo-content">
+            <div class="promo-badge-tag">DEPOSIT BONUS</div>
+            <div class="promo-percent"><strong>25%</strong><br>CASHBACK</div>
+            <div class="promo-sub">UP TO ₹5,000</div>
+            <button class="btn-claim">CLAIM NOW</button>
+          </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_deposit.png" alt="Deposit Bonus" class="promo-img" />
+          </div>
+        </div>
+        <div class="promo-card promo-weekend">
+          <div class="promo-content">
+            <div class="promo-badge-tag">WEEKEND BOOST</div>
+            <div class="promo-percent"><strong>50%</strong><br>RELOAD BONUS</div>
+            <div class="promo-sub">UP TO ₹10,000</div>
+            <button class="btn-claim">CLAIM NOW</button>
+          </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_reload.png" alt="Weekend Boost" class="promo-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIP CLUB ===== -->
+  <section class="section-vip" id="vip">
+    <div class="section-container">
+      <div class="vip-card">
+        
+        <!-- Top Row: Left Content & Right Medallion -->
+        <div class="vip-top-row">
+          <div class="vip-left">
+            <div class="vip-header">
+              <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
+              <h2 class="section-title">JOIN OUR <span class="accent">VIP CLUB</span></h2>
+            </div>
+            <p class="vip-desc">Enjoy exclusive perks, higher rewards and personalized VIP support.</p>
+            <button class="btn-vip-join">JOIN NOW</button>
+          </div>
+          
+          <div class="vip-right">
+          </div>
+        </div>
+        
+        <!-- Bottom Row: 4 Perks Cards -->
+        <div class="vip-perks-row">
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-gift"></i>
+            </div>
+            <span class="perk-text">Exclusive<br>Bonuses</span>
+          </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <span class="perk-text">Higher<br>Cashback</span>
+          </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <span class="perk-text">Faster<br>Withdrawals</span>
+          </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-headset"></i>
+            </div>
+            <span class="perk-text">VIP<br>Support</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW TO GET STARTED ===== -->
+  <section class="section-howto" id="how-to-start">
+    <div class="section-container">
+      <div class="howto-card">
+        <div class="howto-header">
+          <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
+          <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
+        </div>
+        <div class="steps-flow">
+          
+          <!-- Step 1 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-mobile-alt step-icon"></i>
+            </div>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">1</span>
+                <h3 class="step-name">REGISTER</h3>
+              </div>
+              <p class="step-text">Enter your phone number &amp; sign up</p>
+            </div>
+          </div>
+          
+          <!-- Connector 1 -->
+          <div class="step-connector">
+            <span class="line-dot"></span>
+            <i class="fas fa-chevron-right connector-arrow"></i>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-download step-icon"></i>
+            </div>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">2</span>
+                <h3 class="step-name">DOWNLOAD</h3>
+              </div>
+              <p class="step-text">Download our app for the best experience</p>
+            </div>
+          </div>
+          
+          <!-- Connector 2 -->
+          <div class="step-connector">
+            <span class="line-dot"></span>
+            <i class="fas fa-chevron-right connector-arrow"></i>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-gift step-icon"></i>
+            </div>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">3</span>
+                <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
+              </div>
+              <p class="step-text">Add cash and enjoy exciting games</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== FAQ SECTION ===== -->
+  <section class="section-faq" id="faq">
+    <div class="section-container">
+      <h2 class="section-title centered">
+        <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
+      </h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I register on Benz.Game?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Registering on Benz.Game is quick, easy, and completely free. Simply click the <strong>Register Now</strong> button on our homepage and fill in your basic details — your name, mobile number, and a secure password. Once you submit the form, you will receive an OTP on your registered mobile number to verify your identity. After successful verification, your account will be instantly activated and ready to use. You can immediately log in, explore all available games, and claim your exclusive <strong>Welcome Bonus of up to ₹17,777</strong> plus 50 Free Spins. Our registration process is designed to be simple, secure, and fast — taking less than 2 minutes from start to finish. We use industry-standard SSL encryption to protect your personal data at every step. Players from all supported regions can register without any complicated documentation. Once registered, you gain access to hundreds of exciting casino games, live dealer tables, sports betting, and exclusive VIP rewards. Download our mobile app after registration to enjoy gaming anytime, anywhere, with seamless performance on both Android and iOS devices.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the Welcome Bonus and how do I claim it?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Our <strong>Welcome Bonus</strong> is one of the most generous offers in the industry — new players receive a <strong>100% match bonus up to ₹17,777</strong> on their first deposit, plus an additional <strong>50 Free Spins</strong> on selected slot games. To claim this bonus, simply register your account, navigate to the Promotions page, and select the Welcome Bonus offer before making your first deposit. The bonus amount will be credited to your account instantly after your deposit is processed. The minimum deposit required to activate the Welcome Bonus is just ₹500. Wagering requirements apply — the bonus and winnings must be wagered 25 times before withdrawal is permitted. Free Spins are valid for 7 days from the date of credit and winnings from spins are credited as bonus funds. This offer is exclusively available to new players and can only be claimed once per household or IP address. Our promotions team regularly updates bonus offers, so make sure to check the Promotions page frequently for reload bonuses, cashback deals, and seasonal special offers designed to maximize your winning potential.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I deposit money into my account?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Depositing funds into your Benz.Game account is simple, secure, and supports multiple payment methods to suit every player's preference. After logging in, go to the <strong>Cashier</strong> section and select <strong>Deposit</strong>. You can choose from a wide range of payment options including <strong>UPI, PhonePe, Google Pay, Paytm, Net Banking, IMPS, NEFT, and popular e-wallets</strong>. The minimum deposit amount is just ₹100, making it accessible for all types of players. All transactions are processed instantly in most cases, so your funds appear in your account within seconds. Our payment gateway uses advanced 256-bit SSL encryption to ensure your financial details are completely protected at all times. We never store sensitive banking information on our servers. In case of any delay, our 24/7 customer support team is ready to assist you immediately. We also accept cryptocurrency deposits for players who prefer anonymous transactions. All deposits are free of charge — Benz.Game does not impose any additional fees on deposits. Once your deposit is confirmed, you can immediately start playing your favorite games and take advantage of available bonus offers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How fast are withdrawals processed?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>At Benz.Game, we pride ourselves on offering <strong>100% fast and reliable withdrawals</strong> — one of our most important commitments to players. Once you submit a withdrawal request, our team processes it within <strong>15 to 30 minutes</strong> during business hours. Most withdrawals are completed and credited to your bank account or e-wallet within <strong>1 to 3 hours</strong>, depending on your chosen payment method. UPI and e-wallet withdrawals are typically the fastest, often completing within minutes. Bank transfers may take slightly longer based on your bank's processing time. To request a withdrawal, go to the Cashier section, select Withdraw, enter the amount, and choose your preferred payment method. The minimum withdrawal amount is ₹200. Before your first withdrawal, you may be required to complete a one-time KYC (Know Your Customer) verification by submitting a valid government-issued ID. This is a standard security measure to protect your funds. There are no hidden charges or withdrawal fees applied by Benz.Game. VIP members enjoy priority withdrawal processing with even faster turnaround times. Contact our support team if your withdrawal is delayed beyond the expected timeframe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What games are available on Benz.Game?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Benz.Game offers an extensive and diverse library of <strong>over 500+ casino games</strong> to keep every type of player entertained. Our collection includes popular slot games like <strong>Money Coming, Fortune Gems, Crazy 777, Aviator, Chicken Road, Squidss Game, Funky Time,</strong> and <strong>Crazy Time</strong> — all featuring stunning graphics, immersive sound effects, and exciting bonus rounds. For card game enthusiasts, we offer multiple variants of Teen Patti, Andar Bahar, Rummy, and Poker. Our Live Casino section features real human dealers streaming in HD from professional studios, offering Blackjack, Roulette, Baccarat, and exclusive game shows. Crash games like Aviator and JetX deliver fast-paced, high-adrenaline gameplay with instant payouts. We also offer a comprehensive Sports Betting platform covering cricket, football, kabaddi, tennis, and more. All our games are sourced from leading providers ensuring fairness, certified RNG (Random Number Generator) compliance, and superior gaming experiences. New games are added to our platform weekly so there is always something fresh and exciting to explore. All games are available on both desktop and mobile devices.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is Benz.Game safe and secure to play on?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Player safety and security are our absolute top priorities at Benz.Game. Our platform is fully licensed and operates under strict regulatory compliance to ensure fair and transparent gaming for all users. We implement <strong>256-bit SSL encryption</strong> across our entire platform — the same level of security used by major banks worldwide — to protect all data transmissions between your device and our servers. Your personal information, financial details, and gaming activity are never shared with unauthorized third parties. Our games use <strong>certified Random Number Generator (RNG)</strong> technology that is regularly audited by independent third-party testing agencies to guarantee fair outcomes on every spin, deal, and bet. We also employ advanced fraud detection systems and two-factor authentication options to protect your account from unauthorized access. Responsible gambling tools including deposit limits, session limits, self-exclusion options, and reality checks are available to all players. Our dedicated security team monitors the platform 24/7 to detect and prevent any suspicious activity. Benz.Game is trusted by over <strong>1 million players</strong> who rely on us for safe, fair, and entertaining gaming experiences every day.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROMO TICKER ===== -->
+  <div class="promo-strip">
+    <div class="promo-ticker">
+      <div class="ticker-track">
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <!-- duplicate for seamless loop -->
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+
+        <!-- Brand -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon"><i class="fas fa-dice"></i></span>
+            <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+          </div>
+          <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
+            trusted by millions.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="#">Promotions</a></li>
+            <li><a href="#">VIP Club</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">SUPPORT</h4>
+          <ul class="footer-links">
+            <li><a href="#">Support Center</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Responsible Gaming</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">CONTACT US</h4>
+          <ul class="footer-links footer-contact">
+            <li><i class="fas fa-envelope"></i> support@benz.game</li>
+            <li><i class="fas fa-phone"></i> +91 12345 67890</li>
+            <li><i class="fas fa-clock"></i> Available 24/7</li>
+          </ul>
+        </div>
+
+        <!-- Download App -->
+        <div class="footer-col footer-app">
+          <h4 class="footer-col-title">DOWNLOAD APP</h4>
+          <div class="qr-wrap">
+            <img src="assect/qrcode.png" alt="Download App QR Code" class="qr-image" />
+          </div>
+          <button class="btn-download-app"><i class="fas fa-download"></i> DOWNLOAD APP</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-container footer-bottom-inner">
+        <span>&copy; 2026 Benz.Game. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
