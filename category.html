@@ -914,7 +914,6 @@
           <a href="index.html#games" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="games/777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
-            <a href="games/BENZGAME.html"><i class="fas fa-crown"></i> Benz Game</a>
             <a href="games/RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
             <a href="games/x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
           </div>
@@ -923,7 +922,7 @@
         <a href="category.html" class="nav-link active">CATEGORIES</a>
       </nav>
       <div class="nav-actions">
-        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+        <button class="btn-download-nav category-refresh-play" type="button"><i class="fas fa-play"></i> PLAY NOW</button>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -934,13 +933,12 @@
       <a href="index.html#games">ALL GAMES</a>
       <div class="mobile-dropdown">
         <a href="games/777.html">🎰 777 Game</a>
-        <a href="games/BENZGAME.html">👑 Benz Game</a>
         <a href="games/RR9.html">🔥 RR9 Game</a>
         <a href="games/x89.html">⚡ X89 Game</a>
       </div>
       <a href="category.html">CATEGORIES</a>
       <div class="mobile-actions">
-        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+        <button class="btn-download-nav category-refresh-play" type="button"><i class="fas fa-play"></i> PLAY NOW</button>
       </div>
     </div>
   </header>
@@ -1628,6 +1626,13 @@
     }
 
     revealCategoryItems();
+
+    document.querySelectorAll('.category-refresh-play').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        window.location.href = 'category.html';
+      });
+    });
 
     function filterCat(event, type) {
       const tabs = document.querySelectorAll('.tab-btn');

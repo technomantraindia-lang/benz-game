@@ -150,28 +150,35 @@
 
 /* ===== ACTION REDIRECTS ===== */
 (function () {
-  const targetUrl = 'https://share.ct4ze.com/web/share/index.html?ic=AA0G53Q1&ts=1785923340&m=2&lang=en&id=1';
-  const selectors = [
+  const targetUrl = 'https://rr9game.live/?code=EX984JS';
+  const clickSelectors = [
+    '.btn-download-nav',
+    '.btn-cta-primary',
+    '.rr9-play-btn',
+    '.rr9-promo-btn',
+    '.btn-claim',
+    '.btn-download-app',
+    '.game-play-btn',
+    '.social-btn',
+    '.btn-vip-join',
     '.btn-login',
     '.btn-register-nav',
-    '.btn-cta-primary',
-    '.btn-vip-join',
-    '.btn-download-app',
-    '.btn-claim',
     '.game-card',
-    '.game-play-btn',
     '.faq-answer strong'
   ];
-  
-  selectors.forEach(sel => {
-    document.querySelectorAll(sel).forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        window.open(targetUrl, '_blank');
-      });
-    });
-  });
+
+  document.addEventListener('click', function (event) {
+    const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a, .btn-hub-play');
+    if (navLink && (navLink.getAttribute('href')?.includes('.html') || navLink.getAttribute('href')?.startsWith('#') || navLink.classList.contains('faq-question') || navLink.classList.contains('hamburger'))) {
+      return;
+    }
+    const target = event.target.closest(clickSelectors.join(','));
+    if (!target) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    window.open(targetUrl, '_blank');
+  }, true);
 })();
 
 /* ===== FAQ ACCORDION ===== */

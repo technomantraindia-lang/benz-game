@@ -736,21 +736,35 @@ img, video { display: block; max-width: 100%; }
   background: linear-gradient(to left, rgba(8,5,4,1) 0%, rgba(8,5,4,0) 100%);
 }
 .ticker-scroll {
-  display: inline-block; white-space: nowrap;
-  animation: ticker 25s linear infinite;
-  font-family: 'Rajdhani',sans-serif; font-size: .92rem;
-  color: #e0d5c1; letter-spacing: .8px;
+  display: flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  animation: ticker 22s linear infinite !important;
+  will-change: transform !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .92rem;
+  color: #e0d5c1;
+  letter-spacing: .8px;
   font-weight: 600;
 }
 .ticker-scroll span {
-  display: inline-flex; align-items: center; gap: 8px; margin: 0 45px;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 40px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 .ticker-scroll span strong {
   color: var(--gold);
   text-shadow: 0 0 8px rgba(240,165,0,0.4);
   font-weight: 700;
 }
-@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
 
 /* ===== STATS BAR ===== */
 .stats-bar {
@@ -1597,26 +1611,29 @@ img, video { display: block; max-width: 100%; }
   padding: 10px 0;
 }
 .ticker-track {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  /* translateX(-50%) = scroll exactly one half (Set A), then loop resets */
-  animation: tickerScroll 35s linear infinite;
-  will-change: transform;
+  display: flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  animation: tickerScroll 30s linear infinite !important;
+  will-change: transform !important;
 }
 .ticker-track span {
-  display: inline-block;
-  padding: 0 40px;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 40px !important;
   font-family: 'Rajdhani', sans-serif;
   font-size: .82rem; font-weight: 700;
   color: #fff; letter-spacing: .8px;
   border-right: 1px solid rgba(255,255,255,.12);
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 .ticker-track span:last-child { border-right: none; }
 
 @keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 /* ===== ULTRA PREMIUM BOXED CARD FOOTER ===== */
@@ -4518,18 +4535,26 @@ img, video { display: block; max-width: 100%; }
 
 /* ===== MOBILE PERFORMANCE TUNE ===== */
 @media (max-width: 700px) {
-  *,
-  *::before,
-  *::after {
+  *:not(.ticker-scroll):not(.ticker-scroll *):not(.ticker-track):not(.ticker-track *):not(.pulse-dot):not(.badge-glow) {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
 
-  .ticker-scroll,
+  .ticker-scroll {
+    display: flex !important;
+    width: max-content !important;
+    white-space: nowrap !important;
+    animation: ticker 25s linear infinite !important;
+    will-change: transform !important;
+  }
+
   .ticker-track {
-    animation-duration: 42s !important;
-    animation-iteration-count: infinite !important;
+    display: flex !important;
+    width: max-content !important;
+    white-space: nowrap !important;
+    animation: tickerScroll 30s linear infinite !important;
+    will-change: transform !important;
   }
 
   .navbar,

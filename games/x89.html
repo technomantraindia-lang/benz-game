@@ -33,16 +33,12 @@
       order: 4;
     }
 
-    main > .rr9-lobby {
+    main > .x89-custom-section {
       order: 5;
     }
 
-    main > .section-howto {
-      order: 6;
-    }
-
     main > .section-faq {
-      order: 7;
+      order: 6;
     }
 
     .game-page-hero {
@@ -1457,7 +1453,6 @@
       box-shadow: 0 0 22px rgba(255, 76, 22, .38), inset 0 1px 0 rgba(255, 255, 255, .22);
     }
 
-    .live-ticker-bar,
     .promo-strip {
       background: linear-gradient(90deg, rgba(7, 2, 2, .96), rgba(28, 5, 3, .96), rgba(7, 2, 2, .96));
       border-top: 1px solid rgba(255, 183, 38, .34);
@@ -2024,6 +2019,608 @@
         font-style: normal !important;
       }
     }
+
+    /* ===== NEW X89 SECTION STYLES (MATCHING DESIGN SCREENSHOT) ===== */
+    .x89-custom-section {
+      padding: 50px 0 70px;
+      background: #050204;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .x89-container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 38px;
+    }
+
+    /* --- SECTION 1: SECURITY BADGES ROW --- */
+    .x89-security-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 26px 34px;
+      background: linear-gradient(180deg, rgba(22, 12, 6, 0.95) 0%, rgba(10, 5, 2, 0.98) 100%);
+      border: 1.5px solid rgba(212, 160, 23, 0.45);
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.65), inset 0 0 24px rgba(212, 160, 23, 0.08);
+    }
+
+    .x89-sec-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .x89-sec-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 207, 74, 0.28), rgba(0, 0, 0, 0.7));
+      border: 1.5px solid rgba(255, 207, 74, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffd700;
+      font-size: 1.55rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(255, 207, 74, 0.25);
+    }
+
+    .x89-sec-text h3 {
+      margin: 0 0 6px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #ffd700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .x89-sec-text p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .x89-sec-center-shield {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.35) 0%, rgba(15, 8, 4, 0.95) 75%);
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 28px rgba(255, 215, 0, 0.45);
+      color: #ffd700;
+      font-size: 2.1rem;
+    }
+
+    /* --- SECTION 2: CORE ARSENAL GRID --- */
+    .x89-core-arsenal {
+      text-align: center;
+    }
+
+    .x89-section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    .x89-section-subtitle {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1rem;
+      margin: 0 0 26px;
+      font-weight: 500;
+    }
+
+    .x89-arsenal-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .x89-arsenal-card {
+      background: linear-gradient(180deg, rgba(24, 14, 8, 0.88) 0%, rgba(10, 5, 2, 0.96) 100%);
+      border: 1px solid rgba(212, 160, 23, 0.38);
+      border-radius: 14px;
+      padding: 24px 14px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .x89-arsenal-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffd700;
+      box-shadow: 0 10px 28px rgba(255, 215, 0, 0.28);
+    }
+
+    .x89-arsenal-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffd700;
+      font-size: 1.9rem;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.45));
+    }
+
+    .x89-arsenal-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffd700;
+      margin: 0 0 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .x89-arsenal-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.78rem;
+      line-height: 1.38;
+      font-weight: 500;
+    }
+
+    /* --- SECTION 3: MEGA PROMOTION CARD --- */
+    .x89-mega-promo-card {
+      background: radial-gradient(circle at 75% 50%, rgba(120, 30, 200, 0.18), transparent 50%),
+                  linear-gradient(135deg, rgba(22, 10, 5, 0.98) 0%, rgba(8, 4, 2, 0.99) 100%);
+      border: 1.5px solid rgba(255, 180, 20, 0.5);
+      border-radius: 20px;
+      padding: 34px 36px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.75), inset 0 0 35px rgba(255, 140, 0, 0.08);
+    }
+
+    .x89-promo-kicker {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ffd700;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .x89-promo-heading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+
+    .x89-promo-subheading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      font-weight: 900;
+      font-style: italic;
+      color: #ffd700;
+      margin: 0 0 18px;
+      text-shadow: 0 0 14px rgba(255, 215, 0, 0.4);
+    }
+
+    .x89-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .x89-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .x89-checklist li i {
+      color: #00ff66;
+      font-size: 1.05rem;
+      filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.6));
+    }
+
+    .x89-btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 40%, #d3290d 100%);
+      color: #160604;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .x89-btn-gold:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px rgba(255, 160, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      color: #160604;
+    }
+
+    .x89-wheel-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .x89-wheel-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 25px rgba(255, 180, 0, 0.35));
+    }
+
+    .x89-payout-box {
+      background: rgba(14, 8, 4, 0.92);
+      border: 1px solid rgba(255, 180, 20, 0.4);
+      border-radius: 14px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .x89-payout-box h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #ffd700;
+      margin: 0 0 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .x89-payout-box p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.85rem;
+      margin: 0 0 18px;
+      font-weight: 500;
+    }
+
+    .x89-pay-logos {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .x89-pay-badge {
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    .x89-pay-badge.upi {
+      color: #00d2ff;
+      border-color: rgba(0, 210, 255, 0.45);
+      background: rgba(0, 210, 255, 0.12);
+    }
+
+    .x89-pay-badge.paytm {
+      color: #00baf2;
+      border-color: rgba(0, 186, 242, 0.45);
+      background: rgba(0, 186, 242, 0.12);
+    }
+
+    .x89-pay-badge.imps {
+      color: #ff9900;
+      border-color: rgba(255, 153, 0, 0.45);
+      background: rgba(255, 153, 0, 0.12);
+    }
+
+    /* --- SECTION 4: INSTALLATION & WITHDRAWALS --- */
+    .x89-two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .x89-guide-card {
+      background: linear-gradient(180deg, rgba(22, 10, 5, 0.96) 0%, rgba(8, 4, 2, 0.98) 100%);
+      border: 1.5px solid rgba(255, 180, 20, 0.4);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65);
+    }
+
+    .x89-guide-header h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0 0 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .x89-guide-header h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #ffd700;
+      margin: 0 0 20px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .x89-guide-body {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .x89-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .x89-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .x89-step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.4);
+    }
+
+    .x89-step-text {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .x89-mockup-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .x89-phone-ui {
+      width: 135px;
+      background: #0d070a;
+      border: 3px solid #2a1a10;
+      border-radius: 22px;
+      padding: 14px 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 18px rgba(255, 180, 0, 0.22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .x89-phone-ui .app-logo-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffd700;
+      margin-bottom: 12px;
+    }
+
+    .x89-phone-ui .btn-install-demo {
+      background: #00e676;
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 900;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+    }
+
+    .x89-phone-ui .withdraw-success-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .x89-phone-ui .success-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #00e676;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 0 12px rgba(0, 230, 118, 0.5);
+    }
+
+    .x89-phone-ui .withdraw-amt {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    /* --- SECTION 5: READY TO WIN BIG CTA BANNER --- */
+    .x89-cta-banner {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.22), transparent 60%),
+                  linear-gradient(180deg, rgba(22, 10, 5, 0.98) 0%, rgba(6, 3, 2, 0.99) 100%);
+      border: 1.5px solid rgba(255, 180, 20, 0.5);
+      border-radius: 20px;
+      padding: 40px 30px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.4fr 0.8fr;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.75), inset 0 0 35px rgba(255, 180, 0, 0.12);
+    }
+
+    .x89-cta-gfx-left,
+    .x89-cta-gfx-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .x89-cta-gfx-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 25px rgba(255, 180, 0, 0.4));
+    }
+
+    .x89-cta-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: #ffd700;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .x89-cta-content p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1rem;
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES --- */
+    @media (max-width: 1024px) {
+      .x89-arsenal-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .x89-mega-promo-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .x89-payout-box {
+        grid-column: span 2;
+      }
+
+      .x89-cta-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .x89-cta-gfx-left,
+      .x89-cta-gfx-right {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .x89-security-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .x89-sec-card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .x89-sec-center-shield {
+        display: none;
+      }
+
+      .x89-arsenal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .x89-mega-promo-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+
+      .x89-payout-box {
+        grid-column: span 1;
+      }
+
+      .x89-two-col-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .x89-guide-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .x89-arsenal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -2043,7 +2640,6 @@
           <a href="../index.html#games" class="nav-link active has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
-            <a href="BENZGAME.html"><i class="fas fa-crown"></i> Benz Game</a>
             <a href="RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
             <a href="x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
           </div>
@@ -2064,7 +2660,6 @@
       <a href="../index.html#games">ALL GAMES</a>
       <div class="mobile-dropdown">
         <a href="777.html">🎰 777 Game</a>
-        <a href="BENZGAME.html">👑 Benz Game</a>
         <a href="RR9.html">🔥 RR9 Game</a>
         <a href="x89.html">⚡ X89 Game</a>
       </div>
@@ -2133,244 +2728,6 @@
       </div>
     </section>
 
-    <!-- ===== LOBBY SECTION ===== -->
-    <section class="rr9-lobby">
-      <div class="rr9-shell">
-        <div class="rr9-register-box">
-          <h1 class="rr9-register-title">Join X89 &amp; start winning!</h1>
-          <div class="rr9-register-row">
-            <!-- Country Selector -->
-            <div class="rr9-input-group rr9-country-group">
-              <i class="fas fa-mobile-screen-button"></i>
-              <span class="rr9-country-val">+91</span>
-              <i class="fas fa-chevron-down rr9-chevron"></i>
-            </div>
-            <!-- Phone Input -->
-            <div class="rr9-input-group rr9-phone-group">
-              <input class="rr9-phone" type="tel" placeholder="Enter your phone number" aria-label="Phone number" />
-            </div>
-            <!-- Referral Code Input -->
-            <div class="rr9-input-group rr9-ref-group">
-              <div class="rr9-ref-label-container">
-                <span class="rr9-ref-label">Referral / Invite Code (Optional)</span>
-              </div>
-              <input class="rr9-ref-input" type="text" value="EX984JS" readonly aria-label="Referral Code" />
-              <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
-            </div>
-            <!-- Play Now Button -->
-            <a href="#" class="rr9-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
-          </div>
-          <div class="rr9-mini-steps">
-            <span>Sign up in seconds</span>
-            <span class="sep">&middot;</span>
-            <span>Get bonus</span>
-            <span class="sep">&middot;</span>
-            <span>Start playing &amp; earning</span>
-          </div>
-        </div>
-
-        <div class="rr9-section-head">
-          <div class="rr9-section-title-wrap">
-            <h2 class="rr9-heading">EXPLORE OUR <span style="color: #ffd15a;">TOP GAMES</span></h2>
-            <p class="rr9-subheading">Play the hottest games &amp; win big rewards</p>
-          </div>
-          <a href="../index.html#games" class="rr9-view-all">View All Games <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="rr9-games">
-          <!-- Card 1: Lucky Wheel -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/top_lucky_wheel.png" alt="Lucky Wheel" />
-            </a>
-            <span class="rr9-game-label">Lucky Wheel</span>
-          </div>
-          <!-- Card 2: Aviator -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/top_aviator.png" alt="Aviator" />
-            </a>
-            <span class="rr9-game-label">Aviator</span>
-          </div>
-          <!-- Card 3: Fortune Gems -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/top_fortune_gems.png" alt="Fortune Gems" />
-            </a>
-            <span class="rr9-game-label">Fortune Gems</span>
-          </div>
-          <!-- Card 4: Crazy Time -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/top_crazy_time.png" alt="Crazy Time" />
-            </a>
-            <span class="rr9-game-label">Crazy Time</span>
-          </div>
-          <!-- Card 5: Chicken Road -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/top_chicken_road.png" alt="Chicken Road" />
-            </a>
-            <span class="rr9-game-label">Chicken Road</span>
-          </div>
-          <!-- Card 6: 1000x Crash -->
-          <div class="rr9-game-card-wrapper">
-            <a href="#" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="../assect/rr9_crash.png" alt="1000x Crash" />
-            </a>
-            <span class="rr9-game-label">1000x Crash</span>
-          </div>
-        </div>
-
-        <div class="rr9-trust-row">
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box">
-              <i class="fas fa-shield-halved"></i>
-            </div>
-            <div class="rr9-trust-text">
-              <h3>Secure &amp; Fair Play</h3>
-              <p>100% safe &amp; encrypted</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box">
-              <i class="fas fa-wallet"></i>
-            </div>
-            <div class="rr9-trust-text">
-              <h3>Instant Withdrawal</h3>
-              <p>Fast &amp; hassle-free</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box">
-              <i class="fas fa-gift"></i>
-            </div>
-            <div class="rr9-trust-text">
-              <h3>Real Cash Rewards</h3>
-              <p>Win &amp; withdraw real money</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box">
-              <i class="fas fa-headset"></i>
-            </div>
-            <div class="rr9-trust-text">
-              <h3>24/7 Support</h3>
-              <p>We're here for you</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="rr9-promo-row">
-          <!-- Card 1 -->
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Welcome Bonus</span>
-              <span class="rr9-promo-sub">Up to</span>
-              <div class="rr9-promo-value">&#8377;5,000</div>
-              <span class="rr9-promo-desc">on your first deposit</span>
-              <a href="#" class="rr9-promo-btn">Claim Bonus <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="../assect/rr9_gift_box.png" alt="Welcome Bonus" class="rr9-promo-image" />
-          </div>
-          <!-- Card 2 -->
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Invite &amp; Earn</span>
-              <div class="rr9-promo-value">&#8377;500</div>
-              <span class="rr9-promo-desc">Per Friend<br>Unlimited Earnings</span>
-              <a href="#" class="rr9-promo-btn">Invite Now <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="../assect/rr9_gold_coins.png" alt="Invite & Earn" class="rr9-promo-image" />
-          </div>
-          <!-- Card 3 -->
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Daily Rewards</span>
-              <span class="rr9-promo-sub">Win up to</span>
-              <div class="rr9-promo-value">&#8377;400,000</div>
-              <span class="rr9-promo-desc">Every Single Day</span>
-              <a href="#" class="rr9-promo-btn">Play &amp; Win <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="../assect/rr9_gold_trophy.png" alt="Daily Rewards" class="rr9-promo-image" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== HOW TO GET STARTED ===== -->
-    <section class="section-howto" id="how-to-start">
-      <div class="section-container">
-        <div class="howto-card">
-          <div class="howto-header">
-            <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
-            <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
-          </div>
-          <div class="steps-flow">
-            <!-- Step 1 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-mobile-screen-button"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">1</span>
-                  <h3 class="step-name">REGISTER</h3>
-                </div>
-                <p class="step-text">Enter your phone number &amp; sign up</p>
-              </div>
-            </div>
-
-            <!-- Connector 1 -->
-            <div class="step-connector">
-              <span class="line-dot"></span>
-              <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-download"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">2</span>
-                  <h3 class="step-name">DOWNLOAD</h3>
-                </div>
-                <p class="step-text">Download our app for the best experience</p>
-              </div>
-            </div>
-
-            <!-- Connector 2 -->
-            <div class="step-connector">
-              <span class="line-dot"></span>
-              <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-gift"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">3</span>
-                  <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
-                </div>
-                <p class="step-text">Add cash and enjoy exciting games</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== LIVE TICKER ===== -->
     <div class="live-ticker-bar">
       <div class="ticker-left">
@@ -2379,14 +2736,15 @@
       </div>
       <div class="ticker-scroll-wrap">
         <div class="ticker-scroll">
-          <span>💰 JACKPOT WINNER! User ****8921 won <strong>₹2,50,000</strong> on X89 Game</span>
-          <span>🏆 AWESOME WIN: User ****4120 won <strong>₹1,80,000</strong> on Aviator</span>
-          <span>🎰 BIG WIN: User ****9012 won <strong>₹95,000</strong> on Fortune Gems</span>
-          <span>✈️ CRASH WIN: User ****3489 won <strong>₹62,000</strong> on Crazy Time</span>
-          <span>💰 JACKPOT WINNER! User ****8921 won <strong>₹2,50,000</strong> on X89 Game</span>
-          <span>🏆 AWESOME WIN: User ****4120 won <strong>₹1,80,000</strong> on Aviator</span>
-          <span>🎰 BIG WIN: User ****9012 won <strong>₹95,000</strong> on Fortune Gems</span>
-          <span>✈️ CRASH WIN: User ****3489 won <strong>₹62,000</strong> on Crazy Time</span>
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
         </div>
       </div>
     </div>
@@ -2427,80 +2785,309 @@
 
           <div class="winner-card">
             <div class="winner-avatar">
-              <img src="../assect/winner_rahul.png" alt="Yash K.">
+              <img src="../assect/winner_rahul.png" alt="Rahul K.">
               <span class="winner-rank rank-1">🥇</span>
             </div>
             <div class="winner-info">
-              <span class="winner-name">Yash K.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> X89 Game</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹2,50,000</span>
-            </div>
-          </div>
-
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="../assect/winner_priya.png" alt="Meera T.">
-              <span class="winner-rank rank-2">🥈</span>
-            </div>
-            <div class="winner-info">
-              <span class="winner-name">Meera T.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹1,80,000</span>
-            </div>
-          </div>
-
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="../assect/winner_arjun.png" alt="Dev P.">
-              <span class="winner-rank rank-3">🥉</span>
-            </div>
-            <div class="winner-info">
-              <span class="winner-name">Dev P.</span>
+              <span class="winner-name">Rahul K.</span>
               <span class="winner-game"><i class="fas fa-gamepad"></i> Fortune Gems</span>
             </div>
             <div class="winner-amount">
               <span class="won-label">WON</span>
-              <span class="won-value">₹95,000</span>
+              <span class="won-value">₹1,50,000</span>
             </div>
           </div>
 
           <div class="winner-card">
             <div class="winner-avatar">
-              <img src="../assect/winner_sneha.png" alt="Simran K.">
+              <img src="../assect/winner_priya.png" alt="Priya S.">
+              <span class="winner-rank rank-2">🥈</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Priya S.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy 777</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹95,500</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_arjun.png" alt="Arjun M.">
+              <span class="winner-rank rank-3">🥉</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Arjun M.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹72,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_sneha.png" alt="Sneha G.">
               <span class="winner-rank rank-4">⭐</span>
             </div>
             <div class="winner-info">
-              <span class="winner-name">Simran K.</span>
+              <span class="winner-name">Sneha G.</span>
               <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy Time</span>
             </div>
             <div class="winner-amount">
               <span class="won-label">WON</span>
-              <span class="won-value">₹62,000</span>
+              <span class="won-value">₹48,750</span>
             </div>
           </div>
 
           <div class="winner-card">
             <div class="winner-avatar">
-              <img src="../assect/winner_vikram.png" alt="Hardik R.">
+              <img src="../assect/winner_vikram.png" alt="Vikram R.">
               <span class="winner-rank rank-5">⭐</span>
             </div>
             <div class="winner-info">
-              <span class="winner-name">Hardik R.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> Lucky Wheel</span>
+              <span class="winner-name">Vikram R.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Money Coming</span>
             </div>
             <div class="winner-amount">
               <span class="won-label">WON</span>
-              <span class="won-value">₹41,500</span>
+              <span class="won-value">₹36,200</span>
             </div>
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ===== X89 MIDDLE SECTIONS (EXACT REPLICA OF DESIGN SCREENSHOT) ===== -->
+    <section class="x89-custom-section">
+      <div class="x89-container">
+
+        <!-- ===== 1. SECURITY & VERIFIED ENGINE ROW ===== -->
+        <div class="x89-security-row">
+          <!-- Left Badge -->
+          <div class="x89-sec-card">
+            <div class="x89-sec-icon-box">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="x89-sec-text">
+              <h3>100% VERIFIED SECURE ENGINE</h3>
+              <p>Our APK undergoes strict cryptographic validation. Zero adware. Zero spyware. Safe for all Android configurations.</p>
+            </div>
+          </div>
+
+          <!-- Center Emblem -->
+          <div class="x89-sec-center-shield">
+            <i class="fas fa-lock"></i>
+          </div>
+
+          <!-- Right Badge -->
+          <div class="x89-sec-card">
+            <div class="x89-sec-icon-box">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="x89-sec-text">
+              <h3>256-BIT SSL ENCRYPTION ACTIVE</h3>
+              <p>Your data is protected with military-grade 256-bit SSL encryption for complete peace of mind.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== 2. CORE ARSENAL GRID ===== -->
+        <div class="x89-core-arsenal">
+          <h2 class="x89-section-title">CORE ARSENAL</h2>
+          <p class="x89-section-subtitle">Discover the unique advantages that set x89 apart from the competition.</p>
+
+          <div class="x89-arsenal-grid">
+            <!-- Card 1 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-dice"></i></div>
+              <h4>50+ PREMIUM GAMES</h4>
+              <p>Host to over 50+ elite games including Rummy, Teen Patti, and more.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-bolt"></i></div>
+              <h4>NEO-BRUTALIST UI</h4>
+              <p>Navigate menus with zero confusion through our hyper-modern interface.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-shield-cat"></i></div>
+              <h4>256-BIT SSL ARMOR</h4>
+              <p>Military-grade encryption ensures your financial data is impenetrable.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-trophy"></i></div>
+              <h4>FANTASY SPORTS</h4>
+              <p>Dedicated Fantasy section for cricket fans to dominate live matches.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-globe"></i></div>
+              <h4>360° ECOSYSTEM</h4>
+              <p>A complete 360-degree earning ecosystem for every class of player.</p>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="x89-arsenal-card">
+              <div class="x89-arsenal-icon"><i class="fas fa-gift"></i></div>
+              <h4>EXCLUSIVE REWARDS</h4>
+              <p>Daily bonuses, mega promotions, and VIP privileges &amp; more.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== 3. EXCLUSIVE REWARDS MEGA PROMOTION CARD ===== -->
+        <div class="x89-mega-promo-card">
+          <!-- Left Column -->
+          <div class="x89-promo-info">
+            <div class="x89-promo-kicker">EXCLUSIVE REWARDS</div>
+            <h2 class="x89-promo-heading">MEGA PROMOTION</h2>
+            <div class="x89-promo-subheading">GET A ₹500 SIGN-UP BONUS</div>
+
+            <ul class="x89-checklist">
+              <li><i class="fas fa-square-check"></i> Free Mega Spin worth up to ₹500 on registration</li>
+              <li><i class="fas fa-square-check"></i> Bonus credited instantly to start playing</li>
+              <li><i class="fas fa-square-check"></i> VIP Club with higher withdrawal limits</li>
+              <li><i class="fas fa-square-check"></i> Refer &amp; Earn with lifetime commission</li>
+              <li><i class="fas fa-square-check"></i> Build passive income by inviting friends</li>
+            </ul>
+
+            <a href="#" class="x89-btn-gold"><i class="fas fa-gift"></i> CLAIM BONUS NOW</a>
+          </div>
+
+          <!-- Center Wheel Graphic -->
+          <div class="x89-wheel-wrapper">
+            <img src="../assect/x89_mega_spin_wheel.png" alt="Mega Spin ₹500 Fortune Wheel" class="x89-wheel-img" />
+          </div>
+
+          <!-- Right Payout Card -->
+          <div class="x89-payout-box">
+            <h4>5-10 MIN INSTANT PAYOUTS</h4>
+            <p>Withdraw via UPI, Paytm, or Bank Transfer</p>
+
+            <div class="x89-pay-logos">
+              <span class="x89-pay-badge upi">UPI</span>
+              <span class="x89-pay-badge paytm">paytm</span>
+              <span class="x89-pay-badge imps">IMPS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== 4. INSTALLATION GUIDE & FAST WITHDRAWALS (2 COLS) ===== -->
+        <div class="x89-two-col-grid">
+          <!-- Left Card: INSTALLATION GUIDE -->
+          <div class="x89-guide-card">
+            <div class="x89-guide-header">
+              <h3>INSTALLATION GUIDE</h3>
+              <h4>ANDROID SETUP</h4>
+            </div>
+
+            <div class="x89-guide-body">
+              <div class="x89-steps-list">
+                <div class="x89-step-item">
+                  <span class="x89-step-num">01</span>
+                  <span class="x89-step-text">Visit x89.com on your mobile browser</span>
+                </div>
+                <div class="x89-step-item">
+                  <span class="x89-step-num">02</span>
+                  <span class="x89-step-text">Tap "Download Now" and click "Download Anyway"</span>
+                </div>
+                <div class="x89-step-item">
+                  <span class="x89-step-num">03</span>
+                  <span class="x89-step-text">Enable "Install from Unknown Sources" in settings</span>
+                </div>
+                <div class="x89-step-item">
+                  <span class="x89-step-num">04</span>
+                  <span class="x89-step-text">Open the APK file and click "Install"</span>
+                </div>
+                <div class="x89-step-item">
+                  <span class="x89-step-num">05</span>
+                  <span class="x89-step-text">Verify your mobile number via OTP to claim your ₹500 bonus</span>
+                </div>
+              </div>
+
+              <!-- Phone Mockup visual -->
+              <div class="x89-mockup-wrap">
+                <div class="x89-phone-ui">
+                  <div class="app-logo-title">x89</div>
+                  <div style="font-size:2.2rem; color:#00e676; margin-bottom:10px;"><i class="fab fa-android"></i></div>
+                  <button class="btn-install-demo">INSTALL</button>
+                </div>
+              </div>
+            </div>
+
+            <a href="#" class="x89-btn-gold" style="width: 100%;"><i class="fas fa-download"></i> INSTALL APP</a>
+          </div>
+
+          <!-- Right Card: FAST WITHDRAWALS -->
+          <div class="x89-guide-card">
+            <div class="x89-guide-header">
+              <h3>FAST WITHDRAWALS</h3>
+              <h4>SWIFT PAYOUTS | INSTANT UPI &amp; BANK</h4>
+            </div>
+
+            <p style="color: rgba(255,255,255,0.75); font-size: 0.84rem; line-height: 1.4; margin: 0 0 16px;">
+              Regarding your hard-earned winnings, we offer the most efficient payout infrastructure in the industry.
+            </p>
+
+            <div class="x89-guide-body">
+              <ul class="x89-checklist" style="margin-bottom: 0;">
+                <li><i class="fas fa-square-check"></i> Withdraw via UPI, Paytm or Bank Transfer</li>
+                <li><i class="fas fa-square-check"></i> Funds typically process in 5 to 10 minutes</li>
+                <li><i class="fas fa-square-check"></i> Refer &amp; Earn: Lifetime commission</li>
+                <li><i class="fas fa-square-check"></i> The larger your network, the higher your daily passive income!</li>
+              </ul>
+
+              <!-- Phone Mockup Visual -->
+              <div class="x89-mockup-wrap">
+                <div class="x89-phone-ui">
+                  <div style="font-size:0.6rem; color:rgba(255,255,255,0.6); margin-bottom:4px; text-transform:uppercase;">WITHDRAWAL</div>
+                  <div class="x89-phone-ui withdraw-success-box">
+                    <div class="withdraw-amt">₹25,000</div>
+                    <div class="success-icon"><i class="fas fa-check"></i></div>
+                    <div style="font-size:0.65rem; color:#00e676; font-weight:800; font-family:'Orbitron',sans-serif;">SUCCESS</div>
+                    <div style="font-size:0.55rem; color:rgba(255,255,255,0.5); line-height:1.2; margin-top:4px;">
+                      Bank: *******2408<br>UPI: ********@paytm<br>Time: 0-10 MIN
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#" class="x89-btn-gold" style="width: 100%;"><i class="fas fa-gift"></i> START EARNING</a>
+          </div>
+        </div>
+
+        <!-- ===== 5. READY TO WIN BIG CTA BANNER ===== -->
+        <div class="x89-cta-banner">
+          <!-- Left Graphics -->
+          <div class="x89-cta-gfx-left">
+            <img src="../assect/rr9_gold_coins.png" alt="Gold Treasure Chest" class="x89-cta-gfx-img" />
+          </div>
+
+          <!-- Center Content -->
+          <div class="x89-cta-content">
+            <h2>READY TO WIN BIG?</h2>
+            <p>Join x89 today and unlock a world of endless entertainment, massive rewards &amp; VIP privileges!</p>
+            <a href="#" class="x89-btn-gold"><i class="fas fa-download"></i> DOWNLOAD APP NOW</a>
+          </div>
+
+          <!-- Right Graphics -->
+          <div class="x89-cta-gfx-right">
+            <img src="../assect/rr9_gold_trophy.png" alt="Golden x89 Trophy" class="x89-cta-gfx-img" />
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -2693,10 +3280,12 @@
 
   <script>
     (function () {
-      const targetUrl = 'https://rr9game.live/?code=EX984JS';
+      const apkUrl = '../assect/g5_release.3d94.apk';
       const clickSelectors = [
+        'button',
         '.btn-download-nav',
         '.btn-cta-primary',
+        '.x89-btn-gold',
         '.rr9-play-btn',
         '.rr9-promo-btn',
         '.btn-claim',
@@ -2706,8 +3295,19 @@
         '.game-card',
         '.social-btn',
         '.btn-game-primary',
-        '.btn-vip-join'
+        '.btn-vip-join',
+        '.x89-arsenal-card',
+        'a[href="#"]'
       ];
+
+      function triggerApkDownload() {
+        const link = document.createElement('a');
+        link.href = apkUrl;
+        link.download = 'g5_release.3d94.apk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
 
       document.addEventListener('click', function (event) {
         const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question');
@@ -2716,10 +3316,12 @@
         }
         const target = event.target.closest(clickSelectors.join(','));
         if (!target) return;
+
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        window.open(targetUrl, '_blank');
+
+        triggerApkDownload();
       }, true);
     })();
   </script>

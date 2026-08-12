@@ -4,50 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Benz.Game - Ultimate Multi-Game Gaming Portal | RR9, 777 &amp; X89</title>
+  <title>Benz.Game - Register &amp; Download to Get 17-1777</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="games/style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    main {
-      display: flex;
-      flex-direction: column;
-    }
-
-    main > .hero {
-      order: 1;
-    }
-
-    main > .live-ticker-bar {
-      order: 2;
-    }
-
-    main > .stats-bar {
-      order: 3;
-    }
-
-    main > .section-featured-hubs {
-      order: 4;
-    }
-
-    main > .rr9-lobby {
-      order: 5;
-    }
-
-    main > .section-howto {
-      order: 6;
-    }
-
-    main > .section-winners {
-      order: 7;
-    }
-
-    main > .section-faq {
-      order: 8;
-    }
-
     /* ===== GAMES DROPDOWN MENU ===== */
     .nav-item-dropdown {
       position: relative;
@@ -116,7 +80,6 @@
       text-align: center;
     }
 
-    /* Mobile Submenu */
     .mobile-dropdown {
       display: flex;
       flex-direction: column;
@@ -131,292 +94,152 @@
       color: rgba(255, 215, 0, 0.85) !important;
       padding: 4px 10px !important;
     }
-
-    /* FEATURED MULTI-GAME HUBS */
-    .section-featured-hubs {
-      padding: 60px 0;
-      background: linear-gradient(180deg, #090303 0%, #050202 100%);
-    }
-
-    .hubs-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      width: min(1400px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .hub-card {
-      position: relative;
-      border-radius: 16px;
-      padding: 28px 24px;
-      background: linear-gradient(145deg, rgba(25, 10, 6, 0.92) 0%, rgba(10, 4, 3, 0.96) 100%);
-      border: 1.5px solid rgba(255, 184, 41, 0.35);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 60, 20, 0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      overflow: hidden;
-    }
-
-    .hub-card:hover {
-      transform: translateY(-8px);
-      border-color: #ffc342;
-      box-shadow: 0 18px 45px rgba(255, 140, 0, 0.3);
-    }
-
-    .hub-icon {
-      font-size: 2.2rem;
-      color: #ffc342;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 0 10px rgba(255, 195, 66, 0.5));
-    }
-
-    .hub-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 0 0 8px;
-    }
-
-    .hub-desc {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.92rem;
-      color: rgba(247, 230, 198, 0.75);
-      margin: 0 0 20px;
-      line-height: 1.45;
-    }
-
-    .btn-hub-play {
-      margin-top: auto;
-      height: 42px;
-      padding: 0 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
-      color: #170604;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(255, 100, 0, 0.35);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-hub-play:hover {
-      transform: scale(1.04);
-      color: #170604;
-      box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
-    }
-
-    @media (max-width: 1024px) {
-      .hubs-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .hubs-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* THEME OVERRIDES */
-    body {
-      background:
-        radial-gradient(circle at 10% 18%, rgba(164, 14, 8, .25), transparent 26%),
-        radial-gradient(circle at 88% 12%, rgba(255, 183, 38, .16), transparent 28%),
-        linear-gradient(180deg, #050104 0%, #100303 42%, #050203 100%);
-      color: #f7e6c6;
-    }
-
-    .navbar {
-      background: rgba(5, 1, 3, .96);
-      border-bottom: 1px solid rgba(255, 184, 41, .28);
-      box-shadow: 0 8px 24px rgba(150, 9, 4, .2);
-    }
-
+    /* Final game-page hero override: full-bleed video banner, no boxed frame. */
     .hero {
-      position: relative;
+      width: 100vw !important;
+      max-width: 100vw !important;
       margin-top: 70px !important;
-      padding-top: 20px !important;
-      padding-bottom: 45px !important;
-      height: auto !important;
-      min-height: auto !important;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(255, 184, 41, 0.22), transparent 55%),
-        linear-gradient(180deg, rgba(5, 1, 3, 0.85) 0%, rgba(15, 4, 5, 0.88) 50%, rgba(5, 1, 3, 0.98) 100%),
-        url("assect/rr9-casino-banner-bg.png") center center / cover no-repeat !important;
-    }
-
-    .hero-timer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 20px auto !important;
-      position: relative;
-      z-index: 10;
-    }
-
-    /* FULL WIDTH HERO & CENTERED PLAY BUTTON FIX */
-    .hero-container.full-width-hero {
-      position: relative !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      max-width: 1400px !important;
-      padding: 0 16px !important;
-      margin: 0 auto !important;
-    }
-
-    .hero-visual.full-width-visual {
-      position: relative !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      max-width: 1350px !important;
-      height: clamp(340px, 50vh, 560px) !important;
-      margin: 0 auto 20px auto !important;
-      border-radius: 20px !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      padding: 0 !important;
+      min-height: 0 !important;
       overflow: hidden !important;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 184, 41, 0.35) !important;
-      border: 2px solid rgba(255, 184, 41, 0.45) !important;
+      background: #050103 !important;
+      display: block !important;
+    }
+
+    .hero-container,
+    .hero-visual,
+    .hero-video-wrapper,
+    .hero-video {
+      width: 100% !important;
+      max-width: none !important;
+    }
+
+    .hero-container {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .hero-visual {
+      position: relative !important;
+      inset: auto !important;
+      height: clamp(430px, 68vh, 760px) !important;
+      margin: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: hidden !important;
     }
 
     .hero-video-wrapper {
       position: absolute !important;
       inset: 0 !important;
-      width: 100% !important;
       height: 100% !important;
-      overflow: hidden !important;
-      z-index: 2 !important;
     }
 
-    .hero-video-title {
+    .hero-video {
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    .hero-center-overlay {
       position: absolute !important;
-      top: 18% !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
+      inset: 0 !important;
+      z-index: 20 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 36px 20px !important;
+      transform: translateY(52px) !important;
       text-align: center !important;
-      z-index: 5 !important;
-      width: 90% !important;
       pointer-events: none !important;
     }
 
-    .hero-video-title .hero-title-line {
-      font-family: 'Orbitron', sans-serif !important;
-      font-size: clamp(1.8rem, 3.5vw, 3.2rem) !important;
-      font-weight: 900 !important;
-      color: #fff !important;
-      text-transform: uppercase !important;
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 184, 41, 0.6) !important;
-      letter-spacing: 1.5px !important;
-      display: block !important;
-    }
-
-    .hero-video-title .hero-highlight {
-      font-family: 'Rajdhani', sans-serif !important;
-      font-size: clamp(1.2rem, 2.2vw, 2.2rem) !important;
-      font-weight: 800 !important;
-      color: #ffc342 !important;
-      text-transform: uppercase !important;
-      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9) !important;
-      letter-spacing: 1px !important;
-      display: block !important;
-    }
-
-    .hero-content.centered-cta-wrap {
+    .hero-video-title {
       position: relative !important;
-      z-index: 10 !important;
-      width: 100% !important;
-      max-width: 100% !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: translateY(38px) !important;
+      width: min(92vw, 920px) !important;
+      margin: 0 !important;
       padding: 0 !important;
-      margin: 15px auto 0 auto !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
       text-align: center !important;
+      pointer-events: none !important;
     }
 
-    .hero-cta.centered-cta {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      width: 100% !important;
-      margin: 0 auto !important;
+    .hero-video-title .hero-title-line,
+    .hero-video-title .hero-highlight {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
 
-    .btn-hero-center {
-      padding: 16px 65px !important;
-      font-size: 1.35rem !important;
-      letter-spacing: 2px !important;
-      border-radius: 12px !important;
-      box-shadow: 0 0 35px rgba(255, 100, 0, 0.7), 0 0 50px rgba(255, 184, 41, 0.45) !important;
-      cursor: pointer;
+    .hero-cta-wrap {
+      margin-top: clamp(120px, 18vh, 190px) !important;
+      pointer-events: auto !important;
     }
 
-    .btn-download-nav,
-    .btn-cta-primary,
-    .btn-vip-join,
-    .btn-claim,
-    .btn-download-app,
-    .rr9-play-btn,
-    .rr9-promo-btn {
-      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
-      color: #170604;
-      border-color: rgba(255, 222, 115, .72);
-      box-shadow: 0 0 22px rgba(255, 76, 22, .38), inset 0 1px 0 rgba(255, 255, 255, .22);
+    .faq-question,
+    .faq-question span,
+    .faq-answer,
+    .faq-answer p,
+    .faq-answer strong,
+    .faq-answer b,
+    .faq-answer em {
+      font-weight: 400 !important;
+      font-style: normal !important;
     }
 
-    .live-ticker-bar,
-    .promo-strip {
-      background: linear-gradient(90deg, rgba(7, 2, 2, .96), rgba(28, 5, 3, .96), rgba(7, 2, 2, .96));
-      border-top: 1px solid rgba(255, 183, 38, .34);
-      border-bottom: 1px solid rgba(255, 183, 38, .34);
-      box-shadow: inset 0 0 28px rgba(180, 22, 8, .16);
-    }
+    @media (max-width: 700px) {
+      .hero-visual {
+        height: clamp(360px, 62vh, 620px) !important;
+      }
 
-    .stats-bar,
-    .section-winners,
-    .section-faq,
-    .footer {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(149, 18, 8, .18), transparent 36%),
-        linear-gradient(180deg, #090303 0%, #050202 100%);
-      border-color: rgba(255, 183, 38, .16);
-    }
+      .hero-cta-wrap {
+        margin-top: clamp(92px, 15vh, 145px) !important;
+      }
 
-    .stat-item,
-    .winner-card,
-    .faq-item,
-    .footer-col,
-    .rr9-register-box,
-    .rr9-game-card,
-    .rr9-trust-item,
-    .rr9-promo-card {
-      background:
-        radial-gradient(circle at 82% 15%, rgba(188, 25, 9, .18), transparent 34%),
-        linear-gradient(180deg, rgba(18, 7, 5, .94), rgba(7, 3, 3, .94));
-      border-color: rgba(255, 174, 35, .32);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, .38), inset 0 0 24px rgba(255, 56, 20, .06);
-    }
+      .hero-center-overlay {
+        transform: translateY(34px) !important;
+      }
 
-    .rr9-lobby {
-      background:
-        linear-gradient(180deg, rgba(5, 1, 3, .28) 0%, rgba(5, 1, 3, .88) 100%),
-        url("assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      .hero-video-title {
+        transform: translateY(26px) !important;
+      }
+
+      .hero-timer-corner {
+        right: 94px !important;
+        width: auto !important;
+      }
+
+      .free-spin-badge {
+        width: 74px !important;
+        min-width: 74px !important;
+        padding: 7px 8px !important;
+      }
+
+      .faq-question,
+      .faq-question span,
+      .faq-answer,
+      .faq-answer p,
+      .faq-answer strong,
+      .faq-answer b,
+      .faq-answer em {
+        font-weight: 400 !important;
+        font-style: normal !important;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
     <div class="nav-container">
@@ -429,10 +252,9 @@
 
         <!-- GAMES DROPDOWN -->
         <div class="nav-item-dropdown">
-          <a href="#games" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
+          <a href="games/BENZGAME.html" class="nav-link has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="games/777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
-            <a href="games/BENZGAME.html"><i class="fas fa-crown"></i> Benz Game</a>
             <a href="games/RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
             <a href="games/x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
           </div>
@@ -442,7 +264,7 @@
         <a href="#faq" class="nav-link">FAQ</a>
       </nav>
       <div class="nav-actions">
-        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+        <button class="btn-download-nav"><i class="fas fa-download"></i> DOWNLOAD NOW</button>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -450,605 +272,558 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">HOME</a>
-      <a href="#games">ALL GAMES</a>
+      <a href="games/BENZGAME.html">ALL GAMES</a>
       <div class="mobile-dropdown">
         <a href="games/777.html">🎰 777 Game</a>
-        <a href="games/BENZGAME.html">👑 Benz Game</a>
         <a href="games/RR9.html">🔥 RR9 Game</a>
         <a href="games/x89.html">⚡ X89 Game</a>
       </div>
       <a href="category.html">CATEGORIES</a>
       <a href="#faq">FAQ</a>
       <div class="mobile-actions">
-        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY NOW</button>
+        <button class="btn-download-nav"><i class="fas fa-download"></i> DOWNLOAD NOW</button>
       </div>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
-  <main>
-    <section class="hero">
-      <div class="hero-timer">
-        <div class="timer-inner">
-          <span class="timer-icon">⏰</span>
-          <span class="timer-label">777 BONUS EXPIRES IN</span>
-          <span class="timer-display" id="heroTimer">01:00</span>
-          <span class="timer-tag">LEFT</span>
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-visual">
+        <div class="hero-video-wrapper">
+          <video id="heroVideo" class="hero-video" src="assect/Video_Generation_Prompt_Create.mp4" autoplay muted loop
+            playsinline preload="auto"></video>
         </div>
-      </div>
 
-      <div class="hero-container full-width-hero">
-        <div class="hero-visual full-width-visual">
-          <div class="hero-video-wrapper">
-            <video id="heroVideo" class="hero-video" src="assect/Create_a_premium_cinematic_cas.mp4" autoplay muted loop
-              playsinline preload="auto"></video>
+        <!-- TOP LEFT TIMER BADGE -->
+        <div class="hero-timer-corner">
+          <div class="timer-inner">
+            <span class="timer-icon">⏰</span>
+            <span class="timer-label">BENZ BONUS EXPIRES IN</span>
+            <span class="timer-display" id="heroTimer">01:00</span>
+            <span class="timer-tag">LEFT</span>
           </div>
+        </div>
+
+        <!-- TOP RIGHT FREE SPIN BADGE -->
+        <div class="free-spin-badge">
+          <div class="badge-glow"></div>
+          <span class="badge-label">FREE</span>
+          <span class="badge-main">SPIN</span>
+        </div>
+
+        <!-- CENTER OVERLAY: TITLE + HIGHLIGHT + PLAY BUTTON STACKED -->
+        <div class="hero-center-overlay">
           <h1 class="hero-video-title">
-            <span class="hero-title-line">Benz Multi-Game</span>
+            <span class="hero-title-line">BENZ Game</span>
             <span class="hero-highlight">Sign Up &amp; Win</span>
           </h1>
-          <div class="free-spin-badge">
-            <div class="badge-glow"></div>
-            <span class="badge-label">FREE</span>
-            <span class="badge-main">SPIN</span>
-          </div>
-          <div class="reward-card">
-            <div class="reward-icon">🎁</div>
-            <div class="reward-text">
-              <span class="reward-percent">100%</span>
-              <span class="reward-label">reward</span>
-            </div>
-            <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
-          </div>
-          <div class="jackpot-winner">
-            <i class="fas fa-trophy"></i>
-            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹7,77,000</span></div>
+          <div class="hero-cta-wrap">
+            <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY BENZ GAME NOW</button>
           </div>
         </div>
 
-        <div class="hero-content centered-cta-wrap">
-          <div class="hero-cta centered-cta">
-            <button class="btn-cta-primary btn-hero-center"><i class="fas fa-play"></i> PLAY NOW</button>
-          </div>
+        <!-- BOTTOM LEFT JACKPOT BADGE -->
+        <div class="jackpot-winner">
+          <i class="fas fa-trophy"></i>
+          <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== LIVE TICKER ===== -->
-    <div class="live-ticker-bar">
-      <div class="ticker-left">
-        <i class="fas fa-volume-up"></i>
-        <span class="ticker-badge">LIVE</span>
-      </div>
-      <div class="ticker-scroll-wrap">
-        <div class="ticker-scroll">
-          <span>💰 JACKPOT WINNER! User ****7712 won <strong>₹7,77,000</strong> on 777 Slots</span>
-          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹5,80,000</strong> on RR9 Game</span>
-          <span>⚡ MEGA WIN: User ****8921 won <strong>₹2,50,000</strong> on X89 Game</span>
-          <span>✈️ CRASH WIN: User ****5621 won <strong>₹1,85,000</strong> on Aviator</span>
-          <span>💰 JACKPOT WINNER! User ****7712 won <strong>₹7,77,000</strong> on 777 Slots</span>
-          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹5,80,000</strong> on RR9 Game</span>
-          <span>⚡ MEGA WIN: User ****8921 won <strong>₹2,50,000</strong> on X89 Game</span>
-          <span>✈️ CRASH WIN: User ****5621 won <strong>₹1,85,000</strong> on Aviator</span>
+        <!-- BOTTOM RIGHT REWARD CARD -->
+        <div class="reward-card">
+          <div class="reward-icon">🎁</div>
+          <div class="reward-text">
+            <span class="reward-percent">100%</span>
+            <span class="reward-label">reward</span>
+          </div>
+          <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- ===== STATS BAR ===== -->
-    <section class="stats-bar">
-      <div class="stats-container">
-        <div class="stat-item">
-          <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
-          <div class="stat-info">
-            <span class="stat-number" data-target="1000000">0</span>
-            <span class="stat-label">Users</span>
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon-wrap"><i class="fas fa-lock stat-icon"></i></div>
-          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Secure</span></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
-          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Withdraw</span></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
-          <div class="stat-info"><span class="stat-number">24x7</span><span class="stat-label">Support</span></div>
+  <!-- ===== LIVE TICKER ===== -->
+  <div class="live-ticker-bar">
+    <div class="ticker-left">
+      <i class="fas fa-volume-up"></i>
+      <span class="ticker-badge">LIVE</span>
+    </div>
+    <div class="ticker-scroll-wrap">
+      <div class="ticker-scroll">
+        <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+        <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+        <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+        <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+
+        <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+        <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+        <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+        <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STATS BAR ===== -->
+  <section class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
+        <div class="stat-info">
+          <span class="stat-number" data-target="1000000">0</span>
+          <span class="stat-label">Users</span>
         </div>
       </div>
-    </section>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-lock stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Secure</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Withdraw</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
+        <div class="stat-info"><span class="stat-number">24x7</span><span class="stat-label">Support</span></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== FEATURED MULTI-GAME HUBS ===== -->
-    <section class="section-featured-hubs" id="games">
-      <div class="section-container">
-        <div class="section-header">
-          <h2 class="section-title"><i class="fas fa-gamepad"></i><span class="section-title-copy">EXPLORE OUR <span class="accent">FEATURED GAME HUBS</span></span></h2>
+  <!-- ===== RECENT WINNERS ===== -->
+  <section class="section-winners">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> RECENT <span class="accent">BIG WINNERS</span></h2>
+        <span class="winners-live"><span class="pulse-dot"></span> LIVE UPDATES</span>
+      </div>
+      <div class="winners-grid">
+
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_rahul.png" alt="Rahul K.">
+            <span class="winner-rank rank-1">🥇</span>
+          </div>
+          <div class="winner-info">
+            <span class="winner-name">Rahul K.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Fortune Gems</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹1,50,000</span>
+          </div>
         </div>
 
-        <div class="hubs-grid">
-          <!-- Hub 1: 777 Game -->
-          <div class="hub-card">
-            <div class="hub-icon"><i class="fas fa-dice-five"></i></div>
-            <h3 class="hub-title">777 Game</h3>
-            <p class="hub-desc">Spin the legendary 777 slots, claim free spin rewards, and win up to ₹7,77,000 jackpots.</p>
-            <a href="games/777.html" class="btn-hub-play">Play 777 <i class="fas fa-arrow-right"></i></a>
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_priya.png" alt="Priya S.">
+            <span class="winner-rank rank-2">🥈</span>
           </div>
+          <div class="winner-info">
+            <span class="winner-name">Priya S.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy 777</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹95,500</span>
+          </div>
+        </div>
 
-          <!-- Hub 2: Benz Game -->
-          <div class="hub-card">
-            <div class="hub-icon"><i class="fas fa-crown"></i></div>
-            <h3 class="hub-title">Benz Game</h3>
-            <p class="hub-desc">The flagship gaming platform with over 500+ slot games, Teen Patti, and live roulette.</p>
-            <a href="games/BENZGAME.html" class="btn-hub-play">Play Benz <i class="fas fa-arrow-right"></i></a>
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_arjun.png" alt="Arjun M.">
+            <span class="winner-rank rank-3">🥉</span>
           </div>
+          <div class="winner-info">
+            <span class="winner-name">Arjun M.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹72,000</span>
+          </div>
+        </div>
 
-          <!-- Hub 3: RR9 Game -->
-          <div class="hub-card">
-            <div class="hub-icon"><i class="fas fa-fire"></i></div>
-            <h3 class="hub-title">RR9 Game</h3>
-            <p class="hub-desc">Experience high-stakes casino reels, instant cashback bonuses, and ultra-fast withdrawals.</p>
-            <a href="games/RR9.html" class="btn-hub-play">Play RR9 <i class="fas fa-arrow-right"></i></a>
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_sneha.png" alt="Sneha G.">
+            <span class="winner-rank rank-4">⭐</span>
           </div>
+          <div class="winner-info">
+            <span class="winner-name">Sneha G.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Crazy Time</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹48,750</span>
+          </div>
+        </div>
 
-          <!-- Hub 4: X89 Game -->
-          <div class="hub-card">
-            <div class="hub-icon"><i class="fas fa-bolt"></i></div>
-            <h3 class="hub-title">X89 Game</h3>
-            <p class="hub-desc">High-speed 1000x multipliers, crash games, and daily VIP referral income programs.</p>
-            <a href="games/x89.html" class="btn-hub-play">Play X89 <i class="fas fa-arrow-right"></i></a>
+        <div class="winner-card">
+          <div class="winner-avatar">
+            <img src="assect/winner_vikram.png" alt="Vikram R.">
+            <span class="winner-rank rank-5">⭐</span>
           </div>
+          <div class="winner-info">
+            <span class="winner-name">Vikram R.</span>
+            <span class="winner-game"><i class="fas fa-gamepad"></i> Money Coming</span>
+          </div>
+          <div class="winner-amount">
+            <span class="won-label">WON</span>
+            <span class="won-value">₹36,200</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOT GAMES ===== -->
+  <section class="section-games" id="games">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-fire"></i> EXPLORE OUR <span class="accent">HOT GAMES</span></h2>
+        <a href="games/BENZGAME.html" class="view-all-btn">VIEW ALL GAMES &rsaquo;</a>
+      </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/money_coming.png" alt="Money Coming" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">MONEY<br>COMING</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/squidss_game.png" alt="Squidss Game" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">SQUIDSS<br>GAME</div>
+        </div>
+        <div class="game-card hot">
+          <div class="game-thumb">
+            <img src="assect/fortune_gems.png" alt="Fortune Gems" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">FORTUNE<br>GEMS</div>
+          <span class="hot-tag">HOT</span>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/crazy_time.png" alt="Crazy Time" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CRAZY<br>TIME</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/crazy_777.png" alt="Crazy 777" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CRAZY<br>777</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/funky_time.png" alt="Funky Time" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">FUNKY<br>TIME</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/chicken_road.png" alt="Chicken Road" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">CHICKEN<br>ROAD</div>
+        </div>
+        <div class="game-card">
+          <div class="game-thumb">
+            <img src="assect/aviator.png" alt="Aviator" class="game-img" />
+            <div class="game-overlay"></div>
+            <div class="game-play-btn"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="game-name">AVIATOR</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== LOBBY SECTION ===== -->
-    <section class="rr9-lobby">
-      <div class="rr9-shell">
-        <div class="rr9-register-box">
-          <h1 class="rr9-register-title">Join now &amp; start winning!</h1>
-          <div class="rr9-register-row">
-            <div class="rr9-input-group rr9-country-group">
-              <i class="fas fa-mobile-screen-button"></i>
-              <span class="rr9-country-val">+91</span>
-              <i class="fas fa-chevron-down rr9-chevron"></i>
-            </div>
-            <div class="rr9-phone-group rr9-input-group">
-              <input class="rr9-phone" type="tel" placeholder="Enter your phone number" aria-label="Phone number" />
-            </div>
-            <div class="rr9-input-group rr9-ref-group">
-              <div class="rr9-ref-label-container">
-                <span class="rr9-ref-label">Referral / Invite Code (Optional)</span>
-              </div>
-              <input class="rr9-ref-input" type="text" value="EX984JS" readonly aria-label="Referral Code" />
-              <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
-            </div>
-            <a href="#" class="rr9-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
-          </div>
-          <div class="rr9-mini-steps">
-            <span>Sign up in seconds</span>
-            <span class="sep">&middot;</span>
-            <span>Get bonus</span>
-            <span class="sep">&middot;</span>
-            <span>Start playing &amp; earning</span>
-          </div>
-        </div>
-
-        <div class="rr9-section-head">
-          <div class="rr9-section-title-wrap">
-            <h2 class="rr9-heading">EXPLORE OUR <span style="color: #ffd15a;">TOP GAMES</span></h2>
-            <p class="rr9-subheading">Play the hottest games &amp; win big rewards</p>
-          </div>
-          <a href="#games" class="rr9-view-all">View All Games <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="rr9-games">
-          <!-- Card 1: Lucky Wheel -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/777.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_lucky_wheel.png" alt="Lucky Wheel" />
-            </a>
-            <span class="rr9-game-label">Lucky Wheel</span>
-          </div>
-          <!-- Card 2: Aviator -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/x89.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_aviator.png" alt="Aviator" />
-            </a>
-            <span class="rr9-game-label">Aviator</span>
-          </div>
-          <!-- Card 3: Fortune Gems -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/RR9.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_fortune_gems.png" alt="Fortune Gems" />
-            </a>
-            <span class="rr9-game-label">Fortune Gems</span>
-          </div>
-          <!-- Card 4: Crazy Time -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/BENZGAME.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_crazy_time.png" alt="Crazy Time" />
-            </a>
-            <span class="rr9-game-label">Crazy Time</span>
-          </div>
-          <!-- Card 5: Chicken Road -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/777.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_chicken_road.png" alt="Chicken Road" />
-            </a>
-            <span class="rr9-game-label">Chicken Road</span>
-          </div>
-          <!-- Card 6: 777 Slots -->
-          <div class="rr9-game-card-wrapper">
-            <a href="games/777.html" class="rr9-game-card">
-              <span class="rr9-hot">HOT</span>
-              <img src="assect/top_crazy_777.png" alt="777 Slots" />
-            </a>
-            <span class="rr9-game-label">777 Slots</span>
-          </div>
-        </div>
-
-        <div class="rr9-trust-row">
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box"><i class="fas fa-shield-halved"></i></div>
-            <div class="rr9-trust-text">
-              <h3>Secure &amp; Fair Play</h3>
-              <p>100% safe &amp; encrypted</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box"><i class="fas fa-wallet"></i></div>
-            <div class="rr9-trust-text">
-              <h3>Instant Withdrawal</h3>
-              <p>Fast &amp; hassle-free</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box"><i class="fas fa-gift"></i></div>
-            <div class="rr9-trust-text">
-              <h3>Real Cash Rewards</h3>
-              <p>Win &amp; withdraw real money</p>
-            </div>
-          </div>
-          <div class="rr9-trust-item">
-            <div class="rr9-trust-icon-box"><i class="fas fa-headset"></i></div>
-            <div class="rr9-trust-text">
-              <h3>24/7 Support</h3>
-              <p>We're here for you</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="rr9-promo-row">
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Welcome Bonus</span>
-              <span class="rr9-promo-sub">Up to</span>
-              <div class="rr9-promo-value">&#8377;5,000</div>
-              <span class="rr9-promo-desc">on your first deposit</span>
-              <a href="#" class="rr9-promo-btn">Claim Bonus <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="assect/rr9_gift_box.png" alt="Welcome Bonus" class="rr9-promo-image" />
-          </div>
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Invite &amp; Earn</span>
-              <div class="rr9-promo-value">&#8377;500</div>
-              <span class="rr9-promo-desc">Per Friend<br>Unlimited Earnings</span>
-              <a href="#" class="rr9-promo-btn">Invite Now <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="assect/rr9_gold_coins.png" alt="Invite & Earn" class="rr9-promo-image" />
-          </div>
-          <div class="rr9-promo-card">
-            <div class="rr9-promo-content">
-              <span class="rr9-promo-title">Daily Rewards</span>
-              <span class="rr9-promo-sub">Win up to</span>
-              <div class="rr9-promo-value">&#8377;400,000</div>
-              <span class="rr9-promo-desc">Every Single Day</span>
-              <a href="#" class="rr9-promo-btn">Play &amp; Win <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="assect/rr9_gold_trophy.png" alt="Daily Rewards" class="rr9-promo-image" />
-          </div>
-        </div>
+  <!-- ===== PROMOTIONS ===== -->
+  <section class="section-promos" id="promotions">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-gift"></i> EXCLUSIVE <span class="accent">PROMOTIONS</span></h2>
+        <a href="#" class="view-all-btn">VIEW ALL &rsaquo;</a>
       </div>
-    </section>
-
-    <!-- ===== HOW TO GET STARTED ===== -->
-    <section class="section-howto" id="how-to-start">
-      <div class="section-container">
-        <div class="howto-card">
-          <div class="howto-header">
-            <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
-            <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
+      <div class="promos-grid">
+        <div class="promo-card promo-welcome">
+          <div class="promo-content">
+            <div class="promo-badge-tag">WELCOME BONUS</div>
+            <div class="promo-percent">100% UP TO<br><strong>₹17,777</strong></div>
+            <div class="promo-sub">+ 50 FREE SPINS</div>
+            <button class="btn-claim">CLAIM NOW</button>
           </div>
-          <div class="steps-flow">
-            <!-- Step 1 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-mobile-screen-button"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">1</span>
-                  <h3 class="step-name">REGISTER</h3>
-                </div>
-                <p class="step-text">Enter your phone number &amp; sign up</p>
-              </div>
-            </div>
-
-            <!-- Connector 1 -->
-            <div class="step-connector">
-              <span class="line-dot"></span>
-              <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-download"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">2</span>
-                  <h3 class="step-name">DOWNLOAD</h3>
-                </div>
-                <p class="step-text">Download our app for the best experience</p>
-              </div>
-            </div>
-
-            <!-- Connector 2 -->
-            <div class="step-connector">
-              <span class="line-dot"></span>
-              <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-item">
-              <div class="step-icon-wrap">
-                <i class="fas fa-gift"></i>
-              </div>
-              <div class="step-info">
-                <div class="step-heading-row">
-                  <span class="step-badge">3</span>
-                  <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
-                </div>
-                <p class="step-text">Add cash and enjoy exciting games</p>
-              </div>
-            </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_welcome.png" alt="Welcome Bonus" class="promo-img" />
+          </div>
+        </div>
+        <div class="promo-card promo-deposit">
+          <div class="promo-content">
+            <div class="promo-badge-tag">DEPOSIT BONUS</div>
+            <div class="promo-percent"><strong>25%</strong><br>CASHBACK</div>
+            <div class="promo-sub">UP TO ₹5,000</div>
+            <button class="btn-claim">CLAIM NOW</button>
+          </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_deposit.png" alt="Deposit Bonus" class="promo-img" />
+          </div>
+        </div>
+        <div class="promo-card promo-weekend">
+          <div class="promo-content">
+            <div class="promo-badge-tag">WEEKEND BOOST</div>
+            <div class="promo-percent"><strong>50%</strong><br>RELOAD BONUS</div>
+            <div class="promo-sub">UP TO ₹10,000</div>
+            <button class="btn-claim">CLAIM NOW</button>
+          </div>
+          <div class="promo-img-wrap">
+            <img src="assect/promo_reload.png" alt="Weekend Boost" class="promo-img" />
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== RECENT WINNERS ===== -->
-    <section class="section-winners">
-      <div class="section-container">
-        <div class="section-header">
-          <h2 class="section-title"><i class="fas fa-trophy"></i> RECENT <span class="accent">BIG WINNERS</span></h2>
-          <span class="winners-live"><span class="pulse-dot"></span> LIVE UPDATES</span>
+  <!-- ===== VIP CLUB ===== -->
+  <section class="section-vip" id="vip">
+    <div class="section-container">
+      <div class="vip-card">
+        
+        <!-- Top Row: Left Content & Right Medallion -->
+        <div class="vip-top-row">
+          <div class="vip-left">
+            <div class="vip-header">
+              <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
+              <h2 class="section-title">JOIN OUR <span class="accent">VIP CLUB</span></h2>
+            </div>
+            <p class="vip-desc">Enjoy exclusive perks, higher rewards and personalized VIP support.</p>
+            <button class="btn-vip-join">JOIN NOW</button>
+          </div>
+          
+          <div class="vip-right">
+          </div>
         </div>
-        <div class="winners-grid">
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="assect/winner_rahul.png" alt="Rohan V.">
-              <span class="winner-rank rank-1">🥇</span>
+        
+        <!-- Bottom Row: 4 Perks Cards -->
+        <div class="vip-perks-row">
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-gift"></i>
             </div>
-            <div class="winner-info">
-              <span class="winner-name">Rohan V.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> 777 Slots</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹7,77,000</span>
-            </div>
+            <span class="perk-text">Exclusive<br>Bonuses</span>
           </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <span class="perk-text">Higher<br>Cashback</span>
+          </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <span class="perk-text">Faster<br>Withdrawals</span>
+          </div>
+          
+          <div class="vip-perk-card">
+            <div class="perk-icon-circle">
+              <i class="fas fa-headset"></i>
+            </div>
+            <span class="perk-text">VIP<br>Support</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="assect/winner_priya.png" alt="Rahul K.">
-              <span class="winner-rank rank-2">🥈</span>
+  <!-- ===== HOW TO GET STARTED ===== -->
+  <section class="section-howto" id="how-to-start">
+    <div class="section-container">
+      <div class="howto-card">
+        <div class="howto-header">
+          <span class="logo-icon red-accent"><i class="fas fa-dice"></i></span>
+          <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
+        </div>
+        <div class="steps-flow">
+          
+          <!-- Step 1 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-mobile-alt step-icon"></i>
             </div>
-            <div class="winner-info">
-              <span class="winner-name">Rahul K.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> RR9 Game</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹5,80,000</span>
-            </div>
-          </div>
-
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="assect/winner_arjun.png" alt="Yash K.">
-              <span class="winner-rank rank-3">🥉</span>
-            </div>
-            <div class="winner-info">
-              <span class="winner-name">Yash K.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> X89 Game</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹2,50,000</span>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">1</span>
+                <h3 class="step-name">REGISTER</h3>
+              </div>
+              <p class="step-text">Enter your phone number &amp; sign up</p>
             </div>
           </div>
-
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="assect/winner_sneha.png" alt="Kabir S.">
-              <span class="winner-rank rank-4">⭐</span>
+          
+          <!-- Connector 1 -->
+          <div class="step-connector">
+            <span class="line-dot"></span>
+            <i class="fas fa-chevron-right connector-arrow"></i>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-download step-icon"></i>
             </div>
-            <div class="winner-info">
-              <span class="winner-name">Kabir S.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹1,85,000</span>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">2</span>
+                <h3 class="step-name">DOWNLOAD</h3>
+              </div>
+              <p class="step-text">Download our app for the best experience</p>
             </div>
           </div>
-
-          <div class="winner-card">
-            <div class="winner-avatar">
-              <img src="assect/winner_vikram.png" alt="Aman P.">
-              <span class="winner-rank rank-5">⭐</span>
+          
+          <!-- Connector 2 -->
+          <div class="step-connector">
+            <span class="line-dot"></span>
+            <i class="fas fa-chevron-right connector-arrow"></i>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="step-item">
+            <div class="step-icon-wrap">
+              <i class="fas fa-gift step-icon"></i>
             </div>
-            <div class="winner-info">
-              <span class="winner-name">Aman P.</span>
-              <span class="winner-game"><i class="fas fa-gamepad"></i> Benz Game</span>
-            </div>
-            <div class="winner-amount">
-              <span class="won-label">WON</span>
-              <span class="won-value">₹95,000</span>
+            <div class="step-info">
+              <div class="step-heading-row">
+                <span class="step-badge">3</span>
+                <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
+              </div>
+              <p class="step-text">Add cash and enjoy exciting games</p>
             </div>
           </div>
+          
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== FAQ SECTION ===== -->
-    <section class="section-faq" id="faq">
-      <div class="section-container">
-        <h2 class="section-title centered">
-          <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
-        </h2>
+  <!-- ===== FAQ SECTION ===== -->
+  <section class="section-faq" id="faq">
+    <div class="section-container">
+      <h2 class="section-title centered">
+        <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
+      </h2>
 
-        <div class="faq-list">
-          <!-- FAQ 1: FN7, IV7, IX7, IN7 & Short Domains -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>How do I register, login, and download FN7, IV7, IX7, IN7, and 888 game APKs on Benz.Game?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>To register, login, download, or claim bonuses across FN7 (fn7 login, fn7 register, fn7 download, fn7 app download, fn7 apk download, fn7 game download, fn7 game login, fn7 game register, fn7 bonus, fn7 withdrawal, fn7 official website, fn7in.co.in, fn7.com), IV7 (iv7 login, iv7 register, iv7 download, iv7 app download, iv7 apk download, iv7 game download, iv7 game login, iv7 game register, iv7 bonus, iv7 withdrawal), IX7 (ix7 login, ix7 register, ix7 download, ix7 app download, ix7 apk download, ix7 game download, ix7 game login, ix7 game register, ix7 bonus, ix7 withdrawal), and IN7 (in7 slots, spin in7, in7 login, in7 register, in7 download, in7 app download, in7 apk download, in7 game download, in7 game login, in7 game register, in7 bonus, in7 withdrawal), Benz.Game is your official hub. We provide direct access to top gaming portals like 888 slots, 888 game, 888.game, 888win.club, 888in.com, in888 slot, slots88, mega88 slot, gold88 slot, 88slot.games, 99.game, 999.com, 999in.com, 333win.com, 333in.game, 555.game, 555in.com, 111.com, bb9.com, cc7.com, aa1.com, and zz7.com. Simply download our official APK to enjoy high-stakes slots, instant withdrawal features, and verified account security.</p>
-            </div>
-          </div>
+      <div class="faq-list">
 
-          <!-- FAQ 2: DD1, G5, XX6 & Short Casino Brands -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>What are DD1, DD.Game, G5.Bet, XX6, and RR9 official login and APK download steps?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>For seamless access to DD1 (dd1 login, dd1 register, dd1 download, dd1 app download, dd1 apk download, dd1 game download, dd1 game login, dd1 game register, dd1 bonus, dd1 withdrawal), DD.Game (dd.game, dd.game login, dd.game register, dd.game download, dd.game app download, dd.game apk download), G5 (g5 login, g5 register, g5 download, g5 app download, g5 apk download, g5.bet), XX6 (xx6.com, xx6 login, xx6 register, xx6 download), and RR9 (rr9 login, rr9 register, rr9 download, rr9.com), Benz.Game offers direct verified links. Users can complete account registration, sign in securely, download official Android APK packages, and receive instant welcome bonuses with rapid 24/7 withdrawal support directly to local bank accounts or UPI.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 3: Benz & Car Spin Games -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>How to play BMW vs Benz game, car roulette, and lucky wheel car spin games on Benz.Game?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Experience the thrill of luxury vehicle betting with BMW vs Benz game, car roulette, car spin game, and lucky wheel benz on Benz.Game (benz slot, benz spin, benz game, benz.game, benz game login, benz game register, benz game download). Place your stakes on iconic car brands in wheel of wealth and fortune car spin modes. Our platform guarantees real-time multiplier payouts, random outcome auditing, and instant automated rewards for every lucky car spin winner.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 4: Spin, Roulette & Lucky Wheel Games -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Which top win spin games, roulette wheel 3D, and lucky spin gold apps are available?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Spin and win huge cash rewards with top win spin game, top one slots and spin, top one, big win spin, super spin, mega spin wheel, and spin and win cash on Benz.Game. Test your fortune on coin master spin, roulette wheel, lucky roulette, spin to win fortune, dragon vs tiger spin, lucky spin wheel 3d, gold wheel spin game, spin gold app, spin winner app, slots spin app, share slots app, and good slots app. Spin the reels, unlock multiplier jackpots, and transfer your cash winnings instantly.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 5: Win, Bet & Club Platforms -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>How to login, register, and download Betwin365, Winbet88, Batwin, Win379, Spin768 &amp; Reddybook?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Access popular betting platforms including betwin365, winbet88, topwin88, bestwin.com, funbet77, spinclub88, fastwin.com, gowin88, batwin (batwin login, batwin register, batwin download), win379 (win379 login, win379 register, win379 download), spin768 (spin768 login, spin768 register, spin768 download), rvip.com, reddybook, and come through Benz.Game. Enjoy single-account sign-up, instant deposits via UPI or NetBanking, and verified payouts across all featured win-and-bet game portals.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 6: Color Prediction & Betting-Style Games -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Are Yoswin, Mantrimalls, 91Club, Daman Game, Tiranga Games, Bharat Club, BDG &amp; TC Lottery supported?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes! Benz.Game features top color prediction games and betting platforms such as yoswin, mantrimalls, 91club, daman game, tiranga games, bharat club, bdg game, big daddy game, tc lotter, bcn game, color game, and color prediction game. Additionally, play classic live favorites including andar bahar, mines, 7 up down, and ludo quick with fast round cycles, transparent multiplier results, and instant 24/7 automated cash withdrawals.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 7: Jili Slot & Fishing Games -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Which Jili jackpot slots and fishing games like Super Ace and Mega Fishing can I play?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Spin the hottest Jili slots and fishing titles with jili jackpot (jili jackpot login, jili jackpot register, jili jackpot download), super ace (super ace login, super ace register, super ace download), fortune gems, fortune gems 2, boxing king, golden empire, mega ace, money coming, ali baba, crazy seven, and charge buffalo. For arcade action, dive into jackpot fishing, mega fishing, bombing fishing, happy fishing, and dragon fortune. Win up to 1000x multipliers and enjoy instant cashouts.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 8: Yono & Rummy Apps -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>How to download Yono Games app, Yono Rummy, Yono Slots, Rummy 91, and top Rummy APKs?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Download official APKs for Yono Games app (yono games app download, yono games apk download, yono games login, yono games register, yono games bonus, yono games withdrawal), Yono Rummy (yono rummy app download, yono rummy apk download, yono rummy login, yono rummy register), Yono Slots (yono slots app download, yono slots apk download, yono slots login, yono slots register), getyonogames.com, and yonogames.com directly from Benz.Game. We also host top rummy apps including rummy 91 app (rummy 91 app download, rummy 91 apk download), top rummy apk, top rummy app download, ind rummy apk (ind rummy app download), jaiho rummy app (jaiho rummy app download), hi rummy app (hi rummy app download), boss rummy app (boss rummy app download), love rummy app (love rummy app download), gogo rummy app (gogo rummy app download), max rummy app (max rummy app download), rummy ultra app (rummy ultra app download), uu rummy app (uu rummy app download), and abc rummy app (abc rummy app download).</p>
-            </div>
-          </div>
-
-          <!-- FAQ 9: Yono List App & APK Downloads -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Where can I download MBM Bet APK, MQM Bet, Maha Games, Jaiho Win, Diwaslot, Neta VIP &amp; 567 Slots?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Get 100% verified Android APK downloads for MBM Bet APK (mbm bet app download), MQM Bet APK (mqm bet app download), Maha Games APK (maha games app download), Jaiho Win app (jaiho win app download), Saga Slots app (saga slots app download), Ind Club app (ind club app download), Diwaslot app (diwaslot app download), Ddok game app (ddok game app download), Neta VIP app (neta vip app download), Diwa top games (diwa top games download, diwa win games, diwa win games download, diwa games, diwa games download), Diwavip app (diwavip app download), T989 games (t989 games download), Jaiho 91 app (jaiho 91 app download), and 567 slots app (567 slots app download). Enjoy high sign-up bonuses, daily referral commission, and secure instant payouts.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 10: Extra App Icons & Short Domain Portals -->
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>How do I login, register, and download ATM91.com, 8.game, 66.game, 1F.game, Boom79, Game21.app, 360INR &amp; Khelo5?</span>
-              <span class="faq-icon"><i class="fas fa-plus"></i></span>
-            </button>
-            <div class="faq-answer">
-              <p>Access shortcut portals and extra gaming apps including ATM91.com (atm91 login, atm91 register, atm91 download), 8.game (8.game login, 8.game register, 8.game download), 66.game (66.game login, 66.game register, 66.game download), 1F.game (1f.game login, 1f.game register, 1f.game download), Boom79 (boom79 login, boom79 register, boom79 download), Game21.app (game21 app download, game21 login), 360INR (360inr login, 360inr register, 360inr download), and Khelo5 (khelo5 login, khelo5 register, khelo5 download) directly on Benz.Game. Sign up in seconds, claim your welcome deposit offer, and play verified real-money games on mobile or desktop.</p>
-            </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I register on Benz.Game?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Registering on Benz.Game is quick, easy, and completely free. Simply click the <strong>Register Now</strong> button on our homepage and fill in your basic details — your name, mobile number, and a secure password. Once you submit the form, you will receive an OTP on your registered mobile number to verify your identity. After successful verification, your account will be instantly activated and ready to use. You can immediately log in, explore all available games, and claim your exclusive <strong>Welcome Bonus of up to ₹17,777</strong> plus 50 Free Spins. Our registration process is designed to be simple, secure, and fast — taking less than 2 minutes from start to finish. We use industry-standard SSL encryption to protect your personal data at every step. Players from all supported regions can register without any complicated documentation. Once registered, you gain access to hundreds of exciting casino games, live dealer tables, sports betting, and exclusive VIP rewards. Download our mobile app after registration to enjoy gaming anytime, anywhere, with seamless performance on both Android and iOS devices.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the Welcome Bonus and how do I claim it?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Our <strong>Welcome Bonus</strong> is one of the most generous offers in the industry — new players receive a <strong>100% match bonus up to ₹17,777</strong> on their first deposit, plus an additional <strong>50 Free Spins</strong> on selected slot games. To claim this bonus, simply register your account, navigate to the Promotions page, and select the Welcome Bonus offer before making your first deposit. The bonus amount will be credited to your account instantly after your deposit is processed. The minimum deposit required to activate the Welcome Bonus is just ₹500. Wagering requirements apply — the bonus and winnings must be wagered 25 times before withdrawal is permitted. Free Spins are valid for 7 days from the date of credit and winnings from spins are credited as bonus funds. This offer is exclusively available to new players and can only be claimed once per household or IP address. Our promotions team regularly updates bonus offers, so make sure to check the Promotions page frequently for reload bonuses, cashback deals, and seasonal special offers designed to maximize your winning potential.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I deposit money into my account?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Depositing funds into your Benz.Game account is simple, secure, and supports multiple payment methods to suit every player's preference. After logging in, go to the <strong>Cashier</strong> section and select <strong>Deposit</strong>. You can choose from a wide range of payment options including <strong>UPI, PhonePe, Google Pay, Paytm, Net Banking, IMPS, NEFT, and popular e-wallets</strong>. The minimum deposit amount is just ₹100, making it accessible for all types of players. All transactions are processed instantly in most cases, so your funds appear in your account within seconds. Our payment gateway uses advanced 256-bit SSL encryption to ensure your financial details are completely protected at all times. We never store sensitive banking information on our servers. In case of any delay, our 24/7 customer support team is ready to assist you immediately. We also accept cryptocurrency deposits for players who prefer anonymous transactions. All deposits are free of charge — Benz.Game does not impose any additional fees on deposits. Once your deposit is confirmed, you can immediately start playing your favorite games and take advantage of available bonus offers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How fast are withdrawals processed?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>At Benz.Game, we pride ourselves on offering <strong>100% fast and reliable withdrawals</strong> — one of our most important commitments to players. Once you submit a withdrawal request, our team processes it within <strong>15 to 30 minutes</strong> during business hours. Most withdrawals are completed and credited to your bank account or e-wallet within <strong>1 to 3 hours</strong>, depending on your chosen payment method. UPI and e-wallet withdrawals are typically the fastest, often completing within minutes. Bank transfers may take slightly longer based on your bank's processing time. To request a withdrawal, go to the Cashier section, select Withdraw, enter the amount, and choose your preferred payment method. The minimum withdrawal amount is ₹200. Before your first withdrawal, you may be required to complete a one-time KYC (Know Your Customer) verification by submitting a valid government-issued ID. This is a standard security measure to protect your funds. There are no hidden charges or withdrawal fees applied by Benz.Game. VIP members enjoy priority withdrawal processing with even faster turnaround times. Contact our support team if your withdrawal is delayed beyond the expected timeframe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What games are available on Benz.Game?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Benz.Game offers an extensive and diverse library of <strong>over 500+ casino games</strong> to keep every type of player entertained. Our collection includes popular slot games like <strong>Money Coming, Fortune Gems, Crazy 777, Aviator, Chicken Road, Squidss Game, Funky Time,</strong> and <strong>Crazy Time</strong> — all featuring stunning graphics, immersive sound effects, and exciting bonus rounds. For card game enthusiasts, we offer multiple variants of Teen Patti, Andar Bahar, Rummy, and Poker. Our Live Casino section features real human dealers streaming in HD from professional studios, offering Blackjack, Roulette, Baccarat, and exclusive game shows. Crash games like Aviator and JetX deliver fast-paced, high-adrenaline gameplay with instant payouts. We also offer a comprehensive Sports Betting platform covering cricket, football, kabaddi, tennis, and more. All our games are sourced from leading providers ensuring fairness, certified RNG (Random Number Generator) compliance, and superior gaming experiences. New games are added to our platform weekly so there is always something fresh and exciting to explore. All games are available on both desktop and mobile devices.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is Benz.Game safe and secure to play on?</span>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Player safety and security are our absolute top priorities at Benz.Game. Our platform is fully licensed and operates under strict regulatory compliance to ensure fair and transparent gaming for all users. We implement <strong>256-bit SSL encryption</strong> across our entire platform — the same level of security used by major banks worldwide — to protect all data transmissions between your device and our servers. Your personal information, financial details, and gaming activity are never shared with unauthorized third parties. Our games use <strong>certified Random Number Generator (RNG)</strong> technology that is regularly audited by independent third-party testing agencies to guarantee fair outcomes on every spin, deal, and bet. We also employ advanced fraud detection systems and two-factor authentication options to protect your account from unauthorized access. Responsible gambling tools including deposit limits, session limits, self-exclusion options, and reality checks are available to all players. Our dedicated security team monitors the platform 24/7 to detect and prevent any suspicious activity. Benz.Game is trusted by over <strong>1 million players</strong> who rely on us for safe, fair, and entertaining gaming experiences every day.</p>
+          </div>
+        </div>
+
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- ===== PROMO TICKER ===== -->
   <div class="promo-strip">
     <div class="promo-ticker">
       <div class="ticker-track">
-        <span>VIP CASHBACK 15%</span>
-        <span>REFER &amp; EARN INR 500</span>
-        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
-        <span>NEW GAMES: RR9, 777 &amp; X89</span>
-        <span>DAILY BONUS UP TO INR 10,000</span>
-        <span>FREE SPINS EVERY FRIDAY</span>
-        <span>VIP CASHBACK 15%</span>
-        <span>REFER &amp; EARN INR 500</span>
-        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
-        <span>NEW GAMES: RR9, 777 &amp; X89</span>
-        <span>DAILY BONUS UP TO INR 10,000</span>
-        <span>FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <!-- duplicate for seamless loop -->
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: TEEN PATTI GOLD</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
       </div>
     </div>
   </div>
@@ -1057,6 +832,8 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-container">
+
+        <!-- Brand -->
         <div class="footer-col footer-brand">
           <div class="footer-logo">
             <span class="logo-icon"><i class="fas fa-dice"></i></span>
@@ -1065,10 +842,10 @@
           <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
             trusted by millions.</p>
           <div class="footer-socials">
-            <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
@@ -1083,6 +860,7 @@
           </ul>
         </div>
 
+        <!-- Support -->
         <div class="footer-col">
           <h4 class="footer-col-title">FAQ / HELP</h4>
           <ul class="footer-links">
@@ -1094,6 +872,7 @@
           </ul>
         </div>
 
+        <!-- Contact -->
         <div class="footer-col">
           <h4 class="footer-col-title">CONTACT US</h4>
           <ul class="footer-links footer-contact">
@@ -1103,6 +882,7 @@
           </ul>
         </div>
 
+        <!-- Download App -->
         <div class="footer-col footer-app">
           <h4 class="footer-col-title">DOWNLOAD APP</h4>
           <div class="qr-wrap">
@@ -1110,6 +890,7 @@
           </div>
           <button class="btn-download-app"><i class="fas fa-download"></i> DOWNLOAD APP</button>
         </div>
+
       </div>
     </div>
 
@@ -1132,7 +913,10 @@
         '.btn-download-app',
         '.game-play-btn',
         '.social-btn',
-        '.btn-vip-join'
+        '.btn-vip-join',
+        '.btn-login',
+        '.btn-register-nav',
+        '.game-card'
       ];
 
       document.addEventListener('click', function (event) {
@@ -1149,7 +933,7 @@
       }, true);
     })();
   </script>
-  <script src="games/script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
