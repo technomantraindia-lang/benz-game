@@ -1597,6 +1597,13 @@
   <script>
     function revealCategoryItems(scope = document) {
       const revealItems = scope.querySelectorAll('.category-block-head, .cat-game-card, .howto-card');
+      if (window.matchMedia('(max-width: 700px), (prefers-reduced-motion: reduce)').matches) {
+        revealItems.forEach(item => {
+          item.classList.add('is-visible');
+          item.style.transitionDelay = '0ms';
+        });
+        return;
+      }
 
       revealItems.forEach((item, index) => {
         item.classList.add(index % 2 === 0 ? 'reveal-from-left' : 'reveal-from-right');

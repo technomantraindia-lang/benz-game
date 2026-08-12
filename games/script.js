@@ -4,7 +4,8 @@
 (function () {
   const c = document.getElementById('particles');
   if (!c) return;
-  for (let i = 0; i < 30; i++) {
+  if (window.matchMedia('(max-width: 700px), (prefers-reduced-motion: reduce)').matches) return;
+  for (let i = 0; i < 14; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     const s = Math.random() * 3 + 1;
@@ -106,6 +107,14 @@
   );
   const cards = Array.from(document.querySelectorAll('.game-card, .rr9-game-card-wrapper'));
   const isMobile = window.matchMedia('(max-width: 560px)').matches;
+  if (isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.transition = 'none';
+    });
+    return;
+  }
   
   items.forEach((el, i) => {
     el.style.opacity = '0';
@@ -120,7 +129,7 @@
     } else {
       el.style.transform = isMobile ? 'translateY(14px)' : 'translateY(22px)';
     }
-    el.style.transition = `opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.08}s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.08}s`;
+    el.style.transition = `opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) ${Math.min(i, 8) * 0.04}s, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) ${Math.min(i, 8) * 0.04}s`;
   });
 
   const obs = new IntersectionObserver(entries => {

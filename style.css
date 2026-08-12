@@ -4515,3 +4515,127 @@ img, video { display: block; max-width: 100%; }
     font-size: 1.12rem !important;
   }
 }
+
+/* ===== MOBILE PERFORMANCE TUNE ===== */
+@media (max-width: 700px) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ticker-scroll,
+  .ticker-track {
+    animation-duration: 42s !important;
+    animation-iteration-count: infinite !important;
+  }
+
+  .navbar,
+  .dropdown-menu,
+  .mobile-menu {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .particles,
+  .particle,
+  .glow-orb,
+  .badge-glow,
+  .video-ring {
+    display: none !important;
+  }
+
+  .hero-video,
+  .cat-thumb-wrap img,
+  .rr9-game-card img,
+  .game-card img,
+  .hub-card,
+  .howto-card,
+  .footer,
+  .rr9-lobby,
+  .category-block {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .hero-video {
+    will-change: auto !important;
+  }
+
+  .hero-visual,
+  .howto-card,
+  .hub-card,
+  .cat-game-card,
+  .rr9-game-card,
+  .rr9-register-box,
+  .winner-card,
+  .promo-card,
+  .footer-brand,
+  .footer-app,
+  .step-item,
+  .free-spin-badge,
+  .reward-card,
+  .jackpot-winner {
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.42) !important;
+  }
+
+  .hero-video-title,
+  .section-title,
+  .rr9-heading,
+  .howto-header .section-title,
+  .timer-display {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72) !important;
+  }
+
+  .free-spin-badge,
+  .reward-card,
+  .jackpot-winner,
+  .btn-cta-primary,
+  .btn-download-app,
+  .btn-hub-play,
+  .cat-play-btn,
+  .rr9-promo-btn {
+    transition: transform 0.15s ease, opacity 0.15s ease !important;
+  }
+
+  .cat-game-card:hover,
+  .game-card:hover,
+  .hub-card:hover,
+  .rr9-game-card:hover,
+  .winner-card:hover,
+  .promo-card:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== FAQ NORMAL TEXT WEIGHT ===== */
+.faq-question,
+.faq-question span,
+.faq-answer,
+.faq-answer p,
+.faq-answer strong,
+.faq-answer b,
+.faq-answer em {
+  font-weight: 400 !important;
+}
+
+.faq-question {
+  font-family: 'Rajdhani', sans-serif !important;
+}
+
+.faq-answer p {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-style: normal !important;
+}
