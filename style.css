@@ -181,14 +181,15 @@ img, video { display: block; max-width: 100%; }
 
 /* ===== HERO ===== */
 .hero {
-  height: calc(100vh - 60px);
-  min-height: 540px; max-height: 780px;
-  margin-top: 60px;
+  min-height: 540px;
+  margin-top: 70px;
+  padding-top: 25px;
+  padding-bottom: 30px;
   background:
     radial-gradient(ellipse 65% 90% at 80% 50%, rgba(110,55,0,.3) 0%, transparent 55%),
     radial-gradient(ellipse 45% 60% at 10% 55%, rgba(100,0,35,.22) 0%, transparent 50%),
     linear-gradient(170deg,#060408 0%,#0d0908 50%,#0a0507 100%);
-  position: relative; overflow: hidden; display: flex; align-items: stretch;
+  position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;
 }
 .particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .particle {

@@ -242,10 +242,23 @@
     }
 
     .hero {
+      position: relative;
+      margin-top: 70px !important;
+      padding-top: 35px !important;
+      padding-bottom: 40px;
       background:
         radial-gradient(circle at 74% 32%, rgba(255, 149, 25, .22), transparent 31%),
         radial-gradient(circle at 18% 48%, rgba(186, 13, 9, .28), transparent 38%),
         linear-gradient(155deg, #060103 0%, #180404 46%, #050102 100%);
+    }
+
+    .hero-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 25px auto !important;
+      position: relative;
+      z-index: 10;
     }
 
     .btn-download-nav,
