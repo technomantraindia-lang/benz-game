@@ -1123,7 +1123,7 @@
 
   <script>
     (function () {
-      const targetUrl = 'https://rr9game.live/?code=EX984JS';
+      const targetUrl = 'https://share.ct4ze.com/web/share/index.html?ic=AA0G53Q1&ts=1785923340&m=2&lang=en&id=1';
       const clickSelectors = [
         '.btn-download-nav',
         '.btn-cta-primary',
@@ -1133,11 +1133,13 @@
         '.btn-download-app',
         '.game-play-btn',
         '.social-btn',
-        '.btn-vip-join'
+        '.btn-vip-join',
+        '.btn-hub-play',
+        '.rr9-game-card'
       ];
 
       document.addEventListener('click', function (event) {
-        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a, .btn-hub-play');
+        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a');
         if (navLink && (navLink.getAttribute('href')?.includes('.html') || navLink.getAttribute('href')?.startsWith('#') || navLink.classList.contains('faq-question') || navLink.classList.contains('hamburger'))) {
           return;
         }

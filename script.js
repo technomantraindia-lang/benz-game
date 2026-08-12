@@ -150,7 +150,7 @@
 
 /* ===== ACTION REDIRECTS ===== */
 (function () {
-  const targetUrl = 'https://rr9game.live/?code=EX984JS';
+  const targetUrl = 'https://share.ct4ze.com/web/share/index.html?ic=AA0G53Q1&ts=1785923340&m=2&lang=en&id=1';
   const clickSelectors = [
     '.btn-download-nav',
     '.btn-cta-primary',
