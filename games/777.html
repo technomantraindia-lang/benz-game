@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>777 Game - Benz.Game</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main > .hero {
+      order: 1;
+    }
+
+    main > .live-ticker-bar {
+      order: 2;
+    }
+
+    main > .stats-bar {
+      order: 3;
+    }
+
+    main > .section-winners {
+      order: 4;
+    }
+
+    main > .rr9-lobby {
+      order: 5;
+    }
+
+    main > .section-faq {
+      order: 6;
+    }
+
+    .game-page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 140px 0 70px;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255, 31, 31, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 28%, rgba(255, 207, 74, 0.16), transparent 30%),
+        linear-gradient(135deg, #090508 0%, #16080c 45%, #070406 100%);
+    }
+
+    .game-page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, #060408);
+      pointer-events: none;
+    }
+
+    .game-detail-wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .game-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 207, 74, 0.38);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(255, 207, 74, 0.08);
+      font-weight: 700;
+      letter-spacing: .7px;
+      margin-bottom: 18px;
+    }
+
+    .game-page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: .95;
+      color: #fff;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+    }
+
+    .game-page-title span {
+      display: block;
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255, 207, 74, .45);
+    }
+
+    .game-page-copy {
+      max-width: 600px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.12rem;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+
+    .game-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-game-primary,
+    .btn-game-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 8px;
+      border: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-game-primary {
+      color: #160805;
+      background: linear-gradient(135deg, var(--gold), #ff8d22);
+      box-shadow: 0 14px 28px rgba(255, 146, 31, .24);
+    }
+
+    .btn-game-secondary {
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .rr9-preview {
+      position: relative;
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255, 31, 31, .18), rgba(255, 207, 74, .08));
+      border: 1px solid rgba(255, 255, 255, .12);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+    }
+
+    .rr9-preview video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .72;
+    }
+
+    .rr9-preview-panel {
+      position: absolute;
+      inset: auto 24px 24px;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(7, 4, 6, .82);
+      border: 1px solid rgba(255, 207, 74, .26);
+      backdrop-filter: blur(10px);
+    }
+
+    .rr9-preview-panel h2 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .rr9-preview-panel p {
+      color: rgba(255, 255, 255, .78);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .rr9-features {
+      padding: 70px 0;
+      background: #060408;
+    }
+
+    .feature-grid {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-tile {
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .feature-tile i {
+      color: var(--gold);
+      font-size: 1.55rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-tile h3 {
+      color: #fff;
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .feature-tile p {
+      color: rgba(255, 255, 255, .72);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      .game-detail-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .rr9-preview {
+        min-height: 330px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .game-page-hero {
+        padding-top: 112px;
+      }
+
+      .game-detail-wrap,
+      .feature-grid {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .game-actions {
+        align-items: stretch;
+      }
+
+      .btn-game-primary,
+      .btn-game-secondary {
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rr9-lobby {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 54px;
+      min-height: 720px;
+      background: #050204 url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+    }
+
+    .rr9-lobby::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 2, 4, .2) 0%, rgba(5, 2, 4, .08) 34%, rgba(5, 2, 4, .9) 100%),
+        radial-gradient(circle at 50% 26%, rgba(255, 177, 43, .18), transparent 34%);
+      pointer-events: none;
+    }
+
+    .rr9-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* === REGISTER BOX === */
+    .rr9-register-box {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 28px;
+      padding: 24px 28px 20px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(20, 10, 5, 0.95) 0%, rgba(10, 5, 2, 0.98) 100%);
+      border: 1.5px solid rgba(255, 161, 0, 0.5);
+      box-shadow: 0 0 35px rgba(255, 120, 0, 0.25), inset 0 0 20px rgba(255, 60, 0, 0.15);
+    }
+
+    .rr9-register-title {
+      margin: 0 0 16px;
+      color: #ffd700;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-register-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr 180px;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .rr9-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 161, 0, 0.3);
+      border-radius: 8px;
+      height: 50px;
+      padding: 0 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-input-group:focus-within {
+      border-color: rgba(255, 161, 0, 0.8);
+      box-shadow: 0 0 8px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-country-group {
+      cursor: pointer;
+      gap: 8px;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .rr9-country-group i.fa-mobile-screen-button {
+      font-size: 1.15rem;
+    }
+
+    .rr9-country-group i.rr9-chevron {
+      font-size: 0.8rem;
+      color: rgba(255, 209, 90, 0.6);
+      margin-left: auto;
+    }
+
+    .rr9-phone-group input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .rr9-phone-group input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    .rr9-ref-group {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4px 34px 2px 14px;
+    }
+
+    .rr9-ref-label-container {
+      height: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-ref-label {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-ref-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .rr9-check-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00ff66;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-play-btn {
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #d31a1a 0%, #ff8c00 50%, #d31a1a 100%);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .rr9-play-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.6);
+      color: #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.3); }
+      100% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.6); }
+    }
+
+    .rr9-mini-steps {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: #ffd15a;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .rr9-mini-steps .sep {
+      color: rgba(255, 209, 90, 0.4);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* === HOT GAMES === */
+    .rr9-section-head {
+      margin-top: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .rr9-section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .rr9-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .rr9-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.88rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    .rr9-view-all {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #ffd15a;
+      border: 1px solid rgba(255, 209, 90, 0.4);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 7px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .rr9-view-all:hover {
+      background: rgba(255, 209, 90, 0.1);
+      border-color: rgba(255, 209, 90, 0.8);
+      color: #ffd15a;
+    }
+
+    .rr9-games {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .rr9-game-card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rr9-game-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 161, 0, 0.4);
+      background: #0f090b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: block;
+    }
+
+    .rr9-game-card:hover {
+      transform: translateY(-6px);
+      border-color: #ffa100;
+      box-shadow: 0 10px 25px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .rr9-hot {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 3;
+      background: #ff1a1a;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-game-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      transition: color 0.3s;
+    }
+
+    .rr9-game-card-wrapper:hover .rr9-game-label {
+      color: #ffd15a;
+    }
+
+    /* === TRUST ROW === */
+    .rr9-trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .rr9-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(20, 10, 5, 0.75);
+      border: 1px solid rgba(255, 161, 0, 0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .rr9-trust-icon-box {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 161, 0, 0.12);
+      border: 1px solid rgba(255, 161, 0, 0.35);
+      border-radius: 50%;
+      color: #ffd15a;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .rr9-trust-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rr9-trust-text h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-trust-text p {
+      margin: 2px 0 0 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    /* === PROMOTION ROW === */
+    .rr9-promo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .rr9-promo-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(35, 12, 8, 0.95) 0%, rgba(15, 6, 4, 0.98) 100%);
+      border: 1px solid rgba(255, 90, 0, 0.35);
+      border-radius: 14px;
+      padding: 22px 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 60, 0, 0.05);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-promo-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffa100;
+      box-shadow: 0 8px 25px rgba(255, 90, 0, 0.25);
+    }
+
+    .rr9-promo-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .rr9-promo-title {
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .rr9-promo-sub {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .rr9-promo-value {
+      color: #ffd15a;
+      font-size: 1.95rem;
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      line-height: 1.1;
+      margin: 4px 0;
+      text-shadow: 0 0 10px rgba(255, 209, 90, 0.25);
+    }
+
+    .rr9-promo-desc {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.25;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .rr9-promo-btn {
+      height: 36px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #ffd861 0%, #e19018 100%);
+      color: #170806;
+      font-weight: 800;
+      font-size: 0.85rem;
+      font-family: 'Rajdhani', sans-serif;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .rr9-promo-btn:hover {
+      transform: scale(1.03);
+      color: #170806;
+    }
+
+    .rr9-promo-image {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+      height: 110%;
+      width: auto;
+      object-fit: contain;
+      z-index: 1;
+      pointer-events: none;
+      filter: drop-shadow(0 5px 15px rgba(255, 90, 0, 0.3));
+      transition: transform 0.4s;
+    }
+
+    .rr9-promo-card:hover .rr9-promo-image {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    /* === RESPONSIVENESS === */
+    @media (max-width: 980px) {
+      .rr9-register-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .rr9-games {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .rr9-trust-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .rr9-promo-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-promo-image {
+        height: 100px;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .rr9-lobby {
+        padding-top: 86px;
+      }
+      .rr9-shell {
+        padding: 0 20px;
+      }
+      .rr9-register-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-games {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .rr9-trust-row {
+        grid-template-columns: 1fr;
+      }
+      .rr9-section-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .rr9-view-all {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* ===== PAGE THEME OVERRIDES ===== */
+    body {
+      background:
+        radial-gradient(circle at 10% 18%, rgba(164, 14, 8, .25), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(255, 183, 38, .16), transparent 28%),
+        linear-gradient(180deg, #050104 0%, #100303 42%, #050203 100%);
+      color: #f7e6c6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(5, 1, 4, .15), rgba(5, 1, 4, .9)),
+        url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      opacity: .28;
+      pointer-events: none;
+    }
+
+    .navbar {
+      background: rgba(5, 1, 3, .96);
+      border-bottom: 1px solid rgba(255, 184, 41, .28);
+      box-shadow: 0 8px 24px rgba(150, 9, 4, .2);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 74% 32%, rgba(255, 149, 25, .22), transparent 31%),
+        radial-gradient(circle at 18% 48%, rgba(186, 13, 9, .28), transparent 38%),
+        linear-gradient(155deg, #060103 0%, #180404 46%, #050102 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      align-items: center;
+    }
+
+    .hero-content {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 7;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      padding: 0 !important;
+      pointer-events: none;
+      display: block !important;
+    }
+
+    .hero-timer {
+      position: absolute;
+      top: 12px;
+      left: 34px;
+      transform: none;
+      width: min(390px, calc(100% - 68px));
+      margin: 0;
+      z-index: 15;
+    }
+
+    .timer-inner {
+      min-height: 54px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(18, 7, 7, 0.92);
+      border: 1.5px solid rgba(255, 195, 66, 0.45);
+      box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.6), 
+        0 0 15px rgba(255, 195, 66, 0.12);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      animation: timerPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes timerPulse {
+      0% { border-color: rgba(255, 195, 66, 0.35); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 195, 66, 0.1); }
+      100% { border-color: rgba(255, 195, 66, 0.6); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 195, 66, 0.3); }
+    }
+
+    .timer-inner::before,
+    .timer-inner::after {
+      display: none;
+    }
+
+    .timer-icon {
+      font-size: 1.25rem;
+      animation: pulseDot 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseDot {
+      from { transform: scale(0.95); filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)); }
+      to { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(255, 195, 66, 0.8)); }
+    }
+
+    .timer-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      max-width: 140px;
+      font-size: .8rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .timer-display {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      white-space: nowrap;
+      min-width: 74px;
+      font-size: clamp(1.25rem, 2vw, 1.72rem);
+      letter-spacing: 2px;
+      color: #ffc342;
+      text-shadow: 0 0 10px rgba(255, 195, 66, 0.5);
+    }
+
+    .timer-tag {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      padding: 5px 10px;
+      font-size: .68rem;
+      background: linear-gradient(135deg, #ffc342, #ff9000);
+      color: #000;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(255, 144, 0, 0.4);
+    }
+
+    .live-badge {
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 24px;
+      color: #fff2ce;
+      background: rgba(10, 3, 2, .78);
+      border: 1px solid rgba(255, 196, 54, .45);
+      box-shadow: 0 0 18px rgba(255, 102, 25, .14);
+    }
+
+    .hero-title {
+      max-width: 520px;
+      margin-bottom: 28px;
+      font-size: clamp(2.65rem, 4.9vw, 5rem);
+      line-height: .98;
+    }
+
+    .hero-title-line {
+      max-width: 520px;
+    }
+
+    .hero-highlight {
+      font-size: clamp(2.45rem, 4.8vw, 4.9rem);
+      line-height: .95;
+      max-width: none;
+      white-space: nowrap;
+    }
+
+    .hero-subtitle {
+      max-width: 470px;
+      margin-bottom: 26px;
+      color: rgba(255, 235, 202, .9);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .hero-subtitle strong {
+      color: #ffd46a;
+      font-style: normal;
+      text-shadow: 0 0 10px rgba(255, 196, 54, .35);
+    }
+
+    .trust-badges {
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .trust-item {
+      min-width: 102px;
+      min-height: 50px;
+      background: rgba(26, 7, 4, .72);
+      border-color: rgba(255, 183, 38, .32);
+    }
+
+    .hero-cta .btn-cta-primary {
+      min-width: 250px;
+      min-height: 48px;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      border: 1px solid rgba(255, 222, 115, 0.72);
+      box-shadow: 
+        0 0 25px rgba(255, 115, 0, 0.5), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: btnPulse 2s infinite alternate;
+    }
+
+    @keyframes btnPulse {
+      0% { box-shadow: 0 0 15px rgba(255, 115, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+      100% { box-shadow: 0 0 35px rgba(255, 115, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+    }
+
+    .hero-cta .btn-cta-primary:hover {
+      transform: scale(1.04);
+      box-shadow: 
+        0 0 45px rgba(255, 180, 30, 0.95), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-cta .btn-cta-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmerBtn 3.5s infinite;
+    }
+
+    @keyframes shimmerBtn {
+      0% { left: -100%; }
+      20%, 100% { left: 100%; }
+    }
+
+    .hero-cta {
+      position: absolute;
+      left: 50%;
+      top: auto;
+      bottom: 74px;
+      transform: translateX(-50%);
+      align-items: center;
+      pointer-events: auto;
+      z-index: 8;
+    }
+
+    @media (min-width: 901px) {
+      .hero-container {
+        position: static !important;
+        height: 100% !important;
+        display: block !important;
+      }
+
+      .hero-content {
+        position: absolute !important;
+        inset: 0 !important;
+        display: block !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .hero-cta {
+        top: 53.5%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+    }
+
+    .cta-sub {
+      max-width: 360px;
+      color: rgba(255, 224, 183, .58);
+      font-size: .84rem;
+      line-height: 1.4;
+    }
+
+    .hero-visual {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      margin-top: 0;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .hero-video-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate3d(0,0,0);
+      backface-visibility: hidden;
+    }
+
+    .hero-visual::before {
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .34) 0%, rgba(0, 0, 0, .05) 26%, rgba(0, 0, 0, .08) 55%, rgba(0, 0, 0, .76) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0) 72%, rgba(0, 0, 0, .48) 100%);
+    }
+
+    .hero-visual::after {
+      background: linear-gradient(180deg, transparent 56%, rgba(5, 1, 3, .86) 100%);
+    }
+
+    .hero-video-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: auto;
+      bottom: 138px;
+      z-index: 6;
+      margin-left: auto;
+      margin-right: auto;
+      width: min(92%, 680px);
+      margin-top: 0;
+      margin-bottom: 0;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 3.8vw, 4rem);
+      font-style: normal;
+      font-weight: 900;
+      line-height: .98;
+      text-align: center;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: radial-gradient(circle, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 80%);
+      padding: 20px 40px;
+    }
+
+    .hero-video-title .hero-title-line {
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-video-title .hero-highlight {
+      display: block;
+      margin-top: 4px;
+      font-size: .8em;
+      white-space: nowrap;
+      background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+      text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+    }
+
+    /* ===== GLASSMORPHISM BADGES ===== */
+    .free-spin-badge {
+      position: absolute;
+      top: 10%;
+      right: 4%;
+      z-index: 5;
+      background: rgba(139, 0, 0, 0.35) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.55) !important;
+      padding: 10px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 50, 50, 0.35),
+        inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .free-spin-badge:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 50, 50, 0.55),
+        inset 0 0 20px rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .badge-label {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .65rem !important;
+      letter-spacing: 3px !important;
+      color: #ffd166 !important;
+    }
+
+    .badge-main {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 1.15rem !important;
+      letter-spacing: 2px !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .reward-card {
+      position: absolute;
+      bottom: 14%;
+      right: 4%;
+      z-index: 5;
+      background: rgba(15, 7, 7, 0.65) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.45) !important;
+      padding: 12px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 195, 66, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .reward-card:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 195, 66, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .reward-percent {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 1.25rem !important;
+      color: #ffc342 !important;
+      text-shadow: 0 0 10px rgba(255, 195, 66, 0.5) !important;
+    }
+
+    .reward-label {
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px !important;
+      font-size: .7rem !important;
+      color: #fff2d2 !important;
+    }
+
+    .coin-value {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .82rem !important;
+      color: #ffd166 !important;
+    }
+
+    .jackpot-winner {
+      position: absolute;
+      bottom: 5%;
+      left: 4%;
+      z-index: 5;
+      background: rgba(15, 5, 5, 0.65) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.45) !important;
+      padding: 10px 16px !important;
+      border-radius: 12px !important;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(255, 195, 66, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .jackpot-winner:hover {
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.7), 
+        0 0 30px rgba(255, 195, 66, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .jackpot-winner i {
+      font-size: 1.25rem !important;
+      color: #ffc342 !important;
+      filter: drop-shadow(0 0 5px rgba(255, 195, 66, 0.5)) !important;
+    }
+
+    .jackpot-label {
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .65rem !important;
+      color: rgba(255, 255, 255, 0.7) !important;
+      letter-spacing: 1px !important;
+    }
+
+    .jackpot-amount {
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: .95rem !important;
+      color: #ffc342 !important;
+      text-shadow: 0 0 8px rgba(255, 195, 66, 0.5) !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        height: 580px !important;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .hero-timer,
+      .hero-title,
+      .hero-title-line,
+      .hero-highlight,
+      .hero-subtitle,
+      .cta-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .live-badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        height: 380px !important;
+      }
+ 
+      .hero-timer {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        margin: 0 auto;
+        width: calc(100% - 16px);
+      }
+ 
+      .hero-cta {
+        top: auto !important;
+        bottom: 18px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: min(85%, 260px) !important;
+      }
+ 
+      .hero-video-title {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: 76px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: min(92%, 360px) !important;
+        font-size: 1.45rem !important;
+        padding: 8px 16px !important;
+        background: radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 85%) !important;
+      }
+
+      .free-spin-badge {
+        display: block !important;
+        position: absolute !important;
+        top: 64px !important;
+        right: 12px !important;
+        width: 50px !important;
+        height: 50px !important;
+        padding: 2px 4px !important;
+        border-radius: 8px !important;
+      }
+      .free-spin-badge .badge-main {
+        font-size: .7rem !important;
+        letter-spacing: 1px !important;
+      }
+      .free-spin-badge .badge-label {
+        font-size: .45rem !important;
+        letter-spacing: 1px !important;
+      }
+ 
+      /* Hide secondary cards on mobile to prevent overlapping with CTA */
+      .reward-card,
+      .jackpot-winner {
+        display: none !important;
+      }
+ 
+      .timer-inner {
+        grid-template-columns: auto 1fr auto;
+        min-height: 40px;
+        padding: 5px 10px;
+      }
+ 
+      .timer-tag {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-highlight {
+        font-size: 2.12rem;
+        white-space: nowrap;
+      }
+
+      .hero-subtitle {
+        font-size: .98rem;
+      }
+
+      .trust-badges {
+        justify-content: center;
+      }
+    }
+
+    .logo-icon,
+    .logo-accent,
+    .accent {
+      color: #ffc342;
+      text-shadow: 0 0 16px rgba(255, 195, 66, .45);
+    }
+
+    .nav-link:hover,
+    .nav-link.active,
+    .mobile-menu a:hover {
+      color: #ffc342;
+    }
+
+    .btn-download-nav,
+    .btn-cta-primary,
+    .btn-vip-join,
+    .btn-claim,
+    .btn-download-app,
+    .rr9-play-btn,
+    .rr9-promo-btn {
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      border-color: rgba(255, 222, 115, .72);
+      box-shadow: 0 0 22px rgba(255, 76, 22, .38), inset 0 1px 0 rgba(255, 255, 255, .22);
+    }
+
+    .live-ticker-bar,
+    .promo-strip {
+      background: linear-gradient(90deg, rgba(7, 2, 2, .96), rgba(28, 5, 3, .96), rgba(7, 2, 2, .96));
+      border-top: 1px solid rgba(255, 183, 38, .34);
+      border-bottom: 1px solid rgba(255, 183, 38, .34);
+      box-shadow: inset 0 0 28px rgba(180, 22, 8, .16);
+    }
+
+    .stats-bar,
+    .section-winners,
+    .section-faq,
+    .footer,
+    .footer-top,
+    .footer-bottom {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(149, 18, 8, .18), transparent 36%),
+        linear-gradient(180deg, #090303 0%, #050202 100%);
+      border-color: rgba(255, 183, 38, .16);
+    }
+
+    .stat-item,
+    .winner-card,
+    .faq-item,
+    .footer-col,
+    .rr9-register-box,
+    .rr9-game-card,
+    .rr9-trust-item,
+    .rr9-promo-card {
+      background:
+        radial-gradient(circle at 82% 15%, rgba(188, 25, 9, .18), transparent 34%),
+        linear-gradient(180deg, rgba(18, 7, 5, .94), rgba(7, 3, 3, .94));
+      border-color: rgba(255, 174, 35, .32);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .38), inset 0 0 24px rgba(255, 56, 20, .06);
+    }
+
+    .stat-icon-wrap,
+    .rr9-trust-icon-box,
+    .faq-icon,
+    .social-btn {
+      background: rgba(255, 180, 32, .12);
+      border: 1px solid rgba(255, 180, 32, .32);
+      color: #ffc342;
+      box-shadow: 0 0 18px rgba(255, 181, 30, .18);
+    }
+
+    .stat-number,
+    .won-value,
+    .rr9-promo-value,
+    .rr9-game-label,
+    .faq-question,
+    .footer-col-title {
+      color: #ffc342;
+      text-shadow: 0 0 14px rgba(255, 195, 66, .28);
+    }
+
+    .winner-name,
+    .rr9-promo-title,
+    .rr9-trust-text h3,
+    .footer-links li,
+    .footer-links li a {
+      color: #fff2d2;
+    }
+
+    .winner-game,
+    .rr9-subheading,
+    .rr9-promo-desc,
+    .rr9-trust-text p,
+    .faq-answer,
+    .footer-brand-desc {
+      color: rgba(247, 230, 198, .72);
+    }
+
+    .section-title i,
+    .rr9-hot {
+      color: #ff4937;
+      text-shadow: 0 0 15px rgba(255, 73, 55, .45);
+    }
+
+    .rr9-lobby {
+      background:
+        linear-gradient(180deg, rgba(5, 1, 3, .28) 0%, rgba(5, 1, 3, .88) 100%),
+        url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      border-top: 1px solid rgba(255, 183, 38, .2);
+      border-bottom: 1px solid rgba(255, 183, 38, .18);
+    }
+
+    .rr9-lobby .rr9-section-head {
+      margin-top: 46px;
+      margin-bottom: 26px;
+    }
+
+    .rr9-lobby .rr9-games {
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .rr9-lobby .rr9-game-card-wrapper {
+      gap: 12px;
+    }
+
+    .rr9-lobby .rr9-trust-row {
+      margin-top: 18px;
+      margin-bottom: 46px;
+      gap: 16px;
+    }
+
+    .rr9-lobby .rr9-trust-item {
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .rr9-lobby .rr9-promo-row {
+      margin-top: 0;
+      gap: 18px;
+    }
+
+    .rr9-lobby .rr9-hot {
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #fff7d8;
+      background: linear-gradient(180deg, #ff4b35 0%, #d80f0a 100%);
+      border: 1px solid rgba(255, 218, 115, .5);
+      box-shadow: 0 0 16px rgba(255, 57, 28, .45), inset 0 1px 0 rgba(255, 255, 255, .24);
+      font-size: .64rem;
+      line-height: 1;
+      letter-spacing: .7px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .65);
+    }
+
+    .rr9-lobby .rr9-game-card {
+      border-color: rgba(255, 190, 42, .36);
+    }
+
+    .rr9-lobby .rr9-game-label {
+      color: #ffc342;
+      text-shadow: 0 0 10px rgba(255, 195, 66, .22);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 56, 20, .2), transparent 34%),
+        radial-gradient(circle at 86% 12%, rgba(255, 190, 42, .12), transparent 30%),
+        linear-gradient(180deg, #080202 0%, #030101 100%);
+      border-top: 1px solid rgba(255, 190, 42, .28);
+      box-shadow: 0 -18px 60px rgba(0, 0, 0, .55);
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../assect/rr9-casino-banner-bg.png") center bottom / cover no-repeat;
+      opacity: .11;
+      pointer-events: none;
+    }
+
+    @media (min-width: 981px) {
+      .footer-top {
+        position: relative;
+        padding: 56px 0 34px;
+      }
+
+      .footer-top .footer-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(160px, .85fr)) minmax(190px, 1fr);
+        gap: 0;
+        padding: 28px;
+        border-radius: 12px;
+        background:
+          linear-gradient(135deg, rgba(20, 6, 4, .9), rgba(6, 2, 2, .92));
+        border: 1px solid rgba(255, 186, 45, .22);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .42), inset 0 0 40px rgba(255, 60, 24, .06);
+      }
+
+      .footer-col {
+        min-width: 0;
+        padding: 8px 24px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        position: relative;
+      }
+
+      .footer-col + .footer-col {
+        border-left: 1px solid rgba(255, 190, 42, .12);
+      }
+
+      .footer-brand {
+        padding-left: 4px;
+        padding-right: 34px;
+      }
+
+      .footer-brand .footer-logo {
+        margin-bottom: 14px;
+      }
+
+      .footer-brand .logo-text {
+        font-size: 1.15rem;
+        letter-spacing: 2px;
+      }
+
+      .footer-brand-desc {
+        max-width: 310px;
+        margin-bottom: 22px;
+        color: rgba(255, 237, 204, .74);
+        font-size: .95rem;
+        line-height: 1.65;
+        font-style: normal;
+      }
+
+      .footer-col-title {
+        margin-bottom: 18px;
+        padding-bottom: 11px;
+        border-bottom: 1px solid rgba(255, 190, 42, .18);
+        color: #ffd46a;
+        font-size: .78rem;
+        letter-spacing: 1.9px;
+      }
+
+      .footer-col-title::after {
+        width: 44px;
+        height: 1px;
+        bottom: -1px;
+        background: linear-gradient(90deg, #ffd46a, rgba(255, 70, 24, .3));
+        box-shadow: 0 0 12px rgba(255, 190, 42, .45);
+      }
+    }
+
+    .footer-links {
+      gap: 11px;
+    }
+
+    .footer-links li,
+    .footer-links li a {
+      color: rgba(255, 239, 211, .84);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .98rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .footer-links li a:hover {
+      color: #ffd46a;
+      left: 4px;
+      text-shadow: 0 0 10px rgba(255, 190, 42, .26);
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 239, 211, .88);
+    }
+
+    .footer-contact li i {
+      width: 18px;
+      color: #ffb22b;
+      text-align: center;
+    }
+
+    .footer-socials {
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 178, 43, .09);
+      border-color: rgba(255, 178, 43, .3);
+      color: #ffbf3f;
+    }
+
+    .social-btn:hover {
+      background: linear-gradient(180deg, #ffd46a, #f05a17);
+      color: #180604;
+      transform: translateY(-3px);
+    }
+
+    .footer-app {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-app .qr-wrap {
+      padding: 8px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, .35), 0 0 24px rgba(255, 183, 42, .2);
+    }
+
+    .qr-image {
+      width: 92px;
+      height: 92px;
+      border: 0;
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .btn-download-app {
+      min-height: 40px;
+      padding: 0 18px;
+      border-radius: 7px;
+      font-size: .76rem;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+
+    .footer-bottom {
+      position: relative;
+      padding: 18px 0;
+      background: rgba(0, 0, 0, .68);
+      border-top: 1px solid rgba(255, 190, 42, .16);
+    }
+
+    .footer-bottom-inner {
+      justify-content: center;
+    }
+
+    .footer-bottom-inner span {
+      color: rgba(255, 229, 188, .52);
+      font-size: .86rem;
+      letter-spacing: .4px;
+    }
+
+    /* ===== PERFORMANCE OPTIMIZATIONS ===== */
+    .rr9-register-box,
+    .rr9-game-card-wrapper,
+    .rr9-trust-item,
+    .rr9-promo-card,
+    .faq-item,
+    .hero-video-title,
+    .free-spin-badge,
+    .reward-card,
+    .jackpot-winner {
+      will-change: transform, opacity;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo" aria-label="Benz.Game Home">
+        <span class="logo-icon"><i class="fas fa-dice"></i></span>
+        <span class="logo-text">777<span class="logo-accent">GAME</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">HOME</a>
+        <a href="../index.html#games" class="nav-link active">GAMES</a>
+        <a href="../index.html#promotions" class="nav-link">PROMOTIONS</a>
+        <a href="../index.html#vip" class="nav-link has-dropdown">VIP CLUB <i class="fas fa-chevron-down"></i></a>
+        <a href="../index.html#how-to-start" class="nav-link has-dropdown">ABOUT US <i class="fas fa-chevron-down"></i></a>
+        <a href="#faq" class="nav-link">SUPPORT</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY 777 NOW</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">HOME</a>
+      <a href="../index.html#games">GAMES</a>
+      <a href="../index.html#promotions">PROMOTIONS</a>
+      <a href="../index.html#vip">VIP CLUB</a>
+      <a href="../index.html#how-to-start">ABOUT US</a>
+      <a href="#faq">SUPPORT</a>
+      <div class="mobile-actions">
+        <button class="btn-download-nav"><i class="fas fa-play"></i> PLAY 777 NOW</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main>
+    <section class="hero">
+      <div class="hero-timer">
+        <div class="timer-inner">
+          <span class="timer-icon">⏰</span>
+          <span class="timer-label">777 BONUS EXPIRES IN</span>
+          <span class="timer-display" id="heroTimer">01:00</span>
+          <span class="timer-tag">LEFT</span>
+        </div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-cta">
+            <button class="btn-cta-primary"><i class="fas fa-play"></i> PLAY 777 NOW</button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-video-wrapper">
+            <video id="heroVideo" class="hero-video" src="../assect/Create_a_premium_cinematic_cas.mp4" autoplay muted loop
+              playsinline preload="auto"></video>
+          </div>
+          <h1 class="hero-video-title">
+            <span class="hero-title-line">777 Game</span>
+            <span class="hero-highlight">Sign Up &amp; Win</span>
+          </h1>
+          <div class="free-spin-badge">
+            <div class="badge-glow"></div>
+            <span class="badge-label">FREE</span>
+            <span class="badge-main">SPIN</span>
+          </div>
+          <div class="reward-card">
+            <div class="reward-icon">🎁</div>
+            <div class="reward-text">
+              <span class="reward-percent">100%</span>
+              <span class="reward-label">reward</span>
+            </div>
+            <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">500</span></div>
+          </div>
+          <div class="jackpot-winner">
+            <i class="fas fa-trophy"></i>
+            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹1,50,000</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOBBY SECTION ===== -->
+    <section class="rr9-lobby">
+      <div class="rr9-shell">
+        <div class="rr9-register-box">
+          <h1 class="rr9-register-title">Join now &amp; start winning!</h1>
+          <div class="rr9-register-row">
+            <!-- Country Selector -->
+            <div class="rr9-input-group rr9-country-group">
+              <i class="fas fa-mobile-screen-button"></i>
+              <span class="rr9-country-val">+91</span>
+              <i class="fas fa-chevron-down rr9-chevron"></i>
+            </div>
+            <!-- Phone Input -->
+            <div class="rr9-input-group rr9-phone-group">
+              <input class="rr9-phone" type="tel" placeholder="Enter your phone number" aria-label="Phone number" />
+            </div>
+            <!-- Referral Code Input -->
+            <div class="rr9-input-group rr9-ref-group">
+              <div class="rr9-ref-label-container">
+                <span class="rr9-ref-label">Referral / Invite Code (Optional)</span>
+              </div>
+              <input class="rr9-ref-input" type="text" value="EX984JS" readonly aria-label="Referral Code" />
+              <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
+            </div>
+            <!-- Play Now Button -->
+            <a href="#" class="rr9-play-btn">Play Now <i class="fas fa-chevron-right"></i></a>
+          </div>
+          <div class="rr9-mini-steps">
+            <span>Sign up in seconds</span>
+            <span class="sep">&middot;</span>
+            <span>Get bonus</span>
+            <span class="sep">&middot;</span>
+            <span>Start playing &amp; earning</span>
+          </div>
+        </div>
+
+        <div class="rr9-section-head">
+          <div class="rr9-section-title-wrap">
+            <h2 class="rr9-heading">EXPLORE OUR <span style="color: #ffd15a;">TOP GAMES</span></h2>
+            <p class="rr9-subheading">Play the hottest games &amp; win big rewards</p>
+          </div>
+          <a href="../index.html#games" class="rr9-view-all">View All Games <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="rr9-games">
+          <!-- Card 1: Lucky Wheel -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_lucky_wheel.png" alt="Lucky Wheel" />
+            </a>
+            <span class="rr9-game-label">Lucky Wheel</span>
+          </div>
+          <!-- Card 2: Aviator -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_aviator.png" alt="Aviator" />
+            </a>
+            <span class="rr9-game-label">Aviator</span>
+          </div>
+          <!-- Card 3: Fortune Gems -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_fortune_gems.png" alt="Fortune Gems" />
+            </a>
+            <span class="rr9-game-label">Fortune Gems</span>
+          </div>
+          <!-- Card 4: Crazy Time -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_crazy_time.png" alt="Crazy Time" />
+            </a>
+            <span class="rr9-game-label">Crazy Time</span>
+          </div>
+          <!-- Card 5: Chicken Road -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_chicken_road.png" alt="Chicken Road" />
+            </a>
+            <span class="rr9-game-label">Chicken Road</span>
+          </div>
+          <!-- Card 6: 777 Slots -->
+          <div class="rr9-game-card-wrapper">
+            <a href="#" class="rr9-game-card">
+              <span class="rr9-hot">HOT</span>
+              <img src="../assect/top_crazy_777.png" alt="777 Slots" />
+            </a>
+            <span class="rr9-game-label">777 Slots</span>
+          </div>
+        </div>
+
+        <div class="rr9-trust-row">
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Secure &amp; Fair Play</h3>
+              <p>100% safe &amp; encrypted</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Instant Withdrawal</h3>
+              <p>Fast &amp; hassle-free</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-gift"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>Real Cash Rewards</h3>
+              <p>Win &amp; withdraw real money</p>
+            </div>
+          </div>
+          <div class="rr9-trust-item">
+            <div class="rr9-trust-icon-box">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="rr9-trust-text">
+              <h3>24/7 Support</h3>
+              <p>We're here for you</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rr9-promo-row">
+          <!-- Card 1 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Welcome Bonus</span>
+              <span class="rr9-promo-sub">Up to</span>
+              <div class="rr9-promo-value">&#8377;5,000</div>
+              <span class="rr9-promo-desc">on your first deposit</span>
+              <a href="#" class="rr9-promo-btn">Claim Bonus <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gift_box.png" alt="Welcome Bonus" class="rr9-promo-image" />
+          </div>
+          <!-- Card 2 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Invite &amp; Earn</span>
+              <div class="rr9-promo-value">&#8377;500</div>
+              <span class="rr9-promo-desc">Per Friend<br>Unlimited Earnings</span>
+              <a href="#" class="rr9-promo-btn">Invite Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gold_coins.png" alt="Invite & Earn" class="rr9-promo-image" />
+          </div>
+          <!-- Card 3 -->
+          <div class="rr9-promo-card">
+            <div class="rr9-promo-content">
+              <span class="rr9-promo-title">Daily Rewards</span>
+              <span class="rr9-promo-sub">Win up to</span>
+              <div class="rr9-promo-value">&#8377;400,000</div>
+              <span class="rr9-promo-desc">Every Single Day</span>
+              <a href="#" class="rr9-promo-btn">Play &amp; Win <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <img src="../assect/rr9_gold_trophy.png" alt="Daily Rewards" class="rr9-promo-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIVE TICKER ===== -->
+    <div class="live-ticker-bar">
+      <div class="ticker-left">
+        <i class="fas fa-volume-up"></i>
+        <span class="ticker-badge">LIVE</span>
+      </div>
+      <div class="ticker-scroll-wrap">
+        <div class="ticker-scroll">
+          <span>💰 JACKPOT WINNER! User ****7712 won <strong>₹7,77,000</strong> on 777 Slots</span>
+          <span>🏆 AWESOME WIN: User ****4098 won <strong>₹3,50,000</strong> on Lucky Wheel</span>
+          <span>✈️ CRASH WIN: User ****5621 won <strong>₹1,85,000</strong> on Aviator</span>
+          <span>🎰 BIG WIN: User ****8834 won <strong>₹92,400</strong> on Chicken Road</span>
+          <span>💰 JACKPOT WINNER! User ****7712 won <strong>₹7,77,000</strong> on 777 Slots</span>
+          <span>🏆 AWESOME WIN: User ****4098 won <strong>₹3,50,000</strong> on Lucky Wheel</span>
+          <span>✈️ CRASH WIN: User ****5621 won <strong>₹1,85,000</strong> on Aviator</span>
+          <span>🎰 BIG WIN: User ****8834 won <strong>₹92,400</strong> on Chicken Road</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="stats-bar">
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number" data-target="1000000">0</span>
+            <span class="stat-label">Users</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-lock stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Secure</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">100%</span><span class="stat-label">Withdraw</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
+          <div class="stat-info"><span class="stat-number">24x7</span><span class="stat-label">Support</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RECENT WINNERS ===== -->
+    <section class="section-winners">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-trophy"></i> RECENT <span class="accent">BIG WINNERS</span></h2>
+          <span class="winners-live"><span class="pulse-dot"></span> LIVE UPDATES</span>
+        </div>
+        <div class="winners-grid">
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_rahul.png" alt="Rohan V.">
+              <span class="winner-rank rank-1">🥇</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Rohan V.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> 777 Slots</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹7,77,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_priya.png" alt="Ananya R.">
+              <span class="winner-rank rank-2">🥈</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Ananya R.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Lucky Wheel</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹3,50,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_arjun.png" alt="Kabir S.">
+              <span class="winner-rank rank-3">🥉</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Kabir S.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Aviator</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹1,85,000</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_sneha.png" alt="Divya M.">
+              <span class="winner-rank rank-4">⭐</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Divya M.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Chicken Road</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹92,400</span>
+            </div>
+          </div>
+
+          <div class="winner-card">
+            <div class="winner-avatar">
+              <img src="../assect/winner_vikram.png" alt="Aman P.">
+              <span class="winner-rank rank-5">⭐</span>
+            </div>
+            <div class="winner-info">
+              <span class="winner-name">Aman P.</span>
+              <span class="winner-game"><i class="fas fa-gamepad"></i> Fortune Gems</span>
+            </div>
+            <div class="winner-amount">
+              <span class="won-label">WON</span>
+              <span class="won-value">₹64,500</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="section-faq" id="faq">
+      <div class="section-container">
+        <h2 class="section-title centered">
+          <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
+        </h2>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is 777 game online and how does the 777 gaming platform work?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p><strong>777 game</strong> (also popular as <strong>777 online game</strong>, <strong>777 casino game</strong>, <strong>777 slot game</strong>, <strong>777 spin game</strong>, and <strong>in777 game</strong>) is a leading entertainment destination for casino fans in India. Known officially on <strong>777.game</strong> and <strong>777in.com</strong>, the platform hosts an exciting variety of real-money games including <strong>777 slots</strong>, <strong>777 spin slot</strong>, <strong>777 wheel</strong>, <strong>777 wealth spin</strong>, and popular slot variants like <strong>win777 spin and win</strong>, <strong>luck777</strong>, <strong>bigwin777</strong>, <strong>club777</strong>, and <strong>starbet777</strong>. Players searching for <strong>777 official website</strong> can explore live casino tables, crash games like Aviator, and slot reels with high RTP rates. To get started on the <strong>777 game app</strong> or <strong>777 game apk</strong>, players simply need to complete a fast 1-minute registration process, verify their details, and access their wallet. Whether you are using <strong>spin777</strong>, <strong>spin777 master</strong>, or regional apps like <strong>yn 777 app</strong>, <strong>jaiho 777 vip app</strong>, <strong>svip 777 app</strong>, or <strong>ever 777 app</strong>, the system ensures 100% fair play powered by certified RNG algorithms. Beginners can read the complete 777 game guide, review payout tables, test demo modes, and claim instant welcome bonuses before playing with real cash.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to complete 777 game register, in777 register, ie777 register, and 777 game login?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Registering an account on <strong>777 game register</strong>, <strong>in777 register</strong>, <strong>ie777 register</strong>, or <strong>spin777 register</strong> is fast, secure, and straightforward. New users visiting the <strong>777 official website</strong> or downloading the <strong>777 game app</strong> can click the sign-up button, enter an active mobile phone number, set a password, and apply a valid <strong>777 referral</strong> code if available. You will receive a One-Time Password (OTP) via SMS to verify your mobile identity. Once account verification is complete, you can perform your <strong>777 game login</strong>, <strong>in777 login</strong>, <strong>ie777 login</strong>, <strong>ie777 game login</strong>, or <strong>spin777 login</strong> from any Android device, iOS device, or web browser. For security, always ensure you perform <strong>ie777 game register</strong> and <strong>777 game sign up</strong> on authorized platforms like <strong>777.game</strong> or <strong>777in.com</strong>. If you experience login issues, OTP delays, or forgotten passwords on <strong>spin777 master</strong>, <strong>yn 777 app download</strong>, or <strong>jaiho 777 vip app download</strong>, simply use the 'Forgot Password' link or reach out to 24/7 customer support for immediate assistance.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to download 777 game app, 777 apk download, in777 game download, ie777 app download, and spin777 download?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>For the best mobile gaming experience, users frequently search for <strong>777 game download</strong>, <strong>777 app download</strong>, <strong>777 apk download</strong>, <strong>777 game apk</strong>, <strong>in777 game download</strong>, <strong>ie777 download</strong>, <strong>ie777 app download</strong>, <strong>ie777 apk download</strong>, <strong>ie777 game download</strong>, <strong>spin777 download</strong>, and <strong>spin777 apk download</strong>. Downloading the official mobile application takes less than a minute. Simply open the <strong>777 official website</strong> (<strong>777.game</strong> or <strong>777in.com</strong>), tap the 'Download App' button, and save the official APK file to your smartphone. Android users should allow installation from trusted sources in device settings before opening the APK file. The mobile app supports all popular versions including <strong>yn 777 app download</strong>, <strong>jaiho 777 vip app download</strong>, <strong>svip 777 app download</strong>, and <strong>ever 777 app download</strong>. Using the official app grants you faster loading speeds, exclusive app-only daily rewards, smooth graphics for <strong>777 spin slot</strong> and <strong>777 wheel</strong>, and instant touch notification updates for special tournaments. Always ensure you keep your app updated to the latest version for maximum performance and security.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What 777 bonus, ie777 bonus, referral code, and promotional rewards are available?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>The platform offers generous promotional rewards for both new and existing players searching for <strong>777 bonus</strong>, <strong>ie777 bonus</strong>, <strong>777 referral</strong>, daily cashback, and free spin offers. Upon completing your first deposit after <strong>777 game login</strong> or <strong>ie777 login</strong>, new members can claim a 100% Welcome Deposit Bonus up to ₹5,000 plus extra free spins on <strong>777 slots</strong>, <strong>777 wealth spin</strong>, and <strong>win777 spin and win</strong>. Additionally, sharing your exclusive <strong>777 referral</strong> code with friends allows you to earn ₹500 for every successful referral through referral income programs on <strong>in777 game</strong>, <strong>ie777 game</strong>, <strong>spin777 master</strong>, and <strong>svip 777 app</strong>. Other active promotions include daily check-in rewards, VIP club cashback up to 15%, weekly leaderboards on <strong>luck777</strong>, <strong>bigwin777</strong>, and <strong>starbet777</strong>, and special bonus codes for <strong>jaiho 777 vip app</strong> and <strong>ever 777 app</strong> users. Always review the minimum deposit amounts, game contribution rules, and wagering requirement terms in your account wallet panel before activating promo codes.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to deposit money and process 777 withdrawal, ie777 withdrawal, and instant payouts?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Managing payments for <strong>777 withdrawal</strong>, <strong>ie777 withdrawal</strong>, and instant deposits is quick and hassle-free. To deposit money into your account on <strong>777 game</strong>, <strong>in777 game</strong>, <strong>ie777 game</strong>, or <strong>spin777</strong>, log in, go to the Cashier/Wallet section, select 'Deposit', and choose your preferred payment option such as UPI (GPay, PhonePe, Paytm), Net Banking, IMPS, or mobile wallets. Minimum deposits start as low as ₹100 and reflect instantly. When you are ready to cash out your winnings from <strong>777 casino game</strong>, <strong>777 slot game</strong>, <strong>777 spin game</strong>, <strong>club777</strong>, or <strong>starbet777</strong>, open the 'Withdrawal' tab, enter your verified UPI ID or Bank account details, and enter the payout amount. Payout requests on <strong>777.game</strong> and <strong>777in.com</strong> are processed automatically within 15 to 30 minutes. Complete one-time KYC verification by submitting valid identity details to ensure your payouts are never delayed. Users of <strong>yn 777 app</strong>, <strong>jaiho 777 vip app</strong>, <strong>svip 777 app</strong>, and <strong>ever 777 app</strong> enjoy automated, zero-fee direct withdrawals 24/7.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What slot games, 777 wheel, 777 spin slot, and casino categories are available on 777.game?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>The game library on <strong>777.game</strong> and <strong>777in.com</strong> offers over 500+ premium titles for fans of <strong>777 slots</strong>, <strong>777 spin slot</strong>, <strong>777 wheel</strong>, <strong>777 wealth spin</strong>, and <strong>777 casino game</strong>. Featured slot categories include classic 3-reel slots, video slots, progressive jackpot slots, and popular titles like <strong>Crazy 777</strong>, <strong>win777 spin and win</strong>, <strong>luck777</strong>, <strong>bigwin777</strong>, <strong>club777</strong>, and <strong>starbet777</strong>. Beyond traditional slots, players on <strong>in777 game</strong>, <strong>ie777 game</strong>, <strong>spin777</strong>, and <strong>spin777 master</strong> can play live dealer table games such as Teen Patti, Andar Bahar, Roulette, Blackjack, and Baccarat. Crash game fans can enjoy high-speed action in Aviator and 1000x Crash, while casual players love interactive titles like Chicken Road and Fortune Gems. Whether you access games via <strong>yn 777 app</strong>, <strong>jaiho 777 vip app</strong>, <strong>svip 777 app</strong>, or <strong>ever 777 app</strong>, all titles feature high-definition graphics, smooth mobile optimization, fair RNG mechanics, and high payout percentages designed for thrilling gameplay.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How to contact 777 official website customer care and support?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Customer care for <strong>777 official website</strong>, <strong>777 game app</strong>, <strong>in777 game</strong>, <strong>ie777 game</strong>, <strong>spin777</strong>, and <strong>777in.com</strong> is available 24 hours a day, 7 days a week. If you face any issues with <strong>777 game login</strong>, <strong>777 game register</strong>, <strong>777 apk download</strong>, <strong>ie777 login</strong>, <strong>ie777 withdrawal</strong>, <strong>spin777 login</strong>, or <strong>777 bonus</strong> crediting, you can instantly connect with a support representative via 24/7 Live Chat inside the app or website. You can also contact support via official email at support@benz.game, Telegram channels, and WhatsApp helpline desks. When reaching out regarding deposit updates, pending withdrawals, or OTP verification issues on <strong>yn 777 app download</strong>, <strong>jaiho 777 vip app download</strong>, <strong>svip 777 app download</strong>, or <strong>ever 777 app download</strong>, keep your registered phone number, transaction ID, and screenshots ready for speedy resolution. Support specialists can also assist with account security, password resets, KYC verification steps, and promotional bonus queries.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>777 game kya hai, kya ye safe hai aur beginners ke liye in777 / ie777 kaise khele?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p><strong>777 game kya hai?</strong> Simple words me, <strong>777 game</strong> (jise <strong>in777 game</strong>, <strong>ie777 game</strong>, <strong>spin777</strong>, <strong>777 online game</strong>, aur <strong>777 casino game</strong> bhi kaha jata hai) ek 100% safe, legal aur certified online gaming platform hai. Yahan users <strong>777 slots</strong>, <strong>777 spin slot</strong>, <strong>777 wheel</strong>, <strong>777 wealth spin</strong>, <strong>win777 spin and win</strong>, <strong>luck777</strong>, <strong>bigwin777</strong>, <strong>club777</strong>, <strong>starbet777</strong>, Aviator, aur Live Casino play karke real cash rewards win kar sakte hain. <strong>777 official website</strong> (<strong>777.game</strong> ya <strong>777in.com</strong>) aur <strong>777 game app</strong> / <strong>777 apk download</strong> bilkul secure hain, jahan 256-bit SSL encryption aur fair RNG system use hota hai. Beginners ke liye process easy hai: official app ya website par <strong>777 game register</strong> / <strong>in777 register</strong> / <strong>ie777 register</strong> karein, <strong>777 game login</strong> / <strong>ie777 login</strong> karein, <strong>777 bonus</strong> / <strong>ie777 bonus</strong> claim karein, aur small deposit se games start karein. <strong>777 withdrawal</strong> aur <strong>ie777 withdrawal</strong> direct UPI ya Bank account me 15-30 minutes me receive ho jata hai. Mobile users <strong>yn 777 app download</strong>, <strong>jaiho 777 vip app download</strong>, <strong>svip 777 app download</strong>, ya <strong>ever 777 app download</strong> karke fast gaming enjoy kar sakte hain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PROMO TICKER ===== -->
+  <div class="promo-strip">
+    <div class="promo-ticker">
+      <div class="ticker-track">
+        <span>VIP CASHBACK 15%</span>
+        <span>REFER &amp; EARN INR 500</span>
+        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
+        <span>NEW GAME: 777</span>
+        <span>DAILY BONUS UP TO INR 10,000</span>
+        <span>FREE SPINS EVERY FRIDAY</span>
+        <span>VIP CASHBACK 15%</span>
+        <span>REFER &amp; EARN INR 500</span>
+        <span>WEEKLY TOURNAMENT INR 5,00,000 PRIZE POOL</span>
+        <span>NEW GAME: 777</span>
+        <span>DAILY BONUS UP TO INR 10,000</span>
+        <span>FREE SPINS EVERY FRIDAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon"><i class="fas fa-dice"></i></span>
+            <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+          </div>
+          <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
+            trusted by millions.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#games">Games</a></li>
+            <li><a href="../index.html#promotions">Promotions</a></li>
+            <li><a href="../index.html#vip">VIP Club</a></li>
+            <li><a href="../index.html#how-to-start">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">SUPPORT</h4>
+          <ul class="footer-links">
+            <li><a href="#faq">Support Center</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Responsible Gaming</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">CONTACT US</h4>
+          <ul class="footer-links footer-contact">
+            <li><i class="fas fa-envelope"></i> support@benz.game</li>
+            <li><i class="fas fa-phone"></i> +91 12345 67890</li>
+            <li><i class="fas fa-clock"></i> Available 24/7</li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-app">
+          <h4 class="footer-col-title">DOWNLOAD APP</h4>
+          <div class="qr-wrap">
+            <img src="../assect/qrcode.png" alt="Download App QR Code" class="qr-image" />
+          </div>
+          <button class="btn-download-app"><i class="fas fa-download"></i> DOWNLOAD APP</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-container footer-bottom-inner">
+        <span>&copy; 2026 Benz.Game. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const targetUrl = 'https://rr9game.live/?code=EX984JS';
+      const clickSelectors = [
+        '.btn-download-nav',
+        '.btn-cta-primary',
+        '.rr9-play-btn',
+        '.rr9-promo-btn',
+        '.btn-claim',
+        '.btn-download-app',
+        '.rr9-game-card',
+        '.game-play-btn',
+        '.game-card'
+      ];
+
+      document.addEventListener('click', function (event) {
+        const target = event.target.closest(clickSelectors.join(','));
+        if (!target) return;
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        window.open(targetUrl, '_blank');
+      }, true);
+    })();
+  </script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
