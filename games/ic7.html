@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IC7 Game - Benz.Game</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main>.hero {
+      order: 1;
+    }
+
+    main>.live-ticker-bar {
+      order: 2;
+    }
+
+    main>.stats-bar {
+      order: 3;
+    }
+
+    main>.section-winners {
+      order: 4;
+    }
+
+    main>.rr9-lobby {
+      order: 5;
+    }
+
+    main>.section-howto {
+      order: 6;
+    }
+
+    main>.section-faq {
+      order: 7;
+    }
+
+    .game-page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 140px 0 70px;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255, 31, 31, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 28%, rgba(255, 207, 74, 0.16), transparent 30%),
+        linear-gradient(135deg, #090508 0%, #16080c 45%, #070406 100%);
+    }
+
+    .game-page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, #060408);
+      pointer-events: none;
+    }
+
+    .game-detail-wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .game-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 207, 74, 0.38);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(255, 207, 74, 0.08);
+      font-weight: 700;
+      letter-spacing: .7px;
+      margin-bottom: 18px;
+    }
+
+    .game-page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: .95;
+      color: #fff;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+    }
+
+    .game-page-title span {
+      display: block;
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255, 207, 74, .45);
+    }
+
+    .game-page-copy {
+      max-width: 600px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.12rem;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+
+    .game-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-game-primary,
+    .btn-game-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 8px;
+      border: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-game-primary {
+      color: #160805;
+      background: linear-gradient(135deg, var(--gold), #ff8d22);
+      box-shadow: 0 14px 28px rgba(255, 146, 31, .24);
+    }
+
+    .btn-game-secondary {
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .rr9-preview {
+      position: relative;
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255, 31, 31, .18), rgba(255, 207, 74, .08));
+      border: 1px solid rgba(255, 255, 255, .12);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+    }
+
+    .rr9-preview video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .72;
+    }
+
+    .rr9-preview-panel {
+      position: absolute;
+      inset: auto 24px 24px;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(7, 4, 6, .82);
+      border: 1px solid rgba(255, 207, 74, .26);
+      backdrop-filter: blur(10px);
+    }
+
+    .rr9-preview-panel h2 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .rr9-preview-panel p {
+      color: rgba(255, 255, 255, .78);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .rr9-features {
+      padding: 70px 0;
+      background: #060408;
+    }
+
+    .feature-grid {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-tile {
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .feature-tile i {
+      color: var(--gold);
+      font-size: 1.55rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-tile h3 {
+      color: #fff;
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .feature-tile p {
+      color: rgba(255, 255, 255, .72);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      .game-detail-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .rr9-preview {
+        min-height: 330px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .game-page-hero {
+        padding-top: 112px;
+      }
+
+      .game-detail-wrap,
+      .feature-grid {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .game-actions {
+        align-items: stretch;
+      }
+
+      .btn-game-primary,
+      .btn-game-secondary {
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rr9-lobby {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 54px;
+      min-height: 720px;
+      background: #050204 url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+    }
+
+    .rr9-lobby::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 2, 4, .2) 0%, rgba(5, 2, 4, .08) 34%, rgba(5, 2, 4, .9) 100%),
+        radial-gradient(circle at 50% 26%, rgba(255, 177, 43, .18), transparent 34%);
+      pointer-events: none;
+    }
+
+    .rr9-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* === REGISTER BOX === */
+    .rr9-register-box {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 28px;
+      padding: 24px 28px 20px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(20, 10, 5, 0.95) 0%, rgba(10, 5, 2, 0.98) 100%);
+      border: 1.5px solid rgba(255, 161, 0, 0.5);
+      box-shadow: 0 0 35px rgba(255, 120, 0, 0.25), inset 0 0 20px rgba(255, 60, 0, 0.15);
+    }
+
+    .rr9-register-title {
+      margin: 0 0 16px;
+      color: #ffd700;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-register-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr 180px;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .rr9-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 161, 0, 0.3);
+      border-radius: 8px;
+      height: 50px;
+      padding: 0 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-input-group:focus-within {
+      border-color: rgba(255, 161, 0, 0.8);
+      box-shadow: 0 0 8px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-country-group {
+      cursor: pointer;
+      gap: 8px;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .rr9-country-group i.fa-mobile-screen-button {
+      font-size: 1.15rem;
+    }
+
+    .rr9-country-group i.rr9-chevron {
+      font-size: 0.8rem;
+      color: rgba(255, 209, 90, 0.6);
+      margin-left: auto;
+    }
+
+    .rr9-phone-group input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .rr9-phone-group input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    .rr9-ref-group {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4px 34px 2px 14px;
+    }
+
+    .rr9-ref-label-container {
+      height: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-ref-label {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-ref-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffd15a;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .rr9-check-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00ff66;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .rr9-play-btn {
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #d31a1a 0%, #ff8c00 50%, #d31a1a 100%);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .rr9-play-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.6);
+      color: #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+      }
+
+      100% {
+        box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+      }
+    }
+
+    .rr9-mini-steps {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: #ffd15a;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .rr9-mini-steps .sep {
+      color: rgba(255, 209, 90, 0.4);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* === HOT GAMES === */
+    .rr9-section-head {
+      margin-top: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .rr9-section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .rr9-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .rr9-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.88rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    .rr9-view-all {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #ffd15a;
+      border: 1px solid rgba(255, 209, 90, 0.4);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 7px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .rr9-view-all:hover {
+      background: rgba(255, 209, 90, 0.1);
+      border-color: rgba(255, 209, 90, 0.8);
+      color: #ffd15a;
+    }
+
+    .rr9-games {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .rr9-game-card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rr9-game-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 161, 0, 0.4);
+      background: #0f090b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: block;
+    }
+
+    .rr9-game-card:hover {
+      transform: translateY(-6px);
+      border-color: #ffa100;
+      box-shadow: 0 10px 25px rgba(255, 161, 0, 0.3);
+    }
+
+    .rr9-game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .rr9-hot {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 3;
+      background: #ff1a1a;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .rr9-game-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      transition: color 0.3s;
+    }
+
+    .rr9-game-card-wrapper:hover .rr9-game-label {
+      color: #ffd15a;
+    }
+
+    /* === TRUST ROW === */
+    .rr9-trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .rr9-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(20, 10, 5, 0.75);
+      border: 1px solid rgba(255, 161, 0, 0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .rr9-trust-icon-box {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 161, 0, 0.12);
+      border: 1px solid rgba(255, 161, 0, 0.35);
+      border-radius: 50%;
+      color: #ffd15a;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .rr9-trust-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rr9-trust-text h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .rr9-trust-text p {
+      margin: 2px 0 0 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+
+    /* === PROMOTION ROW === */
+    .rr9-promo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .rr9-promo-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(35, 12, 8, 0.95) 0%, rgba(15, 6, 4, 0.98) 100%);
+      border: 1px solid rgba(255, 90, 0, 0.35);
+      border-radius: 14px;
+      padding: 22px 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 60, 0, 0.05);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .rr9-promo-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffa100;
+      box-shadow: 0 8px 25px rgba(255, 90, 0, 0.25);
+    }
+
+    .rr9-promo-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .rr9-promo-title {
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .rr9-promo-sub {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Override mobile/responsive styling */
+    @media (max-width: 980px) {
+      .rr9-shell {
+        padding: 0 20px;
+      }
+
+      .rr9-register-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .rr9-register-row .rr9-play-btn {
+        margin-top: 4px;
+      }
+
+      .rr9-games {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .rr9-trust-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .rr9-promo-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rr9-games {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .rr9-trust-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CSS layout updates to reuse index styles */
+    .hero-timer-corner {
+      right: 94px !important;
+      width: auto !important;
+    }
+
+    .free-spin-badge {
+      width: 74px !important;
+      min-width: 74px !important;
+      padding: 7px 8px !important;
+    }
+
+    .faq-question,
+    .faq-question span,
+    .faq-answer,
+    .faq-answer p,
+    .faq-answer strong,
+    .faq-answer b,
+    .faq-answer em {
+      font-weight: 400 !important;
+      font-style: normal !important;
+    }
+
+    .logo-icon,
+    .logo-accent,
+    .accent {
+      color: #ffc342;
+      text-shadow: 0 0 16px rgba(255, 195, 66, .45);
+    }
+
+    .nav-link:hover,
+    .nav-link.active,
+    .mobile-menu a:hover {
+      color: #ffc342;
+    }
+
+    .btn-download-nav,
+    .btn-cta-primary,
+    .btn-vip-join,
+    .btn-claim,
+    .btn-download-app,
+    .rr9-play-btn,
+    .rr9-promo-btn {
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 38%, #d3290d 100%);
+      color: #170604;
+      border-color: rgba(255, 222, 115, .72);
+      box-shadow: 0 0 22px rgba(255, 76, 22, .38), inset 0 1px 0 rgba(255, 255, 255, .22);
+    }
+
+    .live-ticker-bar,
+    .promo-strip {
+      background: linear-gradient(90deg, rgba(7, 2, 2, .96), rgba(28, 5, 3, .96), rgba(7, 2, 2, .96));
+      border-top: 1px solid rgba(255, 183, 38, .34);
+      border-bottom: 1px solid rgba(255, 183, 38, .34);
+      box-shadow: inset 0 0 28px rgba(180, 22, 8, .16);
+    }
+
+    .stats-bar,
+    .section-winners,
+    .section-faq,
+    .footer,
+    .footer-top,
+    .footer-bottom {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(149, 18, 8, .18), transparent 36%),
+        linear-gradient(180deg, #090303 0%, #050202 100%);
+      border-color: rgba(255, 183, 38, .16);
+    }
+
+    .stat-item,
+    .winner-card,
+    .faq-item,
+    .footer-col,
+    .rr9-register-box,
+    .rr9-game-card,
+    .rr9-trust-item,
+    .rr9-promo-card {
+      background:
+        radial-gradient(circle at 82% 15%, rgba(188, 25, 9, .18), transparent 34%),
+        linear-gradient(180deg, rgba(18, 7, 5, .94), rgba(7, 3, 3, .94));
+      border-color: rgba(255, 174, 35, .32);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .38), inset 0 0 24px rgba(255, 56, 20, .06);
+    }
+
+    .stat-icon-wrap,
+    .rr9-trust-icon-box,
+    .faq-icon,
+    .social-btn {
+      background: rgba(255, 180, 32, .12);
+      border: 1px solid rgba(255, 180, 32, .32);
+      color: #ffc342;
+      box-shadow: 0 0 18px rgba(255, 181, 30, .18);
+    }
+
+    .stat-number,
+    .won-value,
+    .rr9-promo-value,
+    .rr9-game-label,
+    .faq-question,
+    .footer-col-title {
+      color: #ffc342;
+      text-shadow: 0 0 14px rgba(255, 195, 66, .28);
+    }
+
+    .winner-name,
+    .rr9-promo-title,
+    .rr9-trust-text h3,
+    .footer-links li,
+    .footer-links li a {
+      color: #fff2d2;
+    }
+
+    .winner-game,
+    .rr9-subheading,
+    .rr9-promo-desc,
+    .rr9-trust-text p,
+    .faq-answer,
+    .footer-brand-desc {
+      color: rgba(247, 230, 198, .72);
+    }
+
+    .section-title i,
+    .rr9-hot {
+      color: #ff4937;
+      text-shadow: 0 0 15px rgba(255, 73, 55, .45);
+    }
+
+    .rr9-lobby {
+      background:
+        linear-gradient(180deg, rgba(5, 1, 3, .28) 0%, rgba(5, 1, 3, .88) 100%),
+        url("../assect/rr9-casino-banner-bg.png") center top / cover no-repeat;
+      border-top: 1px solid rgba(255, 183, 38, .2);
+      border-bottom: 1px solid rgba(255, 183, 38, .18);
+    }
+
+    .footer {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 56, 20, .2), transparent 34%),
+        radial-gradient(circle at 86% 12%, rgba(255, 190, 42, .12), transparent 30%),
+        linear-gradient(180deg, #080202 0%, #030101 100%);
+      border-top: 1px solid rgba(255, 190, 42, .28);
+      box-shadow: 0 -18px 60px rgba(0, 0, 0, .55);
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../assect/rr9-casino-banner-bg.png") center bottom / cover no-repeat;
+      opacity: .11;
+      pointer-events: none;
+    }
+
+    @media (min-width: 981px) {
+      .footer-top {
+        position: relative;
+        padding: 56px 0 34px;
+      }
+
+      .footer-top .footer-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(160px, .85fr)) minmax(190px, 1fr);
+        gap: 0;
+        padding: 28px;
+        border-radius: 12px;
+        background:
+          linear-gradient(135deg, rgba(20, 6, 4, .9), rgba(6, 2, 2, .92));
+        border: 1px solid rgba(255, 186, 45, .22);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .42), inset 0 0 40px rgba(255, 60, 24, .06);
+      }
+
+      .footer-col {
+        min-width: 0;
+        padding: 8px 24px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        position: relative;
+      }
+
+      .footer-col+.footer-col {
+        border-left: 1px solid rgba(255, 190, 42, .12);
+      }
+
+      .footer-brand {
+        padding-left: 4px;
+        padding-right: 34px;
+      }
+
+      .footer-brand .footer-logo {
+        margin-bottom: 14px;
+      }
+
+      .footer-brand .logo-text {
+        font-size: 1.15rem;
+        letter-spacing: 2px;
+      }
+
+      .footer-brand-desc {
+        max-width: 310px;
+        margin-bottom: 22px;
+        color: rgba(255, 237, 204, .74);
+        font-size: .95rem;
+        line-height: 1.65;
+        font-style: normal;
+      }
+
+      .footer-col-title {
+        margin-bottom: 18px;
+        padding-bottom: 11px;
+        border-bottom: 1px solid rgba(255, 190, 42, .18);
+        color: #ffd46a;
+        font-size: .78rem;
+        letter-spacing: 1.9px;
+      }
+    }
+
+    .footer-links {
+      gap: 11px;
+    }
+
+    .footer-links li,
+    .footer-links li a {
+      color: rgba(255, 239, 211, .84);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .98rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .footer-links li a:hover {
+      color: #ffd46a;
+      left: 4px;
+      text-shadow: 0 0 10px rgba(255, 190, 42, .26);
+    }
+
+    .footer-socials {
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 178, 43, .09);
+      border-color: rgba(255, 178, 43, .3);
+      color: #ffbf3f;
+    }
+
+    .footer-app {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-app .qr-wrap {
+      padding: 8px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, .35), 0 0 24px rgba(255, 183, 42, .2);
+    }
+
+    .qr-image {
+      width: 92px;
+      height: 92px;
+      border: 0;
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .btn-download-app {
+      min-height: 40px;
+      padding: 0 18px;
+      border-radius: 7px;
+      font-size: .76rem;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+
+    .footer-bottom {
+      position: relative;
+      padding: 18px 0;
+      background: rgba(0, 0, 0, .68);
+      border-top: 1px solid rgba(255, 190, 42, .16);
+    }
+
+    .footer-bottom-inner {
+      justify-content: center;
+    }
+
+    .footer-bottom-inner span {
+      color: rgba(255, 229, 188, .52);
+      font-size: .86rem;
+      letter-spacing: .4px;
+    }
+
+    /* ===== GAMES DROPDOWN MENU ===== */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: rgba(12, 5, 5, 0.96);
+      border: 1.5px solid rgba(255, 195, 66, 0.45);
+      border-radius: 12px;
+      padding: 10px 0;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 184, 41, 0.15);
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-item-dropdown:hover .dropdown-menu,
+    .nav-item-dropdown:focus-within .dropdown-menu {
+      display: flex;
+      flex-direction: column;
+      animation: fadeInDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      color: #f7e6c6;
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255, 195, 66, 0.16);
+      color: #ffc342;
+      padding-left: 24px;
+    }
+
+    .dropdown-menu a i {
+      color: #ffc342;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .mobile-dropdown {
+      display: flex;
+      flex-direction: column;
+      padding-left: 16px;
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .mobile-dropdown a {
+      font-size: 0.9rem !important;
+      color: rgba(255, 215, 0, 0.85) !important;
+      padding: 4px 10px !important;
+    }
+
+    .hero {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      margin-top: 70px !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      overflow: hidden !important;
+      background: #050103 !important;
+      display: block !important;
+    }
+
+    .hero-container,
+    .hero-visual,
+    .hero-video-wrapper,
+    .hero-video {
+      width: 100% !important;
+      max-width: none !important;
+    }
+
+    .hero-container {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .hero-visual {
+      position: relative !important;
+      inset: auto !important;
+      height: clamp(430px, 68vh, 760px) !important;
+      margin: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: hidden !important;
+    }
+
+    .hero-video-wrapper {
+      position: absolute !important;
+      inset: 0 !important;
+      height: 100% !important;
+    }
+
+    .hero-video {
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    .hero-center-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 20 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 36px 20px !important;
+      transform: translateY(52px) !important;
+      text-align: center !important;
+      pointer-events: none !important;
+    }
+
+    .hero-video-title {
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: translateY(38px) !important;
+      width: min(92vw, 920px) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      pointer-events: none !important;
+    }
+
+    .hero-video-title .hero-title-line,
+    .hero-video-title .hero-highlight {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .hero-cta-wrap {
+      margin-top: clamp(120px, 18vh, 190px) !important;
+      pointer-events: auto !important;
+    }
+
+    .faq-question,
+    .faq-question span,
+    .faq-answer,
+    .faq-answer p,
+    .faq-answer strong,
+    .faq-answer b,
+    .faq-answer em {
+      font-weight: 400 !important;
+      font-style: normal !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero-visual {
+        height: clamp(360px, 62vh, 620px) !important;
+      }
+
+      .hero-cta-wrap {
+        margin-top: clamp(92px, 15vh, 145px) !important;
+      }
+
+      .hero-center-overlay {
+        transform: translateY(34px) !important;
+      }
+
+      .hero-video-title {
+        transform: translateY(26px) !important;
+      }
+
+      .hero-timer-corner {
+        right: 94px !important;
+        width: auto !important;
+      }
+
+      .free-spin-badge {
+        width: 74px !important;
+        min-width: 74px !important;
+        padding: 7px 8px !important;
+      }
+    }
+
+    /* === CUSTOM OVERRIDES TO MATCH SCREENSHOT === */
+    /* Stats Bar Override */
+    .stats-bar {
+      background: #0f0402 !important;
+      /* Very dark brownish black */
+      border-top: 1.5px solid #2d0e0a !important;
+      border-bottom: 1.5px solid #2d0e0a !important;
+      padding: 18px 0 !important;
+    }
+
+    .stats-container {
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 0 !important;
+      align-items: center !important;
+    }
+
+    .stat-item {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      border: none !important;
+      background: none !important;
+      box-shadow: none !important;
+      padding: 6px 0 !important;
+      position: relative !important;
+      margin: 0 !important;
+      overflow: visible !important;
+    }
+
+    .stat-item::before {
+      display: none !important;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: "" !important;
+      position: absolute !important;
+      right: 0 !important;
+      top: 15% !important;
+      height: 70% !important;
+      width: 1.5px !important;
+      background: linear-gradient(to bottom, transparent, rgba(255, 195, 66, 0.25), transparent) !important;
+    }
+
+    .stat-icon-wrap {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      background: linear-gradient(135deg, #ffd46a 0%, #ff9d20 100%) !important;
+      border: 2px solid #5a3818 !important;
+      box-shadow: 0 0 12px rgba(255, 157, 32, 0.4) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .stat-icon-wrap i {
+      color: #170604 !important;
+      font-size: 1.25rem !important;
+    }
+
+    .stat-info {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      line-height: 1.2 !important;
+    }
+
+    .stat-number {
+      color: #ffd46a !important;
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 1.35rem !important;
+      font-weight: 800 !important;
+      text-shadow: 0 0 8px rgba(255, 212, 106, 0.3) !important;
+    }
+
+    .stat-label {
+      color: #bfa38a !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    /* Carets & Titles Overrides */
+    .lobby-section-title-wrap {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      margin: 48px 0 28px !important;
+    }
+
+    .lobby-section-title-wrap .line {
+      flex: 1 !important;
+      height: 1.5px !important;
+      background: linear-gradient(90deg, transparent, rgba(255, 73, 55, 0.5), transparent) !important;
+    }
+
+    .lobby-section-title-wrap .carets {
+      color: #ff4937 !important;
+      font-size: 0.95rem !important;
+      letter-spacing: -2px !important;
+      display: flex !important;
+      gap: 4px !important;
+      text-shadow: 0 0 10px rgba(255, 73, 55, 0.6) !important;
+    }
+
+    .lobby-section-title {
+      color: #ffd46a !important;
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase !important;
+      margin: 0 !important;
+      text-shadow: 0 0 15px rgba(255, 212, 106, 0.3) !important;
+    }
+
+    /* Hot Games Grid Override (Home Page Box Sizing & Animation) */
+    .lobby-game-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 14px !important;
+      margin-bottom: 24px !important;
+    }
+
+    .game-card {
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      cursor: pointer !important;
+      position: relative !important;
+      border: 1px solid rgba(240, 165, 0, .15) !important;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s, box-shadow 0.3s !important;
+      background: #111 !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      text-decoration: none !important;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px) !important;
+      border-color: #ffb829 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(240, 165, 0, 0.25) !important;
+    }
+
+    .game-thumb {
+      width: 100% !important;
+      aspect-ratio: 4/3 !important;
+      display: block !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .game-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.5s ease !important;
+      display: block !important;
+    }
+
+    .game-card:hover .game-img {
+      transform: scale(1.1) !important;
+    }
+
+    .game-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      background: linear-gradient(to top, rgba(0, 0, 0, .7) 0%, transparent 60%) !important;
+      z-index: 1 !important;
+    }
+
+    .game-play-btn {
+      position: absolute !important;
+      inset: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: rgba(0, 0, 0, 0.4) !important;
+      backdrop-filter: blur(2px) !important;
+      opacity: 0 !important;
+      transition: opacity 0.3s ease !important;
+      z-index: 2 !important;
+    }
+
+    .game-play-btn i {
+      font-size: 1.8rem !important;
+      color: #ffd46a !important;
+      background: rgba(10, 6, 4, 0.9) !important;
+      border: 2px solid #ffd46a !important;
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 0 20px rgba(240, 165, 0, 0.6) !important;
+      transform: scale(0.6) !important;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease !important;
+    }
+
+    .game-card:hover .game-play-btn {
+      opacity: 1 !important;
+    }
+
+    .game-card:hover .game-play-btn i {
+      transform: scale(1) !important;
+    }
+
+    .game-play-btn i:hover {
+      box-shadow: 0 0 30px rgba(240, 165, 0, 0.9) !important;
+      background: #ffd46a !important;
+      color: #000 !important;
+    }
+
+    .game-name {
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: .8rem !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      letter-spacing: 1.5px !important;
+      text-align: center !important;
+      padding: 12px 8px 14px !important;
+      line-height: 1.4 !important;
+      background: linear-gradient(180deg, #110d0f 0%, #070506 100%) !important;
+      border-top: 1px solid rgba(240, 165, 0, .15) !important;
+      transition: color 0.3s ease !important;
+      z-index: 2 !important;
+      position: relative !important;
+      flex-grow: 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .game-card:hover .game-name {
+      color: #ffd46a !important;
+    }
+
+    /* Theme-specific glowing border colors for each game */
+    .lobby-game-grid .game-card:nth-child(1) {
+      border-color: rgba(46, 204, 64, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(1):hover {
+      border-color: #2ecc40 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(46, 204, 64, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(2) {
+      border-color: rgba(224, 64, 251, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(2):hover {
+      border-color: #e040fb !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(224, 64, 251, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(3) {
+      border-color: rgba(240, 165, 0, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(3):hover {
+      border-color: #ffb829 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(240, 165, 0, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(4) {
+      border-color: rgba(0, 229, 255, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(4):hover {
+      border-color: #00e5ff !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(0, 229, 255, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(5) {
+      border-color: rgba(230, 57, 70, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(5):hover {
+      border-color: #e63946 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(230, 57, 70, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(6) {
+      border-color: rgba(213, 0, 249, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(6):hover {
+      border-color: #d500f9 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(213, 0, 249, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(7) {
+      border-color: rgba(255, 171, 0, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(7):hover {
+      border-color: #ffab00 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(255, 171, 0, 0.45) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(8) {
+      border-color: rgba(255, 23, 68, 0.22) !important;
+    }
+
+    .lobby-game-grid .game-card:nth-child(8):hover {
+      border-color: #ff1744 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(255, 23, 68, 0.45) !important;
+    }
+
+    /* Action Buttons Row */
+    .lobby-action-row {
+      display: flex !important;
+      justify-content: center !important;
+      margin: 20px 0 44px !important;
+    }
+
+    .btn-lobby-view-all {
+      display: inline-block !important;
+      padding: 10px 36px !important;
+      background: linear-gradient(180deg, #671415 0%, #350809 100%) !important;
+      border: 1.5px solid #8e1819 !important;
+      border-radius: 999px !important;
+      color: #ffd46a !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 800 !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 1px !important;
+      text-decoration: none !important;
+      text-transform: uppercase !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer !important;
+    }
+
+    .btn-lobby-view-all:hover {
+      background: linear-gradient(180deg, #871c1d 0%, #4a0d0e 100%) !important;
+      border-color: #b52223 !important;
+      box-shadow: 0 0 15px rgba(255, 73, 55, 0.4) !important;
+      transform: translateY(-2px) !important;
+      color: #ffd46a !important;
+    }
+
+    /* Promotions Cards Override */
+    .lobby-promos-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 20px !important;
+      margin-bottom: 24px !important;
+    }
+
+    .lobby-promo-card {
+      background: linear-gradient(135deg, #1e0909 0%, #0d0404 100%) !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.25) !important;
+      border-radius: 12px !important;
+      padding: 20px 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .lobby-promo-card::before {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      background: radial-gradient(circle at 100% 50%, rgba(255, 195, 66, 0.08), transparent 70%) !important;
+      pointer-events: none !important;
+    }
+
+    .lobby-promo-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(255, 195, 66, 0.5) !important;
+      box-shadow: 0 10px 25px rgba(255, 73, 55, 0.15) !important;
+    }
+
+    .lobby-promo-text {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      z-index: 1 !important;
+    }
+
+    .lobby-promo-tag {
+      color: #bfa38a !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 1px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 6px !important;
+    }
+
+    .lobby-promo-val {
+      color: #ffd46a !important;
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 2.2rem !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      margin-bottom: 6px !important;
+      text-shadow: 0 0 15px rgba(255, 212, 106, 0.2) !important;
+    }
+
+    .lobby-promo-limit {
+      color: #e5c3a3 !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    .lobby-promo-img-wrap {
+      width: 90px !important;
+      height: 90px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      z-index: 1 !important;
+      flex-shrink: 0 !important;
+    }
+
+    .lobby-promo-img-wrap img {
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
+    /* VIP Membership Banner Override */
+    .lobby-vip-banner {
+      position: relative !important;
+      background:
+        linear-gradient(90deg, rgba(16, 6, 4, 0.25) 0%, rgba(35, 12, 8, 0.05) 50%, rgba(16, 6, 4, 0.25) 100%),
+        url('../assect/JOIN OUR.png') no-repeat left center !important;
+      background-size: 100% 100% !important;
+      border: 1.5px solid rgba(255, 195, 66, 0.4) !important;
+      border-radius: 16px !important;
+      padding: 32px 48px !important;
+      display: grid !important;
+      grid-template-columns: 220px 1fr 240px !important;
+      align-items: center !important;
+      gap: 24px !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(255, 161, 0, 0.1) !important;
+      overflow: hidden !important;
+      margin-top: 40px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .lobby-vip-shield-space {
+      height: 150px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      pointer-events: none !important;
+    }
+
+    .vip-shield-img {
+      max-height: 140px !important;
+      max-width: 140px !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6)) !important;
+      mix-blend-mode: screen !important;
+    }
+
+    .vip-banner-info {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    .vip-banner-title {
+      color: #ffffff !important;
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 1.8rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 1px !important;
+      margin: 0 0 4px 0 !important;
+      text-shadow: 0 0 15px rgba(255, 195, 66, 0.3) !important;
+    }
+
+    .vip-banner-sub {
+      color: #ffd46a !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 16px !important;
+    }
+
+    .vip-banner-perks {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px 24px !important;
+      width: 100% !important;
+    }
+
+    .vip-perk-item {
+      color: #ffffff !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .vip-perk-item i {
+      color: #ffd46a !important;
+      font-size: 0.8rem !important;
+    }
+
+    .vip-banner-action {
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      z-index: 2 !important;
+    }
+
+    .btn-vip-join-new {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 12px 36px !important;
+      background: linear-gradient(180deg, #ffe46a 0%, #ff9d20 58%, #d3290d 100%) !important;
+      border: 1.5px solid rgba(255, 222, 115, 0.72) !important;
+      border-radius: 8px !important;
+      color: #170604 !important;
+      font-family: 'Orbitron', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 0.5px !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      box-shadow: 0 6px 20px rgba(255, 76, 22, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer !important;
+    }
+
+    .btn-vip-join-new:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 25px rgba(255, 76, 22, 0.5) !important;
+      filter: brightness(1.05) !important;
+      color: #170604 !important;
+    }
+
+    @media (max-width: 980px) {
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
+
+      .stat-item:not(:last-child)::after {
+        display: none !important;
+      }
+
+      .lobby-game-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      .lobby-promos-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      .lobby-vip-banner {
+        grid-template-columns: 1fr !important;
+        padding: 32px 24px !important;
+        text-align: center !important;
+      }
+
+      .lobby-vip-shield-space {
+        display: none !important;
+      }
+
+      .vip-banner-info {
+        align-items: center !important;
+      }
+
+      .vip-banner-perks {
+        justify-items: center !important;
+      }
+
+      .vip-banner-action {
+        justify-content: center !important;
+        margin-top: 16px !important;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .stats-container {
+        grid-template-columns: 1fr !important;
+      }
+
+      .lobby-game-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Howto Section Custom Overrides */
+    .howto-icon-box {
+      width: 38px !important;
+      height: 38px !important;
+      background: #e63946 !important;
+      border-radius: 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.6) !important;
+      color: #fff !important;
+      font-size: 1.15rem !important;
+      flex-shrink: 0 !important;
+    }
+
+    .howto-header {
+      border-bottom: 1px solid rgba(255, 195, 66, 0.15) !important;
+    }
+
+    .step-icon-wrap {
+      border: 2px solid rgba(255, 195, 66, 0.45) !important;
+      background: radial-gradient(circle at 40% 30%, rgba(255, 195, 66, 0.15), rgba(0, 0, 0, 0.6)) !important;
+      box-shadow: 0 0 20px rgba(255, 195, 66, 0.2), inset 0 0 15px rgba(255, 195, 66, 0.1) !important;
+    }
+
+    .step-icon-wrap::before {
+      border: 1px solid rgba(230, 57, 70, 0.3) !important;
+    }
+
+    .step-badge {
+      background: #ff9d20 !important;
+      color: #000 !important;
+      box-shadow: 0 0 10px rgba(255, 157, 32, 0.4) !important;
+    }
+
+    .step-name {
+      color: #ffd46a !important;
+    }
+
+    .step-text {
+      color: #c4b8a5 !important;
+    }
+
+    .line-dot {
+      background: linear-gradient(90deg, rgba(255, 195, 66, 0.5) 0%, rgba(255, 195, 66, 0.1) 100%) !important;
+    }
+
+    .line-dot::after {
+      background: #ff9d20 !important;
+      box-shadow: 0 0 8px #ff9d20 !important;
+    }
+
+    .connector-arrow {
+      color: rgba(255, 195, 66, 0.7) !important;
+    }
+
+    /* Mobile-first layout: stack by default */
+    .section-howto .steps-flow {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 20px !important;
+    }
+
+    .section-howto .step-connector {
+      display: none !important;
+    }
+
+    .section-howto .step-item {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Desktop layout: horizontal grid on screens wider than 1060px */
+    @media (min-width: 1061px) {
+      .section-howto .steps-flow {
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr auto 1fr !important;
+        align-items: center !important;
+        gap: 20px !important;
+      }
+
+      .section-howto .step-connector {
+        display: flex !important;
+      }
+
+      .section-howto .step-item {
+        width: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo" aria-label="Benz.Game Home">
+        <span class="logo-icon"><i class="fas fa-dice"></i></span>
+        <span class="logo-text">IC7<span class="logo-accent">.GAME</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">HOME</a>
+
+        <!-- GAMES DROPDOWN -->
+        <div class="nav-item-dropdown">
+          <a href="BENZGAME.html" class="nav-link active has-dropdown">GAMES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
+            <a href="RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
+            <a href="x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
+            <a href="ic7.html"><i class="fas fa-crown"></i> IC7 Game</a>
+          </div>
+        </div>
+
+        <a href="../category.html" class="nav-link">CATEGORIES</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+          target="_blank" class="btn-download-nav" style="text-decoration:none;"><i class="fas fa-download"></i>
+          DOWNLOAD NOW</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">HOME</a>
+      <a href="BENZGAME.html">ALL GAMES</a>
+      <div class="mobile-dropdown">
+        <a href="777.html">🎰 777 Game</a>
+        <a href="RR9.html">🔥 RR9 Game</a>
+        <a href="x89.html">⚡ X89 Game</a>
+        <a href="ic7.html">👑 IC7 Game</a>
+      </div>
+      <a href="../category.html">CATEGORIES</a>
+      <a href="#faq">FAQ</a>
+      <div class="mobile-actions">
+        <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+          target="_blank" class="btn-download-nav" style="text-decoration:none;"><i class="fas fa-download"></i>
+          DOWNLOAD NOW</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-visual">
+          <div class="hero-video-wrapper">
+            <video id="heroVideo" class="hero-video" src="../assect/Video_Generation_Prompt_Create.mp4" autoplay muted
+              loop playsinline preload="auto"></video>
+          </div>
+
+          <!-- TOP LEFT TIMER BADGE -->
+          <div class="hero-timer-corner">
+            <div class="timer-inner">
+              <span class="timer-icon">⏰</span>
+              <span class="timer-label">IC7 BONUS EXPIRES IN</span>
+              <span class="timer-display" id="heroTimer">01:00</span>
+              <span class="timer-tag">LEFT</span>
+            </div>
+          </div>
+
+          <!-- TOP RIGHT FREE SPIN BADGE -->
+          <div class="free-spin-badge">
+            <div class="badge-glow"></div>
+            <span class="badge-label">FREE</span>
+            <span class="badge-main">SPIN</span>
+          </div>
+
+          <!-- CENTER OVERLAY: TITLE + HIGHLIGHT + PLAY BUTTON STACKED -->
+          <div class="hero-center-overlay">
+            <h1 class="hero-video-title">
+              <span class="hero-title-line">IC7 Game</span>
+              <span class="hero-highlight">Register &amp; Get ₹17,777</span>
+            </h1>
+            <div class="hero-cta-wrap">
+              <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+                target="_blank" class="btn-cta-primary" style="text-decoration:none;"><i class="fas fa-play"></i> PLAY
+                IC7 NOW</a>
+            </div>
+          </div>
+
+          <!-- BOTTOM LEFT JACKPOT BADGE -->
+          <div class="jackpot-winner">
+            <i class="fas fa-trophy"></i>
+            <div><span class="jackpot-label">JACKPOT WINNER</span><span class="jackpot-amount">₹3,40,000</span></div>
+          </div>
+
+          <!-- BOTTOM RIGHT REWARD CARD -->
+          <div class="reward-card">
+            <div class="reward-icon">🎁</div>
+            <div class="reward-text">
+              <span class="reward-percent">100%</span>
+              <span class="reward-label">reward</span>
+            </div>
+            <div class="reward-coins"><span class="coin">💰</span><span class="coin-value">777</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIVE TICKER ===== -->
+    <div class="live-ticker-bar">
+      <div class="ticker-left">
+        <i class="fas fa-volume-up"></i>
+        <span class="ticker-badge">LIVE</span>
+      </div>
+      <div class="ticker-scroll-wrap">
+        <div class="ticker-scroll">
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+
+          <span>🏆 AWESOME WIN: User ****8896 won <strong>₹1,50,000</strong> on Fortune Gems</span>
+          <span>💰 JACKPOT WINNER! User ****1102 won <strong>₹5,80,000</strong> on Crazy 777</span>
+          <span>🎰 BIG WIN: User ****2341 won <strong>₹75,000</strong> on Crazy Time</span>
+          <span>✈️ CRASH WIN: User ****9832 won <strong>₹1,20,000</strong> on Aviator</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="stats-bar">
+      <div class="stats-container">
+        <!-- Item 1: Users -->
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-users stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number">1 Cr+</span>
+            <span class="stat-label">USERS</span>
+          </div>
+        </div>
+        <!-- Item 2: Withdrawal -->
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-wallet stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">WITHDRAWAL</span>
+          </div>
+        </div>
+        <!-- Item 3: Secure -->
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-shield-halved stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">SECURE</span>
+          </div>
+        </div>
+        <!-- Item 4: Support -->
+        <div class="stat-item">
+          <div class="stat-icon-wrap"><i class="fas fa-headset stat-icon"></i></div>
+          <div class="stat-info">
+            <span class="stat-number">24x7</span>
+            <span class="stat-label">SUPPORT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN LOBBY & REGISTER ===== -->
+    <section class="rr9-lobby">
+      <div class="rr9-shell">
+
+        <!-- === REGISTER BOX === -->
+        <div class="rr9-register-box">
+          <h2 class="rr9-register-title">REGISTER &amp; START PLAYING IC7 NOW</h2>
+          <div class="rr9-register-row">
+            <!-- Country code -->
+            <div class="rr9-input-group rr9-country-group">
+              <i class="fas fa-mobile-screen-button"></i>
+              <span>+91</span>
+              <i class="fas fa-chevron-down rr9-chevron"></i>
+            </div>
+            <!-- Mobile number -->
+            <div class="rr9-input-group rr9-phone-group">
+              <input type="tel" placeholder="Enter Mobile Number" maxlength="10" />
+            </div>
+            <!-- Ref/Invite Code -->
+            <div class="rr9-input-group rr9-ref-group">
+              <div class="rr9-ref-label-container">
+                <span class="rr9-ref-label">Refer Code</span>
+              </div>
+              <input type="text" class="rr9-ref-input" value="AA0G53Q1" readonly />
+              <span class="rr9-check-icon"><i class="fas fa-circle-check"></i></span>
+            </div>
+            <!-- Action Button -->
+            <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+              target="_blank" class="rr9-play-btn" style="text-decoration:none;"><i class="fas fa-play"></i> REGISTER
+              NOW</a>
+          </div>
+
+          <div class="rr9-mini-steps">
+            <span>1️⃣ Enter Mobile Number</span>
+            <span class="sep">›</span>
+            <span>2️⃣ Complete Verification</span>
+            <span class="sep">›</span>
+            <span>3️⃣ Get Welcome Bonus</span>
+          </div>
+        </div>
+
+        <!-- === HOT GAMES GRID === -->
+        <div class="lobby-section-title-wrap">
+          <span class="line"></span>
+          <span class="carets"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-up"></i></span>
+          <h2 class="lobby-section-title">HOT GAMES</h2>
+          <span class="carets"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-up"></i></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="lobby-game-grid">
+          <!-- Card 1: Money Coming -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/money_coming.png" alt="Money Coming" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">MONEY<br>COMING</div>
+          </a>
+          <!-- Card 2: Squidss Game -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/squidss_game.png" alt="Squidss Game" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">SQUIDSS<br>GAME</div>
+          </a>
+          <!-- Card 3: Fortune Gems -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/fortune_gems.png" alt="Fortune Gems" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">FORTUNE<br>GEMS</div>
+          </a>
+          <!-- Card 4: Crazy Time -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/crazy_time.png" alt="Crazy Time" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">CRAZY<br>TIME</div>
+          </a>
+          <!-- Card 5: Crazy 777 -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/crazy_777.png" alt="Crazy 777" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">CRAZY<br>777</div>
+          </a>
+          <!-- Card 6: Funky Time -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/funky_time.png" alt="Funky Time" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">FUNKY<br>TIME</div>
+          </a>
+          <!-- Card 7: Chicken Road -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/chicken_road.png" alt="Chicken Road" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">CHICKEN<br>ROAD</div>
+          </a>
+          <!-- Card 8: Aviator -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="game-card">
+            <div class="game-thumb">
+              <img src="../assect/aviator.png" alt="Aviator" class="game-img" />
+              <div class="game-overlay"></div>
+              <div class="game-play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="game-name">AVIATOR</div>
+          </a>
+        </div>
+
+        <div class="lobby-action-row">
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="btn-lobby-view-all">VIEW ALL GAMES</a>
+        </div>
+
+        <!-- === EXCITING PROMOTIONS === -->
+        <div class="lobby-section-title-wrap">
+          <span class="line"></span>
+          <span class="carets"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-up"></i></span>
+          <h2 class="lobby-section-title">EXCITING PROMOTIONS</h2>
+          <span class="carets"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-up"></i></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="lobby-promos-grid">
+          <!-- Card 1: Welcome Bonus -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="lobby-promo-card" style="text-decoration:none;cursor:pointer;">
+            <div class="lobby-promo-text">
+              <span class="lobby-promo-tag">WELCOME BONUS</span>
+              <h3 class="lobby-promo-val">200%</h3>
+              <span class="lobby-promo-limit">UP TO ₹10,000</span>
+            </div>
+            <div class="lobby-promo-img-wrap">
+              <img src="../assect/rr9_gift_box.png" alt="Welcome Bonus" />
+            </div>
+          </a>
+          <!-- Card 2: Deposit Bonus -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="lobby-promo-card" style="text-decoration:none;cursor:pointer;">
+            <div class="lobby-promo-text">
+              <span class="lobby-promo-tag">DEPOSIT BONUS</span>
+              <h3 class="lobby-promo-val">150%</h3>
+              <span class="lobby-promo-limit">UP TO ₹20,000</span>
+            </div>
+            <div class="lobby-promo-img-wrap">
+              <img src="../assect/promo_reload.png" alt="Deposit Bonus" />
+            </div>
+          </a>
+          <!-- Card 3: Reload Bonus -->
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="lobby-promo-card" style="text-decoration:none;cursor:pointer;">
+            <div class="lobby-promo-text">
+              <span class="lobby-promo-tag">RELOAD BONUS</span>
+              <h3 class="lobby-promo-val">100%</h3>
+              <span class="lobby-promo-limit">UP TO ₹5,000</span>
+            </div>
+            <div class="lobby-promo-img-wrap">
+              <img src="../assect/rr9_gold_coins.png" alt="Reload Bonus" />
+            </div>
+          </a>
+        </div>
+
+        <div class="lobby-action-row">
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="btn-lobby-view-all">VIEW ALL PROMOTIONS</a>
+        </div>
+
+        <!-- === VIP MEMBERSHIP BANNER === -->
+        <div class="lobby-vip-banner">
+          <div class="lobby-vip-shield-space">
+            <img src="../assect/vip_club_badge.jpg" alt="VIP Club Medal" class="vip-shield-img" />
+          </div>
+          <div class="vip-banner-info">
+            <h3 class="vip-banner-title">VIP MEMBERSHIP</h3>
+            <span class="vip-banner-sub">MORE REWARDS, MORE PRIVILEGES</span>
+            <div class="vip-banner-perks">
+              <div class="vip-perk-item">
+                <i class="fas fa-crown"></i> Higher Cashback
+              </div>
+              <div class="vip-perk-item">
+                <i class="fas fa-crown"></i> Faster Withdrawals
+              </div>
+              <div class="vip-perk-item">
+                <i class="fas fa-crown"></i> Exclusive Bonuses
+              </div>
+              <div class="vip-perk-item">
+                <i class="fas fa-crown"></i> Dedicated VIP Support
+              </div>
+            </div>
+          </div>
+          <div class="vip-banner-action">
+            <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+              target="_blank" class="btn-vip-join-new">JOIN VIP CLUB</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== HOW TO GET STARTED ===== -->
+    <section class="section-howto" id="how-to-start">
+      <div class="section-container">
+        <div class="howto-card">
+          <div class="howto-header">
+            <span class="howto-icon-box"><i class="fas fa-dice"></i></span>
+            <h2 class="section-title">HOW TO <span class="accent">GET STARTED</span></h2>
+          </div>
+          <div class="steps-flow">
+
+            <!-- Step 1 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-mobile-alt step-icon"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">1</span>
+                  <h3 class="step-name">REGISTER</h3>
+                </div>
+                <p class="step-text">Enter your phone number &amp; sign up</p>
+              </div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="step-connector">
+              <span class="line-dot"></span>
+              <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-download step-icon"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">2</span>
+                  <h3 class="step-name">DOWNLOAD</h3>
+                </div>
+                <p class="step-text">Download our app for the best experience</p>
+              </div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="step-connector">
+              <span class="line-dot"></span>
+              <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <i class="fas fa-gift step-icon"></i>
+              </div>
+              <div class="step-info">
+                <div class="step-heading-row">
+                  <span class="step-badge">3</span>
+                  <h3 class="step-name">DEPOSIT &amp; PLAY</h3>
+                </div>
+                <p class="step-text">Add cash and enjoy exciting games</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="section-faq" id="faq">
+      <div class="section-container">
+        <h2 class="section-title centered">
+          <i class="fas fa-question-circle"></i> FREQUENTLY ASKED <span class="accent">QUESTIONS</span>
+        </h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the IC7 game online and how does the IC7 platform work?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>The <strong>IC7 game</strong> is an online casino and slot platform available on Benz.Game. It hosts an
+                array of mobile-friendly slot titles, prediction mini-games, crash multipliers, and live card tables
+                designed for Indian gamers. Setting up your account takes less than a minute. Once verified, you can
+                access your secure wallet dashboard, select your preferred games, check odds, and start placing plays to
+                win real money. The game runs using certified Random Number Generators (RNG) and 256-bit SSL encryptions
+                for maximum security and fair play.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I complete the IC7 game register and login?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Registering on the <strong>IC7 game</strong> is quick and easy. Enter your active mobile phone number,
+                set a password, verify via SMS OTP, and use the default referral invite code in the registration box to
+                activate your welcome profile. Once registered, perform your login from any device's browser or download
+                the mobile APK to log in securely using your mobile number and password credentials.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long do withdrawals and deposits take on IC7?</span>
+              <span class="faq-icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <p>Deposits on the <strong>IC7 game</strong> are processed instantly using multiple payment methods like
+                UPI (GPay, PhonePe, Paytm), Net Banking, and e-wallets. Withdrawals are processed automatically by the
+                system and typically reach your verified bank account or UPI ID in 15 to 30 minutes. Complete the
+                one-time KYC verification step in your account dashboard to ensure smooth and uninterrupted direct
+                cashouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== PROMO TICKER ===== -->
+  <div class="promo-strip">
+    <div class="promo-ticker">
+      <div class="ticker-track">
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: IC7</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+        <span>⭐ VIP CASHBACK 15%</span>
+        <span>🎁 REFER &amp; EARN ₹500</span>
+        <span>🏆 WEEKLY TOURNAMENT ₹5,00,000 PRIZE POOL</span>
+        <span>💎 NEW GAME: IC7</span>
+        <span>🎰 DAILY BONUS UP TO ₹10,000</span>
+        <span>🃏 FREE SPINS EVERY FRIDAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+        <!-- Brand -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon"><i class="fas fa-dice"></i></span>
+            <span class="logo-text">BENZ<span class="logo-accent">.GAME</span></span>
+          </div>
+          <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
+            trusted by millions.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="777.html">777 Game</a></li>
+            <li><a href="BENZGAME.html">Benz Game</a></li>
+            <li><a href="RR9.html">RR9 Game</a></li>
+            <li><a href="x89.html">X89 Game</a></li>
+            <li><a href="ic7.html">IC7 Game</a></li>
+          </ul>
+        </div>
+
+        <!-- Download App -->
+        <div class="footer-col footer-app">
+          <h4 class="footer-col-title">DOWNLOAD APP</h4>
+          <div class="qr-wrap">
+            <img src="../assect/qrcode.png" alt="Download App QR Code" class="qr-image" />
+          </div>
+          <a href="https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1"
+            target="_blank" class="btn-download-app" style="text-decoration:none;"><i class="fas fa-download"></i>
+            DOWNLOAD APP</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-container footer-bottom-inner">
+        <span>&copy; 2026 Benz.Game. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const targetUrl = 'https://share-xwvr4r1pxs.ic7game.org/web/share/index.html?ic=AA0C0SDF&ts=1787213280&m=2&lang=en&id=1';
+      const clickSelectors = [
+        '.btn-download-nav',
+        '.btn-cta-primary',
+        '.rr9-play-btn',
+        '.rr9-promo-btn',
+        '.btn-claim',
+        '.btn-download-app',
+        '.game-play-btn',
+        '.social-btn',
+        '.btn-vip-join',
+        '.btn-login',
+        '.btn-register-nav',
+        '.game-card',
+        '.rr9-game-card'
+      ];
+
+      document.addEventListener('click', function (event) {
+        const navLink = event.target.closest('.nav-links a, .mobile-menu a, .hamburger, .faq-question, .dropdown-menu a');
+        if (navLink && (navLink.getAttribute('href')?.includes('.html') || navLink.getAttribute('href')?.startsWith('#') || navLink.classList.contains('faq-question') || navLink.classList.contains('hamburger'))) {
+          return;
+        }
+        const target = event.target.closest(clickSelectors.join(','));
+        if (!target) return;
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        window.open(targetUrl, '_blank');
+      }, true);
+    })();
+  </script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

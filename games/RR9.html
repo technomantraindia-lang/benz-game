@@ -1626,9 +1626,11 @@
       .footer-top .footer-container {
         position: relative;
         display: grid;
-        grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(160px, .85fr)) minmax(190px, 1fr);
-        gap: 0;
-        padding: 28px;
+        grid-template-columns: minmax(250px, 1.15fr) minmax(180px, .75fr) minmax(220px, .85fr);
+        gap: 28px;
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        padding: 34px 36px;
         border-radius: 12px;
         background:
           linear-gradient(135deg, rgba(20, 6, 4, .9), rgba(6, 2, 2, .92));
@@ -1638,15 +1640,17 @@
 
       .footer-col {
         min-width: 0;
-        padding: 8px 24px;
+        padding: 8px 28px 8px 0;
         background: transparent;
         border: 0;
+        border-right: 1px solid rgba(255, 190, 42, .12);
         box-shadow: none;
         position: relative;
       }
 
-      .footer-col + .footer-col {
-        border-left: 1px solid rgba(255, 190, 42, .12);
+      .footer-col:last-child {
+        padding-right: 0;
+        border-right: 0;
       }
 
       .footer-brand {
@@ -1744,12 +1748,24 @@
     .footer-app {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-app .footer-col-title {
+      width: 100%;
+    }
+
+    .footer-app .footer-col-title::after {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .footer-app .qr-wrap {
       padding: 8px;
       margin-bottom: 16px;
+      margin-left: auto;
+      margin-right: auto;
       border-radius: 12px;
       background: rgba(255, 255, 255, .94);
       box-shadow: 0 16px 30px rgba(0, 0, 0, .35), 0 0 24px rgba(255, 183, 42, .2);
@@ -2045,6 +2061,7 @@
             <a href="777.html"><i class="fas fa-dice-five"></i> 777 Game</a>
             <a href="RR9.html"><i class="fas fa-fire"></i> RR9 Game</a>
             <a href="x89.html"><i class="fas fa-bolt"></i> X89 Game</a>
+            <a href="ic7.html"><i class="fas fa-crown"></i> IC7 Game</a>
           </div>
         </div>
 
@@ -2065,6 +2082,7 @@
         <a href="777.html">🎰 777 Game</a>
         <a href="RR9.html">🔥 RR9 Game</a>
         <a href="x89.html">⚡ X89 Game</a>
+        <a href="ic7.html">👑 IC7 Game</a>
       </div>
       <a href="../category.html">CATEGORIES</a>
       <a href="#faq">FAQ</a>
@@ -2624,12 +2642,7 @@
           </div>
           <p class="footer-brand-desc">Your ultimate destination for premium gaming experience. Fast payouts, secure and
             trusted by millions.</p>
-          <div class="footer-socials">
-            <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          </div>
+       
         </div>
 
         <div class="footer-col">
@@ -2640,26 +2653,7 @@
             <li><a href="BENZGAME.html">Benz Game</a></li>
             <li><a href="RR9.html">RR9 Game</a></li>
             <li><a href="x89.html">X89 Game</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 class="footer-col-title">SUPPORT</h4>
-          <ul class="footer-links">
-            <li><a href="#faq">Support Center</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Responsible Gaming</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 class="footer-col-title">CONTACT US</h4>
-          <ul class="footer-links footer-contact">
-            <li><i class="fas fa-envelope"></i> support@benz.game</li>
-            <li><i class="fas fa-phone"></i> +91 12345 67890</li>
-            <li><i class="fas fa-clock"></i> Available 24/7</li>
+            <li><a href="ic7.html">IC7 Game</a></li>
           </ul>
         </div>
 
